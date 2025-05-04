@@ -1,0 +1,17 @@
+.navigation-bar {
+    display: flex;
+
+    &-links {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 4rem 0;
+    }
+
+
+    @include screen-sm {
+        display: none;
+    }
+}
