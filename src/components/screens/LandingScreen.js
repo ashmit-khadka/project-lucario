@@ -20,6 +20,7 @@ import IconSelenium from '../../assets/icons/Selenium.svg';
 import IconReact from '../../assets/icons/React.svg';
 import IconRedux from '../../assets/icons/Redux.svg';
 import IconJenkins from '../../assets/icons/Jenkins.svg';
+import IconSASS from '../../assets/icons/Sass.svg';
 
 import SelfImage from '../../assets/image/PXL_20230625_190943733~2.jpg';
 import DotIcon from '../../assets/icons/noun-dot-1420973.svg';
@@ -41,38 +42,39 @@ import ImageADP from '../../assets/image/logos/adp.jpg';
 import { ReactComponent as IconEmail } from '../../assets/icons/noun-mail-7838451.svg';
 import { ReactComponent as IconPhone } from '../../assets/icons/noun-phone-7814366.svg';
 import { ReactComponent as IconLocation } from '../../assets/icons/noun-location-7752735.svg';
+import { ReactComponent as IconLink } from '../../assets/icons/noun-link-5747677.svg';
 
 
+import Button from "../core/Button";
 
 const LandingScreen = () => {
 
     const [activeSection, setActiveSection] = useState('about');
-
-
     const [isSkillsExpanded, setIsSkillsExpanded] = useState(false);
 
     const initialSkills = [
         { name: "JavaScript", icon: JavaScriptIcon },
-        { name: "TypeScript", icon: TypeScriptIcon },
+        { name: "React", icon: IconReact },
         { name: "Node.js", icon: NodeIcon },
+        { name: "TypeScript", icon: TypeScriptIcon },
         { name: "Figma", icon: FigmaIcon },
         { name: "C#", icon: CSharpIcon },
         { name: "MongoDB", icon: MongoDBIcon },
-        { name: "Python", icon: PythonIcon },
         { name: "PostgreSQL", icon: SQLIcon },
     ];
 
     const additionalSkills = [
+        { name: "Python", icon: PythonIcon },
         { name: "Django", icon: DjangoIcon },
         { name: "Tailwind", icon: IconTailwind },
         { name: "Git", icon: GitIcon },
         { name: "Jira", icon: JiraIcon },
         { name: "Azure", icon: AzureIcon },
-        { name: "React", icon: IconReact },
         { name: "Redux", icon: IconRedux },
         { name: "Cypress", icon: IconCypress },
         { name: "Selenium", icon: IconSelenium },
         { name: "Jenkins", icon: IconJenkins },
+        { name: "Sass", icon: IconSASS },
     ];
 
     const visibleSkills = isSkillsExpanded ? [...initialSkills, ...additionalSkills] : initialSkills;
@@ -110,7 +112,7 @@ const LandingScreen = () => {
             </div>
 
             <div id="expertise" className="landing-skill section">
-                <SectionTitle title="My expertise" isLight/>
+                <SectionTitle title="My expertise" isLight isWide/>
                 <div className={`landing-skill-container screen ${isSkillsExpanded ? 'expanded' : 'collapsed'}`}>
                     {visibleSkills.map((skill, index) => (
                         <Skill
@@ -133,28 +135,32 @@ const LandingScreen = () => {
 
                 <div className="section-items">
                     <PortfolioSection
-                        header="Enterprise Task Management System"
-                        description="Developed a robust task management platform serving 10,000+ users. Implemented real-time updates using WebSocket, reducing response time by 60%. Technologies: React.js, Node.js, MongoDB, Azure."
+                        header="AI-Powered Sustainability Platform for Higher Education"
+                        description="Built as part of my MSc thesis, this MERN stack web app uses AI to generate personalised sustainability challenges and support user interaction through chatbots and comment moderation. Gamified features like leaderboards and rewards drive engagement, while the VIPER-based architecture ensures scalability and clean modular design."
+                        image={ImagePortfolio}
+                        link={`${process.env.PUBLIC_URL}/assets/docs/pg_project.pdf`}
+                    />
+                    <PortfolioSection
+                        header="DNA Visualisation Platform for Plant Pathogen Research"
+                        description="Collaborated with The Sainsbury Laboratory to build a MERN stack web app for visualising complex DNA and protein interaction datasets. Integrated D3.js to render interactive visualisations (dot plots, networks, edge bundling) and laid the groundwork for AI-powered pattern recognition to support plant disease research at scale."
+                        image={ImagePortfolio}
+                        flipped
+                        link={`${process.env.PUBLIC_URL}/assets/docs/ug_project.pdf`}
+                    />
+                    <PortfolioSection
+                        header="GeekCaffeine.com: One Hub for All Things Tech"
+                        description="I built GeekCaffeine to create the ultimate destination for computer geeks—a single platform that curates the best tech content from across the internet. From programming and gaming to hardware and cybersecurity, it brings together news, tutorials, and videos in one clean, responsive interface designed for daily use."
+                        link="https://geekcaffeine.com/"
                         image={ImagePortfolio}
                     />
                     <PortfolioSection
-                        header="Financial Analytics Dashboard"
-                        description="Built a comprehensive analytics dashboard processing $50M+ in transactions. Integrated multiple data sources and implemented advanced filtering capabilities. Technologies: TypeScript, D3.js, PostgreSQL."
+                        header="PNSUK.com: Empowering the Nepali Community"
+                        description="I helped design and develop the official site for the Peterborough Nepalese Society UK (PNSUK), a registered charity that empowers the local Nepali community through cultural events, education, and charitable support. My goal was to make a platform that reflects their mission, enables blog contributions, and makes resources more accessible for members and supporters alike."
                         image={ImagePortfolio}
+                        link="https://pnsuk.com/"
+                        flipped
                     />
-                    <PortfolioSection
-                        header="AI-Powered Customer Service Portal"
-                        description="Created an intelligent customer service platform with natural language processing. Reduced response time by 45% and improved customer satisfaction rates. Technologies: Python, Django, TensorFlow."
-                        image={ImagePortfolio}
-                    />
-                    <PortfolioSection
-                        header="Cloud Migration Initiative"
-                        description="Led the migration of legacy systems to cloud infrastructure, resulting in 30% cost reduction and 99.9% system availability. Technologies: Azure, Docker, Kubernetes."
-                        image={ImagePortfolio}
-                    />
-
                 </div>
-
             </div>
 
             <div id="experience" className="landing-experience section screen">
@@ -194,12 +200,12 @@ const LandingScreen = () => {
                 <div className="section-items">
                     <EducationTile
                         title="Master of Science in Software Engineering"
-                        description="Graduated from King's College London in 2022, Merit."
+                        description="King's College London, 2024, High Merit."
                         logo={KCLLogo}
                     />
                     <EducationTile
                         title="Bachelor of Science in Computer Science"
-                        description="Graduated from the University of East Anglia in 2020, First Class Honours."
+                        description="University of East Anglia, 2020, First Class Honours."
                         logo={UEALogo}
                     />
                 </div>
@@ -213,39 +219,44 @@ const LandingScreen = () => {
                         title="Google UX Design"
                         institution="Google"
                         platform="Coursera"
+                        year="2021"
                         logo={ImageGoogle}
-                        link=""
+                        link="https://www.coursera.org/account/accomplishments/specialization/certificate/BQYR2BE9BL4Z"
                     />
                     <CertificationTile
                         title="Entrepreneurship Specialization"
                         institution="University of Pennsylvania"
                         platform="Coursera"
+                        year="2023"
                         logo={ImagePenn}
-                        link=""
+                        link="https://www.coursera.org/account/accomplishments/certificate/78SW7ZLCBYL4"
                     />
 
                     <CertificationTile
                         title="JavaScript: The Advanced Concepts"
-                        institution="Udemy"
+                        institution="Zero to Mastery"
                         platform="Udemy"
+                        year="2022"
                         logo={ImageUdemy}
-                        link=""
+                        link="https://udemy-certificate.s3.amazonaws.com/pdf/UC-628b7748-f652-467f-af3f-00c588747cb0.pdf"
                     />
 
                     <CertificationTile
                         title="Mastering TypeScript - 2023 Edition"
-                        institution="Udemy"
+                        institution="Colt Steele"
                         platform="Udemy"
+                        year="2023"
                         logo={ImageUdemy}
-                        link=""
+                        link="https://udemy-certificate.s3.amazonaws.com/pdf/UC-0ea23300-3f11-443d-ae2c-08d9e22ee458.pdf"
                     />
 
                     <CertificationTile
                         title="C# Advanced Topics"
-                        institution="Udemy"
+                        institution="Mosh Hamedani"
                         platform="Udemy"
+                        year="2022"
                         logo={ImageUdemy}
-                        link=""
+                        link="https://udemy-certificate.s3.amazonaws.com/pdf/UC-71e26554-f4cf-44d7-b83b-113fbbd63a31.pdf"
                     />
 
                 </div>
@@ -395,17 +406,26 @@ const Skill = (props) => {
 
 
 const PortfolioSection = (props) => {
-    const { header, description, image } = props;
+    const { header, description, image, link, flipped } = props;
+    
+    const imageClass = `landing-portfolio-tile-image ${flipped ? 'landing-portfolio-tile-image--flipped' : ''}`;
+    const textClass = `landing-portfolio-tile-text ${flipped ? 'landing-portfolio-tile-text--flipped' : ''}`;
+
+    const handleOpenProject = () => {
+        if (link) {
+            window.open(link, '_blank');
+        }
+    }
+
     return (
         <div className="landing-portfolio-tile">
-            <div>
+            <div className={imageClass}>
                 <img src={ImagePortfolio} alt="Portfolio Icon" className="portfolio-icon" />
             </div>
-
-            <div>
+            <div className={textClass}>
                 <h2>{header}</h2>
                 <p>{description}</p>
-                <button className="portfolio-button">View Project</button>
+                <Button onClick={handleOpenProject} className="landing-portfolio-tile--button">View Project</Button>
             </div>
         </div>
     );
@@ -429,25 +449,34 @@ const EducationTile = (props) => {
 }
 
 const CertificationTile = (props) => {
-    const { title, institution, platform, logo } = props;
+    const { title, institution, platform, year, logo, link } = props;
+
+    const handleOpenCertification = () => {
+        if (link) {
+            window.open(link, '_blank');
+        }
+    }
 
     return (
-        <div className="landing-certification-tile">
+        <div className="landing-certification-tile" onClick={handleOpenCertification}>
             <div>
                 <img src={logo} alt="Certification Logo" className="certification-logo" />
             </div>
-            <div className="certification-tile--text">
+            <div className="certification-tile-text">
                 <h2>{title}</h2>
-                <p>{institution} {platform}</p>
+                <p>{institution}, {platform}, {year}</p>
+            </div>
+            <div>
+                <IconLink className="icon-button"/>
             </div>
         </div>
     );
 }
 
 const SectionTitle = (props) => {
-    const { title, isLight } = props;
+    const { title, isLight, isWide } = props;
     return (
-        <div className={`section-title ${isLight ? 'section-title--light' : ''} screen`}>
+        <div className={`section-title ${isLight ? 'section-title--light' : ''} ${isWide ? 'screen section-title--wide' : ''}`}>
             <h2>{title}</h2>
         </div>
     );

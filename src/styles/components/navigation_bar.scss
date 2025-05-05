@@ -1,5 +1,56 @@
-.navigation-bar {
+@keyframes slideIn {
+    from {
+        right: -250px;
+    }
+    to {
+        right: 0;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        right: 0;
+    }
+    to {
+        right: -250px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.navigation {
     display: flex;
+    padding: 2rem 3rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: $colour-background;
+    transition: all 0.3s ease;
+
+    @include screen-sm {
+        padding: 1rem 2.5rem;
+    }
+
+    &-menu {
+        cursor: pointer;
+        
+        & svg {
+            @extend .image--md;
+        }
+
+        @include screen-lg {
+            display: none;
+        }
+    }
 
     &-links {
         display: flex;
@@ -7,11 +58,141 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        padding: 4rem 0;
+
+        @include screen-sm {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -250px;
+            width: 70%;
+            height: 100vh;
+            background-color: $colour-background;
+            flex-direction: column;
+            padding: 5rem 2rem;
+            z-index: 1001;
+            animation: slideOut 0.3s ease-in-out;
+
+            &.open {
+                display: flex;
+                animation: slideIn 0.3s ease-in-out forwards;
+            }
+        }
+    }
+
+    &-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color-font-primary-darker, 0.5);
+        backdrop-filter: blur(2px);
+        z-index: 100;
+        animation: fadeIn 0.3s ease-in-out;
     }
 
 
-    @include screen-sm {
+    &-link {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: $color-font-primary;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        &:hover {
+            color: $color-font-primary;
+            
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &.active {
+            color: $color-font-primary;
+            font-weight: bold;
+
+            &::after {
+                width: 100%;
+            }
+        }
+
+        @include screen-sm {
+            width: 100%;
+            text-align: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba($color-font-primary, 0.1);
+
+            &::after {
+                display: none;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &.active {
+                background-color: rgba($color-font-primary, 0.1);
+            }
+        }
+    }
+
+    &-dummy {
         display: none;
+        @extend .image--md;
+    }
+}
+
+
+.hamburger-menu {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    z-index: 1002;
+
+    @include screen-sm {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .hamburger-line {
+        width: 100%;
+        height: 2px;
+        background-color: $color-font-primary;
+        transition: all 0.3s ease;
+        transform-origin: left;
+    }
+
+    &.active {
+        .hamburger-line {
+            &:first-child {
+                transform: rotate(45deg);
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:last-child {
+                transform: rotate(-45deg);
+            }
+        }
     }
 }

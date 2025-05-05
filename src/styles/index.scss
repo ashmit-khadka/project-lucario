@@ -3,6 +3,7 @@
 @import './base/fonts.scss';
 @import './base/colours.scss';
 @import './base/animations.scss';
+@import './base/image.scss';
 
 @import './components/navigation_bar';
 @import './components/landingScreen.scss';
@@ -18,13 +19,22 @@
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+
+    @include screen-sm {
+        font-size: 12px; // Base font size for mobile
+    }
 }
 
 body {
+    padding-top: 12rem;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: $colour-background;
+
+    @include screen-sm {
+        padding-top: 6rem;
+    }
 }
 
 img,
@@ -50,7 +60,9 @@ h3,
 h4,
 h5,
 h6,
-li {
+li,
+button
+{
     overflow-wrap: break-word;
     @extend .dm-sans-regular;
     font-size: 1.2rem;
@@ -74,6 +86,7 @@ a {
 .screen {
     max-width: 1100px;
     margin: 0 auto;
+    padding: 0 2.5rem;
 }
 
 .resume-container {
@@ -287,7 +300,7 @@ a {
                 width: 1.5rem;
                 height: 1.5rem;
                 //margin-right: 1rem;
-            }
+            } 
         }
     }
 
@@ -345,5 +358,60 @@ a {
         background-color: white !important;
         color: black !important;
         font-family: 'Times New Roman', Times, serif !important;
+    }
+}
+
+.button {
+    background-color: $color-font-primary;
+    color: $color-font-primary-lighter;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    width: max-content;
+
+    @extend .dm-mono-regular;
+
+    &:hover {
+        transform: scale(1.05);
+        transition: all 0.2s ease-in-out;
+    }
+    &:active {
+        transform: scale(1);
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+
+.footer {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    background-color: $color-font-primary-dark;
+    color: $color-font-primary-lighter;
+    height: 30rem;
+
+    & a {
+        color: $color-font-primary-lighter;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: $color-font-primary-dark;
+            text-decoration: underline;
+        }
+    }
+
+    & p {
+        color: $color-font-primary-lighter;
+        @extend .dm-mono-regular;
+
+    }
+
+    &-content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 }

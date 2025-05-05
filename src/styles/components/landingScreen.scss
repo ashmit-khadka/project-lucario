@@ -58,7 +58,7 @@
 
             & h2 {
                 font-weight: bold;
-                margin-bottom: 1rem;
+                font-size: $font-size-lg;
             }
 
             & img {
@@ -71,6 +71,33 @@
 
             @include screen-sm {
                 flex-direction: column;
+            }
+
+            &-image {
+                order: 1;
+            }
+
+            &-text {
+                order: 2;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            &-image--flipped {
+                order: 2;
+
+                @include screen-sm {
+                    order: 1;
+                }
+            }
+
+            &-text--flipped {
+                order: 1;
+
+                @include screen-sm {
+                    order: 2;
+                }
             }
         }
     }
@@ -88,10 +115,9 @@
                 align-items: center;
             }
 
-            &--text {
-                // display: flex;
-                // gap: 2rem;
-                // align-items: center;
+            & p {
+                @extend .dm-mono-regular;
+                font-size: 1.1rem;
             }
 
             & h2 {
@@ -128,10 +154,14 @@
             }
 
             & img {
-                width: 4rem;
-                height: 4rem;
+                @extend .image--md;
+                object-fit: contain;
             }
 
+            & p {
+                @extend .dm-mono-regular;
+                font-size: 1.1rem;
+            }
         }
     }
 
@@ -141,26 +171,39 @@
             display: flex;
             gap: 2rem;
             align-items: center;
+            cursor: pointer;
 
             & h2 {
                 font-weight: bold;
             }
 
             & img {
-                width: 4rem;
-                height: 4rem;
+                @extend .image--md;
                 object-fit: contain;
+            }
+
+            & svg {
+                @extend .image--sm;
+            }
+
+            &:hover {
+                h2 {
+                    text-decoration: underline;
+                }
+            }
+
+            & p {
+                @extend .dm-mono-regular;
+                font-size: 1.1rem;
             }
         }
     }
 
-    &-skill {
-
-    }
+    &-skill {}
 
 
     &-contact {
-        
+
 
         &-tile {
             display: flex;
@@ -234,6 +277,12 @@
 
 
         &-shortcuts {
+
+            @include screen-sm {
+                padding-top: 2rem;
+                font-size: 1.4rem;
+            }
+
             & li {
                 font-weight: bold;
                 color: $font-color-primary-light;
@@ -242,7 +291,12 @@
                 &:hover {
                     color: $font-color-primary !important;
                 }
+
                 transition: all 0.3s ease;
+
+                @include screen-sm {
+                    font-size: $font-size-xl;
+                }
             }
 
             &--active {
@@ -257,6 +311,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+
+            @include screen-sm {
+                padding-top: 2rem;
+            }  
 
             & img {
                 width: 18rem;
@@ -275,6 +333,11 @@
                 background-color: $colour-background;
                 box-shadow: 0 -30px 30px rgba($colour-background, 1);
                 z-index: 10;
+
+                @include screen-sm {
+                    padding-top: 3rem;
+                    font-size: $font-size-md;
+                }    
             }
 
             &-icon {
@@ -327,7 +390,7 @@
         box-shadow: 0 10px 20px rgba($color-font-primary-darker, .4);
         overflow: hidden;
 
-        
+
         & img {
             width: 4rem;
             height: 4rem;
@@ -339,13 +402,13 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
             gap: 2rem;
-            padding: 2rem;
+            padding: 2rem 0 4rem;
             max-height: 300px;
             transition: max-height 0.5s ease-in-out;
 
             &.expanded {
                 max-height: 600px;
-                animation: expandSection 0.5s ease-in-out forwards;
+                animation: expandSection 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             &.collapsed {
@@ -390,7 +453,7 @@
             }
 
             // Items 9-18 with reset counter
-            @for $j from 9 through 18 {
+            @for $j from 9 through 30 {
                 &:nth-child(#{$j}) {
                     animation-delay: #{($j - 8) * 0.1}s;
                 }
@@ -409,14 +472,25 @@
         & h2 {
             font-size: 2.4rem;
             font-weight: bold;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         &--light {
+            
             & h2 {
                 color: $color-font-primary-lighter !important;
             }
         }
+
+        &--wide {
+
+            & h2 {
+
+                @include screen-sm {
+                    //padding-left: 2.5rem;
+                }
+            }
+        }   
     }
 
     &-items {
@@ -427,7 +501,7 @@
 
         &--grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); // Responsive grid
+            grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // Responsive grid
             gap: 2rem;
         }
     }

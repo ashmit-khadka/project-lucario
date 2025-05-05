@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import LandingScreen from './components/screens/LandingScreen'
 import ResumeScreen from './components/screens/ResumeScreen';
 import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,8 @@ function App() {
       <NavigationBar />
       <div>
         <RouterProvider router={router} />
-
       </div>
+      <Footer />
     </div>
   );
 }
