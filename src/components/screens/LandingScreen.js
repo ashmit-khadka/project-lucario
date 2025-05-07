@@ -38,6 +38,10 @@ import ImageUdemy from '../../assets/image/logos/udemy.png';
 
 import ImagePortfolio from '../../assets/image/app-store-preview-screenshot-sketch.jpg';
 import ImageADP from '../../assets/image/logos/adp.jpg';
+import ImageProjectPnsuk from '../../assets/image/projects/project_pnsuk.png';
+import ImageProjectPalkia from '../../assets/image/projects/project_geekcaffeine.png';
+import ImageProjectPg from '../../assets/image/projects/project_pg.png';
+
 
 import { ReactComponent as IconEmail } from '../../assets/icons/noun-mail-7838451.svg';
 import { ReactComponent as IconPhone } from '../../assets/icons/noun-phone-7814366.svg';
@@ -46,6 +50,7 @@ import { ReactComponent as IconLink } from '../../assets/icons/noun-link-5747677
 
 
 import Button from "../core/Button";
+import { motion } from "framer-motion";
 
 const LandingScreen = () => {
 
@@ -137,7 +142,7 @@ const LandingScreen = () => {
                     <PortfolioSection
                         header="AI-Powered Sustainability Platform for Higher Education"
                         description="Built as part of my MSc thesis, this MERN stack web app uses AI to generate personalised sustainability challenges and support user interaction through chatbots and comment moderation. Gamified features like leaderboards and rewards drive engagement, while the VIPER-based architecture ensures scalability and clean modular design."
-                        image={ImagePortfolio}
+                        image={ImageProjectPg}
                         link={`${process.env.PUBLIC_URL}/assets/docs/pg_project.pdf`}
                     />
                     <PortfolioSection
@@ -151,12 +156,12 @@ const LandingScreen = () => {
                         header="GeekCaffeine.com: One Hub for All Things Tech"
                         description="I built GeekCaffeine to create the ultimate destination for computer geeks—a single platform that curates the best tech content from across the internet. From programming and gaming to hardware and cybersecurity, it brings together news, tutorials, and videos in one clean, responsive interface designed for daily use."
                         link="https://geekcaffeine.com/"
-                        image={ImagePortfolio}
+                        image={ImageProjectPalkia}
                     />
                     <PortfolioSection
                         header="PNSUK.com: Empowering the Nepali Community"
                         description="I helped design and develop the official site for the Peterborough Nepalese Society UK (PNSUK), a registered charity that empowers the local Nepali community through cultural events, education, and charitable support. My goal was to make a platform that reflects their mission, enables blog contributions, and makes resources more accessible for members and supporters alike."
-                        image={ImagePortfolio}
+                        image={ImageProjectPnsuk}
                         link="https://pnsuk.com/"
                         flipped
                     />
@@ -278,121 +283,247 @@ const LandingScreen = () => {
 const ContactTile = (props) => {
     const { text, icon } = props;
     return (
-        <div className="landing-contact-tile">
-            {icon}
-            <p>{text}</p>
-        </div>
+        <motion.div 
+            className="landing-contact-tile"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ 
+                duration: 0.5,
+                ease: [0.4, 0, 0.2, 1]
+            }}
+            whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.2 }
+            }}
+        >
+            <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+            >
+                {icon}
+            </motion.div>
+            <motion.p
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
+            >
+                {text}
+            </motion.p>
+        </motion.div>
     );
 }
 
 const ExperienceItem = (props) => {
     const { title, organization, date, responsibilities, logo } = props;
     return (
-        <div className="landing-experience-tile">
-            <div className="landing-experience-tile--header">
+        <motion.div 
+            className="landing-experience-tile"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ 
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1]
+            }}
+        >
+            <motion.div 
+                className="landing-experience-tile--header"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+            >
                 <div>
-                    <img src={props.logo} alt="Experience Logo" className="experience-logo" />
+                    <img src={logo} alt="Experience Logo" className="experience-logo" />
                 </div>
                 <div className="landing-experience-tile--text">
                     <h2>{title}</h2>
                     <p>{organization}</p>
                     <p>{date}</p>
-
                 </div>
-            </div>
-            <ul className="landing-experience-tile--responsibilities">
+            </motion.div>
+            <motion.ul 
+                className="landing-experience-tile--responsibilities"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+            >
                 {responsibilities.map((item, index) => (
-                    <li key={index}>
+                    <motion.li 
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ 
+                            delay: 0.6 + (index * 0.1),
+                            duration: 0.5 
+                        }}
+                    >
                         {item}
-                    </li>
+                    </motion.li>
                 ))}
-            </ul>
-        </div>
+            </motion.ul>
+        </motion.div>
     );
-
 }
+
 const AboutSectionIntro = (
-    <div>
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+    >
         <div className="landing-intro-header">
-            <div className="landing-intro-header-underline"></div>
+            <motion.div 
+                className="landing-intro-header-underline"
+                initial={{ width: 0 }}
+                animate={{ width: "22%" }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+            />
             <h1>Hi, I'm Ash </h1>
-            <IconStar />
+            <motion.div
+                animate={{ 
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 5, 0]
+                }}
+                transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatDelay: 3
+                }}
+            >
+                <IconStar />
+            </motion.div>
         </div>
-        <div className="landing-intro-meta">
-            <ul >
+
+        <motion.div 
+            className="landing-intro-meta"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+        >
+            <ul>
                 <li>Problem Solver <IconDot /></li>
                 <li>Creator <IconDot /></li>
                 <li>Pioneer</li>
             </ul>
-        </div>
-        <div className="landing-intro-quick-info">
+        </motion.div>
+
+        <motion.div 
+            className="landing-intro-quick-info"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+        >
             <ul>
                 <li><span>S&P 500</span> Software Engineer </li>
                 <li>Certified <span>UX</span> enthusiast </li>
                 <li>A world top 50 university graduate</li>
             </ul>
-        </div>
-    </div>
-)
-
-
-const AboutSectionShortcuts = ({ activeSection, onSectionClick }) => (
-    <div className="landing-intro-shortcuts">
-        <ul>
-            <li
-                className={`landing-intro-shortcuts-item landing-intro-shortcuts--active ${activeSection === 'about' ? 'active' : ''}`}
-                onClick={() => onSectionClick('about')}
-            >
-                About me
-            </li>
-            <li
-                className={`landing-intro-shortcuts-item ${activeSection === 'expertise' ? 'active' : ''}`}
-                onClick={() => onSectionClick('expertise')}
-            >
-                Expertise
-            </li>
-            <li
-                className={`landing-intro-shortcuts-item ${activeSection === 'projects' ? 'active' : ''}`}
-                onClick={() => onSectionClick('projects')}
-            >
-                Projects
-            </li>
-            <li
-                className={`landing-intro-shortcuts-item ${activeSection === 'experience' ? 'active' : ''}`}
-                onClick={() => onSectionClick('experience')}
-            >
-                Experience
-            </li>
-            <li
-                className={`landing-intro-shortcuts-item ${activeSection === 'education' ? 'active' : ''}`}
-                onClick={() => onSectionClick('education')}
-            >
-                Education
-            </li>
-            <li
-                className={`landing-intro-shortcuts-item ${activeSection === 'contact' ? 'active' : ''}`}
-                onClick={() => onSectionClick('contact')}
-            >
-                Contact
-            </li>
-        </ul>
-    </div>
+        </motion.div>
+    </motion.div>
 );
+
+const AboutSectionShortcuts = ({ activeSection, onSectionClick }) => {
+    const shortcuts = [
+        { id: 'about', label: 'About me' },
+        { id: 'expertise', label: 'Expertise' },
+        { id: 'projects', label: 'Projects' },
+        { id: 'experience', label: 'Experience' },
+        { id: 'education', label: 'Education' },
+        { id: 'contact', label: 'Contact' }
+    ];
+
+    return (
+        <motion.div 
+            className="landing-intro-shortcuts"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+        >
+            <motion.ul>
+                {shortcuts.map(({ id, label }, index) => (
+                    <motion.li
+                        key={id}
+                        className={`landing-intro-shortcuts-item ${id === 'about' || activeSection === id ? 'landing-intro-shortcuts--active' : ''}`}
+                        onClick={() => onSectionClick(id)}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                            duration: 0.3,
+                            delay: index * 0.1
+                        }}
+
+                    >
+                        {label}
+                    </motion.li>
+                ))}
+            </motion.ul>
+        </motion.div>
+    );
+};
 
 const AboutSectionBio = (
     <div className="landing-intro-bio">
         <div className="landing-intro-bio-icon">
-            <IconJavaScript className="landing-intro-bio-icon--javascript" />
-            <IconTypeScript className="landing-intro-bio-icon--typescript" />
-            <IconNode className="landing-intro-bio-icon--node" />
-            <IconFigma className="landing-intro-bio-icon--figma" />
-            <img src={SelfImage} alt="Profile" className="landing-intro-profile" />
+            <motion.div 
+                className="landing-intro-bio-icon--javascript"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+            >
+                <IconJavaScript />
+            </motion.div>
+            <motion.div 
+                className="landing-intro-bio-icon--typescript"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+            >
+                <IconTypeScript />
+            </motion.div>
+            <motion.div 
+                className="landing-intro-bio-icon--node"
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+            >
+                <IconNode />
+            </motion.div>
+            <motion.div 
+                className="landing-intro-bio-icon--figma"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+            >
+                <IconFigma />
+            </motion.div>
+            <motion.img 
+                src={SelfImage} 
+                alt="Profile" 
+                className="landing-intro-profile"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ 
+                    duration: 0.6,
+                    ease: [0.4, 0, 0.2, 1],
+                    delay: 0.1
+                }}
+                whileHover={{ 
+                    scale: 1.05,
+                    transition: { duration: 0.3 }
+                }}
+            />
         </div>
-        <p>
-            “A user-centred and results-driven practical trailblazer. I’m a software engineer with a Master's degree in Software Engineering from King's College London and half a decade experience at ADP, a renowned S&P 500 company. Driven by a passion for designing and delivering scalable, high-performance, clean solutions.”
-        </p>
+        <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+        >
+            "A user-centred and results-driven practical trailblazer. I'm a software engineer with a Master's degree in Software Engineering from King's College London and half a decade experience at ADP, a renowned S&P 500 company. Driven by a passion for designing and delivering scalable, high-performance, clean solutions."
+        </motion.p>
     </div>
-)
+);
 
 const Skill = (props) => {
     const { name, icon } = props;
@@ -418,16 +549,42 @@ const PortfolioSection = (props) => {
     }
 
     return (
-        <div className="landing-portfolio-tile">
-            <div className={imageClass}>
-                <img src={ImagePortfolio} alt="Portfolio Icon" className="portfolio-icon" />
-            </div>
-            <div className={textClass}>
+        <motion.div 
+            className="landing-portfolio-tile"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ 
+                duration: 0.8,
+                ease: [0.4, 0, 0.2, 1]
+            }}
+        >
+            <motion.div 
+                className={imageClass}
+                initial={{ opacity: 0, x: flipped ? 50 : -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+            >
+                <img src={image} alt="Portfolio Icon" className="portfolio-icon" />
+            </motion.div>
+            <motion.div 
+                className={textClass}
+                initial={{ opacity: 0, x: flipped ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+            >
                 <h2>{header}</h2>
                 <p>{description}</p>
-                <Button onClick={handleOpenProject} className="landing-portfolio-tile--button">View Project</Button>
-            </div>
-        </div>
+                <Button 
+                    onClick={handleOpenProject} 
+                    className="landing-portfolio-tile--button"
+                >
+                    View Project
+                </Button>
+            </motion.div>
+        </motion.div>
     );
 }
 
@@ -435,16 +592,29 @@ const EducationTile = (props) => {
     const { title, description, logo } = props;
 
     return (
-        <div className="landing-education-tile">
-            <div>
+        <motion.div 
+            className="landing-education-tile"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+            >
                 <img src={logo} alt="Education Logo" className="education-logo" />
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+            >
                 <h2>{title}</h2>
                 <p>{description}</p>
-
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 }
 
@@ -458,18 +628,43 @@ const CertificationTile = (props) => {
     }
 
     return (
-        <div className="landing-certification-tile" onClick={handleOpenCertification}>
-            <div>
+        <motion.div 
+            className="landing-certification-tile"
+            onClick={handleOpenCertification}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            whileHover={{ 
+                scale: 1.05,
+                backgroundColor: "rgba(255,255,255,0.05)"
+            }}
+            transition={{ 
+                duration: 0.3,
+                stiffness: 300
+            }}
+        >
+            <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+            >
                 <img src={logo} alt="Certification Logo" className="certification-logo" />
-            </div>
-            <div className="certification-tile-text">
+            </motion.div>
+            <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+            >
                 <h2>{title}</h2>
                 <p>{institution}, {platform}, {year}</p>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+                whileHover={{ scale: 1.2, rotate: 45 }}
+                transition={{ stiffness: 400 }}
+            >
                 <IconLink className="icon-button"/>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 }
 

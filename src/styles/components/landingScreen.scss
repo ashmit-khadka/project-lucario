@@ -342,7 +342,23 @@
 
             &-icon {
                 position: relative;
+                margin-bottom: 2rem;
+    
+                // Common styles for tech icons
+                svg {
+                    width: 4.5rem;
+                    height: 4.5rem;
+                    position: absolute;
+                    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+                    transition: all 0.3s ease;
+    
+                    &:hover {
+                        transform: translateY(-5px);
+                        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+                    }
+                }
 
+                
                 &--javascript {
                     position: absolute;
                     top: 00px;
@@ -361,15 +377,15 @@
 
                 &--node {
                     position: absolute;
-                    top: 140px;
-                    right: -70px;
+                    top: 120px;
+                    right: -60px;
                     width: 3rem;
                     height: 3rem
                 }
 
                 &--figma {
                     position: absolute;
-                    top: 170px;
+                    top: 150px;
                     left: -60px;
                     width: 3.5rem;
                     height: 3.5rem;
