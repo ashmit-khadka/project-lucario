@@ -41,6 +41,7 @@ import ImageADP from '../../assets/image/logos/adp.jpg';
 import ImageProjectPnsuk from '../../assets/image/projects/project_pnsuk.png';
 import ImageProjectPalkia from '../../assets/image/projects/project_geekcaffeine.png';
 import ImageProjectPg from '../../assets/image/projects/project_pg.png';
+import ImageProjectUg from '../../assets/image/projects/project_ug.png';
 
 
 import { ReactComponent as IconEmail } from '../../assets/icons/noun-mail-7838451.svg';
@@ -52,37 +53,17 @@ import { ReactComponent as IconLink } from '../../assets/icons/noun-link-5747677
 import Button from "../core/Button";
 import { motion } from "framer-motion";
 
+import ImageG2 from '../../assets/image/logos/G2.png';
+import ImageAmerican from '../../assets/image/logos/american_best_in_business_awards.png';
+import ImageComm from '../../assets/image/logos/comm_awards.png';
+import ImageTitan from '../../assets/image/logos/titan_awards.png';
+import ImageBIG from '../../assets/image/logos/business_intelligence_group_big_awards_logo.jpg';
+import ImageAppStore from '../../assets/icons/App_Store.svg';
+import ImagePlayStore from '../../assets/icons/Google_Play_.png';
+
 const LandingScreen = () => {
 
     const [activeSection, setActiveSection] = useState('about');
-    const [isSkillsExpanded, setIsSkillsExpanded] = useState(false);
-
-    const initialSkills = [
-        { name: "JavaScript", icon: JavaScriptIcon },
-        { name: "React", icon: IconReact },
-        { name: "Node.js", icon: NodeIcon },
-        { name: "TypeScript", icon: TypeScriptIcon },
-        { name: "Figma", icon: FigmaIcon },
-        { name: "C#", icon: CSharpIcon },
-        { name: "MongoDB", icon: MongoDBIcon },
-        { name: "PostgreSQL", icon: SQLIcon },
-    ];
-
-    const additionalSkills = [
-        { name: "Python", icon: PythonIcon },
-        { name: "Django", icon: DjangoIcon },
-        { name: "Tailwind", icon: IconTailwind },
-        { name: "Git", icon: GitIcon },
-        { name: "Jira", icon: JiraIcon },
-        { name: "Azure", icon: AzureIcon },
-        { name: "Redux", icon: IconRedux },
-        { name: "Cypress", icon: IconCypress },
-        { name: "Selenium", icon: IconSelenium },
-        { name: "Jenkins", icon: IconJenkins },
-        { name: "Sass", icon: IconSASS },
-    ];
-
-    const visibleSkills = isSkillsExpanded ? [...initialSkills, ...additionalSkills] : initialSkills;
 
     const scrollToSection = (sectionId) => {
         const element = document.getElementById(sectionId);
@@ -116,24 +97,50 @@ const LandingScreen = () => {
                 </div>
             </div>
 
-            <div id="expertise" className="landing-skill section">
-                <SectionTitle title="My expertise" isLight isWide/>
-                <div className={`landing-skill-container screen ${isSkillsExpanded ? 'expanded' : 'collapsed'}`}>
-                    {visibleSkills.map((skill, index) => (
-                        <Skill
-                            key={index}
-                            name={skill.name}
-                            icon={skill.icon}
-                        />
-                    ))}
+            <SkillsSection />
+
+            <div id="experience" className="landing-experience section screen">
+                <SectionTitle title="Experience"/>
+                <div className="section-items">
+                    <ExperienceItem
+                        title="Software Engineer"
+                        organization="ADP (Automatic Data Processing)"
+                        date="September 2021 - Present"
+                        responsibilities={[
+                            "2024 Hackathon winner: Created web app to tack code deployments for different environments.",
+                            "Conduct code reviews to ensure quality and maintainability.",
+                            "Mentor graduate software engineers through architectural overviews, shadowing, and pair programming sessions.",
+                            "Collaborate with UX and develop responsive, high-performance web applications using React.js.",
+                            "Design modular, reusable UI components leveraging Tailwind CSS and a custom in-house design system, delivering a consistent brand experience across applications.",
+                            "Develop and optimise RESTful API integrations with robust error handling and performance improvements using Node.js, Express.js, and ASP.NET.",
+                            "Developed high-performance SQL stored procedures and queries.",
+                            "Develop comprehensive unit and integration tests using Jest and React Testing Library.",
+                        ]}
+                        logo={ImageADP}
+                        awards={[
+                            { image: ImageAppStore, text: "4.9/5 from 37k+ reviews, Apple App Store" },
+                            { image: ImagePlayStore, text: "4.9/5 from 10k+ reviews, Google Play Store" },
+                            { image: ImageAmerican, text: "Gold Winner for Mobile Web & App of the Year, 2023" },
+                            { image: ImageG2, text: "Top 50 Best HR Products, (2021-2025) G2" },
+                            { image: ImageBIG, text: "BIG Innovation Award for Business Services, 2025" },
+                            { image: ImageTitan, text: "Platinum Winner for Financial Services Information Technology, 2023" },
+                            { image: ImageComm, text: "Gold Winner for Mobile Site Design, 2023" },
+                        ]}
+                    />
+                    <ExperienceItem
+                        title="Associate Software Engineer"
+                        organization="ADP (Automatic Data Processing)"
+                        date="July 2019 - July 2020"
+                        responsibilities={[
+                            "Developed migration scripts to transition version control from TFVC to GIT.",
+                            "Automated data mining of production data to create realistic test load profiles for performance testing.",
+                            "Integrated Google Tag Manager for user interaction tracking and established a Google Analytics reporting pipelines.",
+                        ]}
+                        logo={ImageADP}
+                    />
                 </div>
-                <button
-                    className="landing-skill-expand"
-                    onClick={() => setIsSkillsExpanded(!isSkillsExpanded)}
-                >
-                    {isSkillsExpanded ? 'Show Less' : 'Show More'}
-                </button>
             </div>
+
 
             <div id="projects" className="screen section">
                 <SectionTitle title="Projects" />
@@ -141,14 +148,14 @@ const LandingScreen = () => {
                 <div className="section-items">
                     <PortfolioSection
                         header="AI-Powered Sustainability Platform for Higher Education"
-                        description="Built as part of my MSc thesis, this MERN stack web app uses AI to generate personalised sustainability challenges and support user interaction through chatbots and comment moderation. Gamified features like leaderboards and rewards drive engagement, while the VIPER-based architecture ensures scalability and clean modular design."
+                        description="Built as part of my MSc thesis for which I was arwarded distinction, this MERN stack web app uses AI to generate personalised sustainability challenges and support user interaction through chatbots and comment moderation. Gamified features like leaderboards and rewards drive engagement, while the VIPER-based architecture ensures scalability and clean modular design."
                         image={ImageProjectPg}
                         link={`${process.env.PUBLIC_URL}/assets/docs/pg_project.pdf`}
                     />
                     <PortfolioSection
                         header="DNA Visualisation Platform for Plant Pathogen Research"
-                        description="Collaborated with The Sainsbury Laboratory to build a MERN stack web app for visualising complex DNA and protein interaction datasets. Integrated D3.js to render interactive visualisations (dot plots, networks, edge bundling) and laid the groundwork for AI-powered pattern recognition to support plant disease research at scale."
-                        image={ImagePortfolio}
+                        description="Built as part of my BSc thesis for which I was arwarded first class honours. Collaborated with The Sainsbury Laboratory to build a MERN stack web app for visualising complex DNA and protein interaction datasets. Integrated D3.js to render interactive visualisations from the ground up."
+                        image={ImageProjectUg}
                         flipped
                         link={`${process.env.PUBLIC_URL}/assets/docs/ug_project.pdf`}
                     />
@@ -168,37 +175,6 @@ const LandingScreen = () => {
                 </div>
             </div>
 
-            <div id="experience" className="landing-experience section screen">
-                <SectionTitle title="Experience"/>
-                <div className="section-items">
-                    <ExperienceItem
-                        title="Software Engineer"
-                        organization="ADP (Automatic Data Processing)"
-                        date="September 2021 - Present"
-                        responsibilities={[
-                            "Conduct code reviews to ensure quality and maintainability.",
-                            "Mentor graduate software engineers through architectural overviews, shadowing, and pair programming sessions.",
-                            "Collaborate with UX and develop responsive, high-performance web applications using React.js.",
-                            "Design modular, reusable UI components leveraging Tailwind CSS and a custom in-house design system, delivering a consistent brand experience across applications.",
-                            "Develop and optimise RESTful API integrations with robust error handling and performance improvements using Node.js, Express.js, and ASP.NET.",
-                            "Developed high-performance SQL stored procedures and queries.",
-                            "Develop comprehensive unit and integration tests using Jest and React Testing Library.",
-                        ]}
-                        logo={ImageADP}
-                    />
-                    <ExperienceItem
-                        title="Associate Software Engineer"
-                        organization="ADP (Automatic Data Processing)"
-                        date="July 2019 - July 2020"
-                        responsibilities={[
-                            "Developed migration scripts to transition version control from TFVC to GIT.",
-                            "Automated data mining of production data to create realistic test load profiles for performance testing.",
-                            "Integrated Google Tag Manager for user interaction tracking and established a Google Analytics reporting pipelines.",
-                        ]}
-                        logo={ImageADP}
-                    />
-                </div>
-            </div>
 
             <div id="education" className="landing-education section screen">
                 <SectionTitle title="Education" />
@@ -316,7 +292,15 @@ const ContactTile = (props) => {
 }
 
 const ExperienceItem = (props) => {
-    const { title, organization, date, responsibilities, logo } = props;
+    const { title, organization, date, responsibilities, logo, awards } = props;
+
+    const awardItem = (image, text) => (
+        <li className="landing-experience-tile-award">
+            <img src={image} alt="Award" />
+            <p>{text}</p>
+        </li>
+    );
+
     return (
         <motion.div 
             className="landing-experience-tile"
@@ -363,6 +347,25 @@ const ExperienceItem = (props) => {
                     </motion.li>
                 ))}
             </motion.ul>
+            <ul
+                  className="landing-experience-tile-awards"
+
+            >
+                {awards && awards.map((award, index) => (
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{
+                            delay: 0.6 + (index * 0.1),
+                            duration: 0.5 
+                        }}
+                    >
+                        {awardItem(award.image, award.text)}
+                    </motion.div>
+                ))}
+
+            </ul>
         </motion.div>
     );
 }
@@ -520,21 +523,133 @@ const AboutSectionBio = (
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
         >
-            "A user-centred and results-driven practical trailblazer. I'm a software engineer with a Master's degree in Software Engineering from King's College London and half a decade experience at ADP, a renowned S&P 500 company. Driven by a passion for designing and delivering scalable, high-performance, clean solutions."
+            {"I'm a trailblazing software engineer who loves building things that matter. With a Master’s in Software Engineering from King’s College London and nearly five years at ADP, a leading S&P 500 tech giant where I’ve  worked on RUN — an award-winning web app boasting a 4.9 rating on the App Store."}
         </motion.p>
     </div>
 );
 
 const Skill = (props) => {
-    const { name, icon } = props;
+    const { name, icon, index, isExpanded } = props;
+    
+    // Calculate stagger delay based on position
+    const delay = isExpanded ? 
+        (index >= 8 ? (index - 8) * 0.1 : index * 0.1) : 
+        (index * 0.1);
+
     return (
-        <div className="landing-skill-tile">
-            <img src={icon} alt="Skill Icon" className="skill-icon" />
-            <p>{name}</p>
-        </div>
+        <motion.div 
+            className="landing-skill-tile"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+                duration: 0.5,
+                delay: delay,
+                ease: [0.4, 0, 0.2, 1]
+            }}
+        >
+            <motion.img 
+                src={icon} 
+                alt={`${name} Icon`} 
+                className="skill-icon"
+                whileHover={{ 
+                    scale: 1.1,
+                    filter: "brightness(1.2)",
+                    transition: { duration: 0.2 }
+                }}
+            />
+            <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: delay + 0.2 }}
+            >
+                {name}
+            </motion.p>
+        </motion.div>
     );
 }
 
+
+const SkillsSection = () => {
+    const [isSkillsExpanded, setIsSkillsExpanded] = useState(false);
+
+
+    const initialSkills = [
+        { name: "JavaScript", icon: JavaScriptIcon },
+        { name: "React", icon: IconReact },
+        { name: "Node.js", icon: NodeIcon },
+        { name: "TypeScript", icon: TypeScriptIcon },
+        { name: "Figma", icon: FigmaIcon },
+        { name: "C#", icon: CSharpIcon },
+        { name: "MongoDB", icon: MongoDBIcon },
+        { name: "PostgreSQL", icon: SQLIcon },
+    ];
+
+    const additionalSkills = [
+        { name: "Python", icon: PythonIcon },
+        { name: "Django", icon: DjangoIcon },
+        { name: "Tailwind", icon: IconTailwind },
+        { name: "Git", icon: GitIcon },
+        { name: "Jira", icon: JiraIcon },
+        { name: "Azure", icon: AzureIcon },
+        { name: "Redux", icon: IconRedux },
+        { name: "Cypress", icon: IconCypress },
+        { name: "Selenium", icon: IconSelenium },
+        { name: "Jenkins", icon: IconJenkins },
+        { name: "Sass", icon: IconSASS },
+    ];
+
+    const visibleSkills = isSkillsExpanded ? [...initialSkills, ...additionalSkills] : initialSkills;
+
+    const containerVariants = {
+        collapsed: {
+            height: "300px",
+            transition: {
+                duration: 0.5,
+                ease: [0.4, 0, 0.2, 1]
+            }
+        },
+        expanded: {
+            height: "auto",
+            transition: {
+                duration: 0.5,
+                ease: [0.4, 0, 0.2, 1]
+            }
+        }
+    };
+
+    return (
+        <div id="expertise" className="landing-skill section">
+            <SectionTitle title="My expertise" isLight isWide/>
+            <motion.div 
+                className="landing-skill-container screen"
+                variants={containerVariants}
+                initial="collapsed"
+                animate={isSkillsExpanded ? "expanded" : "collapsed"}
+            >
+                {visibleSkills.map((skill, index) => (
+                    <Skill
+                        key={`${skill.name}-${isSkillsExpanded}`}
+                        name={skill.name}
+                        icon={skill.icon}
+                        index={index}
+                        isExpanded={isSkillsExpanded}
+                    />
+                ))}
+            </motion.div>
+            <motion.button
+                className="landing-skill-expand"
+                onClick={() => setIsSkillsExpanded(!isSkillsExpanded)}
+                whileHover={{ 
+                    backgroundColor: "rgba(255,255,255,0.1)",
+                    scale: 1.05 
+                }}
+                whileTap={{ scale: 0.95 }}
+            >
+                {isSkillsExpanded ? 'Show Less' : 'Show More'}
+            </motion.button>
+        </div>
+    );
+};
 
 const PortfolioSection = (props) => {
     const { header, description, image, link, flipped } = props;
@@ -561,16 +676,28 @@ const PortfolioSection = (props) => {
         >
             <motion.div 
                 className={imageClass}
-                initial={{ opacity: 0, x: flipped ? 50 : -50 }}
+                //initial={{ opacity: 0, x: flipped ? 50 : -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
+                whileHover={{ 
+                    scale: 1.05,
+                    transition: { duration: 0.3 }
+                }}
                 transition={{ duration: 0.8, delay: 0.2 }}
             >
-                <img src={image} alt="Portfolio Icon" className="portfolio-icon" />
+                <motion.img 
+                    src={image} 
+                    alt="Portfolio Icon" 
+                    className="portfolio-icon"
+                    whileHover={{ 
+                        filter: "brightness(1.1)",
+                        transition: { duration: 0.3 }
+                    }}
+                />
             </motion.div>
             <motion.div 
                 className={textClass}
-                initial={{ opacity: 0, x: flipped ? -50 : 50 }}
+                //initial={{ opacity: 0, x: flipped ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
