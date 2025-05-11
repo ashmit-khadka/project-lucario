@@ -388,7 +388,7 @@ a {
     padding: 1rem 0;
     background-color: $color-font-primary-dark;
     color: $color-font-primary-lighter;
-    height: 30rem;
+    height: 80vh;
 
     & a {
         color: $color-font-primary-lighter;
@@ -412,6 +412,7 @@ a {
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: start;
+        padding: 15rem 0;
     }
 }

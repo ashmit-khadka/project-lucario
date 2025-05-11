@@ -249,7 +249,7 @@ const LandingScreen = () => {
                 <div className="section-items">
                     <ContactTile text="ashmit.khadka@outlook.com" icon={<IconEmail />} />
                     <ContactTile text="07476919615" icon={<IconPhone />} />
-                    <ContactTile text="London, Perterbrough, Cambrige" icon={<IconLocation />} />
+                    <ContactTile text="London, Peterborough, Cambridge" icon={<IconLocation />} />
                 </div>
             </div>
         </div>
@@ -602,7 +602,7 @@ const SkillsSection = () => {
 
     const containerVariants = {
         collapsed: {
-            height: "300px",
+            height: "250px",
             transition: {
                 duration: 0.5,
                 ease: [0.4, 0, 0.2, 1]

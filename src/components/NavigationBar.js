@@ -25,8 +25,8 @@ const NavigationBar = () => {
                     {[
                         { id: 'about', label: 'About me' },
                         { id: 'expertise', label: 'Expertise' },
-                        { id: 'projects', label: 'Projects' },
                         { id: 'experience', label: 'Experience' },
+                        { id: 'projects', label: 'Projects' },
                         { id: 'education', label: 'Education' },
                         { id: 'contact', label: 'Contact' }
                     ].map(({ id, label }) => (

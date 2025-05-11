@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.93c52308.css",
-    "main.js": "/static/js/main.c8a3afc3.js",
+    "main.css": "/static/css/main.3b10a5b9.css",
+    "main.js": "/static/js/main.461e9d99.js",
     "static/js/453.823163c7.chunk.js": "/static/js/453.823163c7.chunk.js",
     "static/media/project_geekcaffeine.png": "/static/media/project_geekcaffeine.644cdeea6e6385324d20.png",
     "static/media/project_pnsuk.png": "/static/media/project_pnsuk.52ff2e874adfc028634b.png",
     "static/media/project_pg.png": "/static/media/project_pg.d3d713c60717e00b406b.png",
+    "static/media/project_ug.png": "/static/media/project_ug.15a098696ca43a6c4860.png",
     "static/media/pnsuk_logo.png": "/static/media/pnsuk_logo.6e235954bc9328896f6f.png",
     "static/media/app-store-preview-screenshot-sketch.jpg": "/static/media/app-store-preview-screenshot-sketch.54d63ad22f027be2440a.jpg",
+    "static/media/Google_Play_.png": "/static/media/Google_Play_.6f719e49762ec3c40d26.png",
     "static/media/PXL_20230625_190943733~2.jpg": "/static/media/PXL_20230625_190943733~2.d51c9a6b240d9322cb96.jpg",
     "static/media/penn.png": "/static/media/penn.e8080f319f318456e564.png",
     "static/media/kcl_logo.jpg": "/static/media/kcl_logo.e36cdd0d3b436930b36d.jpg",
     "static/media/adp.jpg": "/static/media/adp.cd4a0c0cd483004a1af1.jpg",
+    "static/media/american_best_in_business_awards.png": "/static/media/american_best_in_business_awards.5778800964a2787d413c.png",
     "static/media/Jenkins.svg": "/static/media/Jenkins.7986e5354ca88e5044c88dd9562c5ed9.svg",
     "static/media/uea_logo.webp": "/static/media/uea_logo.0c2b5675d5c3eefc8755.webp",
     "static/media/PostgresSQL.svg": "/static/media/PostgresSQL.7bc394e86ea1f692d59a3d484ad156af.svg",
@@ -27,6 +30,7 @@
     "static/media/Azure.svg": "/static/media/Azure.d8c693b62a434719420e95f8c65f3acd.svg",
     "static/media/Cypress.svg": "/static/media/Cypress.c8478567e18f3830294c6f6bcb0d67ac.svg",
     "static/media/Node.svg": "/static/media/Node.10c9e2aa0ca7edf36fceae25fec038a1.svg",
+    "static/media/App_Store.svg": "/static/media/App_Store.a8ee14d34cb6f4534fb96d4597068f48.svg",
     "static/media/Redux.svg": "/static/media/Redux.2fa08b46b0c0e7372c20acbe86b2e39e.svg",
     "static/media/JavaScript.svg": "/static/media/JavaScript.4c1b5332c1b1057928f6f06cf972c91c.svg",
     "static/media/Selenium.svg": "/static/media/Selenium.cb5a0c8221c57c83693846680e71b209.svg",
@@ -48,12 +52,12 @@
     "static/media/noun-briefcase-7779894.svg": "/static/media/noun-briefcase-7779894.c4bce83e99da614b4fb84db49885dd6c.svg",
     "static/media/noun-location-7752735.svg": "/static/media/noun-location-7752735.28275d94b40a710722e3f6a472cef281.svg",
     "static/media/noun-dot-1420973.svg": "/static/media/noun-dot-1420973.0a1e5be57898b0d165edf8dda0375f59.svg",
-    "main.93c52308.css.map": "/static/css/main.93c52308.css.map",
-    "main.c8a3afc3.js.map": "/static/js/main.c8a3afc3.js.map",
+    "main.3b10a5b9.css.map": "/static/css/main.3b10a5b9.css.map",
+    "main.461e9d99.js.map": "/static/js/main.461e9d99.js.map",
     "453.823163c7.chunk.js.map": "/static/js/453.823163c7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.93c52308.css",
-    "static/js/main.c8a3afc3.js"
+    "static/css/main.3b10a5b9.css",
+    "static/js/main.461e9d99.js"
   ]
 }
