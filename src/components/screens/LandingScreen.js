@@ -23,6 +23,7 @@ import IconJenkins from '../../assets/icons/Jenkins.svg';
 import IconSASS from '../../assets/icons/Sass.svg';
 
 import SelfImage from '../../assets/image/PXL_20230625_190943733~2.jpg';
+import SelfImage2 from '../../assets/image/grad_single_021434.jpg';
 import DotIcon from '../../assets/icons/noun-dot-1420973.svg';
 import { ReactComponent as IconDot } from '../../assets/icons/noun-dot-1420973.svg';
 import { ReactComponent as IconStar } from '../../assets/icons/noun-star-995145.svg';
@@ -502,7 +503,7 @@ const AboutSectionBio = (
                 <IconFigma />
             </motion.div>
             <motion.img 
-                src={SelfImage} 
+                src={SelfImage2} 
                 alt="Profile" 
                 className="landing-intro-profile"
                 initial={{ opacity: 0, scale: 0.8 }}
