@@ -196,3 +196,13 @@
         }
     }
 }
+
+@media print {
+    .navigation {
+        display: none !important;
+    }
+
+    .navigation-backdrop {
+        display: none !important;
+    }
+}

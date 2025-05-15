@@ -61,8 +61,7 @@ h4,
 h5,
 h6,
 li,
-button
-{
+button {
     overflow-wrap: break-word;
     @extend .dm-sans-regular;
     font-size: 1.2rem;
@@ -95,7 +94,7 @@ a {
     gap: 2rem;
     max-width: 1200px;
     margin: 2rem auto;
-    padding: 2rem;
+    padding: 0 3rem;
 
     // all text size
     font-size: 1.2rem;
@@ -103,19 +102,7 @@ a {
 
     .resume-left-column {
 
-        .contact-details {
-            p {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                margin: 0.5rem 0;
 
-                i {
-                    width: 20px;
-                    color: #666;
-                }
-            }
-        }
 
         .education-item,
         .certification-item {
@@ -148,45 +135,7 @@ a {
         }
     }
 
-    .resume-right-column {
-        section {
-            margin-bottom: 2rem;
-        }
-
-        .profile {
-            p {
-                line-height: 1.6;
-            }
-        }
-
-        .experience-item {
-            margin-bottom: 2rem;
-
-            h3 {
-                color: #444;
-                margin-bottom: 0.5rem;
-            }
-
-            .company {
-                font-weight: bold;
-                color: #666;
-            }
-
-            .duration {
-                color: #888;
-                font-style: italic;
-            }
-
-            ul {
-                margin-top: 1rem;
-                padding-left: 1.5rem;
-
-                li {
-                    margin-bottom: 0.5rem;
-                }
-            }
-        }
-    }
+ 
 }
 
 
@@ -211,11 +160,15 @@ a {
         width: 2.5rem;
     }
 
+    & section {
+        margin-bottom: 2rem;
+    }
+
     &-work-experience {
         position: relative;
-        border-left: 2px solid #000000;
-        padding-left: 1.5rem;
-        padding-top: 2rem;
+        //border-left: 2px solid #000000;
+        //padding-left: 1.5rem;
+        padding-bottom: 2rem;
 
         & h3 {
             font-weight: bold;
@@ -226,6 +179,10 @@ a {
         & ul {
             margin-top: 1rem;
             padding-left: 1.5rem;
+            border-left: 2px solid #000000;
+            padding-left: 3rem;
+            margin-left: 1.2rem;
+
         }
 
         & li {
@@ -276,8 +233,8 @@ a {
     &-profile {
         & p {
             position: relative;
-            border-left: 2px solid #000000;
-            padding-left: 1.5rem;
+            //border-left: 2px solid #000000;
+            //padding-left: 1.5rem;
         }
     }
 
@@ -300,7 +257,7 @@ a {
                 width: 1.5rem;
                 height: 1.5rem;
                 //margin-right: 1rem;
-            } 
+            }
         }
     }
 
@@ -329,7 +286,7 @@ a {
 
     &-name {
         & h1 {
-            font-size: 3rem !important;
+            font-size: 2.5rem !important;
             font-weight: bold !important;
         }
 
@@ -337,6 +294,7 @@ a {
             font-size: 1.5rem !important;
             margin-top: -1rem;
         }
+
         margin-bottom: 2rem;
     }
 
@@ -376,6 +334,7 @@ a {
         transform: scale(1.05);
         transition: all 0.2s ease-in-out;
     }
+
     &:active {
         transform: scale(1);
         transition: all 0.2s ease-in-out;
@@ -415,4 +374,30 @@ a {
         justify-content: start;
         padding: 15rem 0;
     }
+}
+
+@media print {
+    .footer {
+        display: none !important;
+    }
+}
+
+
+@media print {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    li,
+    button {
+        color: black !important;
+    }
+
+    svg {
+        fill: black !important;
+    }
+
 }

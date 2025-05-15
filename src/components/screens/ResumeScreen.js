@@ -24,7 +24,7 @@ const ResumeScreen = () => {
                     entries={[
                         { text: "ashmit.khadka@hotmail.com", icon: <IconEmail /> },
                         { text: "07476919615", icon: <IconPhone /> },
-                        { text: "London, Perterbrough, Cambrige", icon: <IconLocation /> },
+                        { text: "London, Peterborough, Cambridge", icon: <IconLocation /> },
                         { text: "akhadka.dev", icon: <IconLink /> },
                         { text: "geekcaffine.com", icon: <IconLink /> },
                     ]}
@@ -34,8 +34,8 @@ const ResumeScreen = () => {
                     <SectionHeader header="Skills" icon={<IconSkills />} />
                     <ul>
                         <li>JavaScript</li>
-                        <li>React.js</li>
-                        <li>Node.js</li>
+                        <li>React</li>
+                        <li>Node</li>
                         <li>TypeScript</li>
                         <li>C#</li>
                         <li>SQL</li>
@@ -74,7 +74,37 @@ const ResumeScreen = () => {
                 />
                 <WorkExperienceSection />
 
-                <WorkExperience
+            </div>
+        </div>
+    );
+}
+
+const MainSection = (props) => {
+    const { header, text } = props;
+    return (
+        <section className="">
+            <SectionHeader header={header} icon={<IconProfile />} />
+            <p>{text}</p>
+        </section>
+    );
+}
+
+const SubSection = (props) => {
+    const { header, text } = props;
+    return (
+        <section className="profile">
+            <h3>{header}</h3>
+            <p>{text}</p>
+        </section>
+    );
+}
+
+const WorkExperienceSection = (props) => {
+    const { header, text } = props;
+    return (
+        <section className="">
+            <SectionHeader header="Work Experience" icon={<IconWorkExperience />} />
+            <WorkExperience
                     company="ADP"
                     position="Software Engineer"
                     startDate="September 2021"
@@ -114,36 +144,6 @@ const ResumeScreen = () => {
                     ]}
                     logo={PNSLogo}
                 />
-            </div>
-        </div>
-    );
-}
-
-const MainSection = (props) => {
-    const { header, text } = props;
-    return (
-        <section className="resume-profile">
-            <SectionHeader header={header} icon={<IconProfile />} />
-            <p>{text}</p>
-        </section>
-    );
-}
-
-const SubSection = (props) => {
-    const { header, text } = props;
-    return (
-        <section className="profile">
-            <h3>{header}</h3>
-            <p>{text}</p>
-        </section>
-    );
-}
-
-const WorkExperienceSection = (props) => {
-    const { header, text } = props;
-    return (
-        <section className="work-experience">
-            <SectionHeader header="Work Experience" icon={<IconWorkExperience />} />
 
         </section>
     );
@@ -154,7 +154,7 @@ const WorkExperience = (props) => {
 
     return (
         <div className="resume-work-experience">
-            <div className="resume-work-experience-timeline-dot"></div>
+            {/* <div className="resume-work-experience-timeline-dot"></div> */}
             <div className="resume-work-experience-company">
                 {logo && <img src={logo} alt={`${company} logo`} className="company-logo" />}
                 <div>
