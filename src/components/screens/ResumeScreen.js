@@ -30,23 +30,7 @@ const ResumeScreen = () => {
                     ]}
                 />
 
-                <section className="resume-section skills">
-                    <SectionHeader header="Skills" icon={<IconSkills />} />
-                    <ul>
-                        <li>JavaScript</li>
-                        <li>React</li>
-                        <li>Node</li>
-                        <li>TypeScript</li>
-                        <li>C#</li>
-                        <li>SQL</li>
-                        <li>CSS</li>
-                        <li>MongoDB</li>
-                        <li>Azure</li>
-                        <li>Python</li>
-                        <li>GraphQL</li>
-                        <li>Tailwind</li>
-                    </ul>
-                </section>
+                <SkillSection />
 
                 <EducationSection
                     entries={[
@@ -57,10 +41,11 @@ const ResumeScreen = () => {
 
                 <CertificationSection
                     entries={[
-                        { title: "UX Design", from: "Google", date: "2021", link: "" },
-                        { title: "Mastering TypeScript - 2023 Edition", from: "Udemy", date: "2023", link: "" },
-                        { title: "C# Advanced Topics", from: "Udemy", date: "2022", link: "" },
-                        { title: "JavaScript: The Advanced Concepts", from: "Udemy", date: "2022", link: "" },
+                        { title: "UX Design", institution: "Google", platform: "Coursera", date: "2021", link: "" },
+                        { title: "JavaScript: The Advanced Concepts", institution: "Mosh Hamedani", platform: "Udemy", date: "2022", link: "" },
+                        { title: "Mastering TypeScript - 2023 Edition", institution: "Zero to Mastery", platform: "Udemy", date: "2023", link: "" },
+                        { title: "C# Advanced Topics", institution: "Colt Steele", platform: "Udemy", date: "2022", link: "" },
+                        { title: "Entrepreneurship", institution: "University of Pennsylvania", platform: "Coursera", date: "2021", link: "" },
                     ]}
                 />
 
@@ -70,12 +55,110 @@ const ResumeScreen = () => {
             <div className="resume-right-column">
                 <MainSection
                     header="Profile"
-                    text="A user-centred and results-driven practical trailblazer. I’m a software engineer with a Master's degree in Software Engineering from King's College London and half a decade experience at ADP, a renowned S&P 500 company. Driven by a passion for designing and delivering scalable, high-performance, clean solutions. I have a proven track record of producing award winning software while thriving within cross-functional teams. I believe software engineering holds immense potential to transform lives, and with that responsibility, I am committed to creating user experiences that truly make a difference."
+                    text="Product driven Software Engineer with half a decade experience at ADP (an S&P 500 company), building and scaling React + .NET Core web apps used by over 1M clients. I work on RUN, a high-traffic platform rated 4.9+ on the App Store and Google Play. King's College London MSc gradate in Software Engineering with a First Class Honours in BSc Computer Science from UEA. Passionate about clean, scalable code, emerging tech, and working with detail-obsessed teams (and AI). Recent company hackathon winner for a tool tracking code changes across environments."
                 />
                 <WorkExperienceSection />
-
+                <ProjectSection />
             </div>
         </div>
+    );
+}
+
+
+
+const SkillSection = (props) => {
+
+    return (
+        <section className="resume-section skills">
+            <SectionHeader header="Skills" icon={<IconSkills />} />
+            <div className="resume-skills-groups">
+                <div className="resume-skills-group">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>TypeScript</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <li>C#</li>
+                    </ul>
+                </div>
+                <div className="resume-skills-group">
+                    <h3>Frameworks</h3>
+                    <ul>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>ASP.NET Core</li>
+                        <li>Express.js</li>
+                    </ul>
+                </div>
+                <div className="resume-skills-group">
+                    <h3>Cloud & DevOps</h3>
+                    <ul>
+                        <li>Azure Functions</li>
+                        <li>Azure DevOps</li>
+                        <li>GitHub Actions</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+                <div className="resume-skills-group">
+                    <h3>Databases</h3>
+                    <ul>
+                        <li>PostgreSQL</li>
+                        <li>MongoDB</li>
+                        <li>SQL Server</li>
+                    </ul>
+                </div>
+                <div className="resume-skills-group">
+                    <h3>Testing</h3>
+                    <ul>
+                        <li>Jest</li>
+                        <li>React Testing Library</li>
+                        <li>Cypress</li>
+                        <li>Selenium</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+const ProjectSection = (props) => {
+    const { header, text } = props;
+    return (
+        <section className="resume-section resume-projects">
+            <SectionHeader header="Projects" icon={<IconProfile />} />
+            <ul>
+                <ProjectItem
+                    title="GeekCaffine"
+                    description="A blog and portfolio website built with React, TypeScript, and Tailwind CSS. It features a custom CMS for easy content management and is hosted on Vercel."
+                    link="https://geekc"
+                />
+                <ProjectItem
+                    title="GeekCaffine"
+                    description="A blog and portfolio website built with React, TypeScript, and Tailwind CSS. It features a custom CMS for easy content management and is hosted on Vercel."
+                    link="https://geekc"
+                />
+                <ProjectItem
+                    title="GeekCaffine"
+                    description="A blog and portfolio website built with React, TypeScript, and Tailwind CSS. It features a custom CMS for easy content management and is hosted on Vercel."
+                    link="https://geekc"
+                />
+                <ProjectItem
+                    title="GeekCaffine"
+                    description="A blog and portfolio website built with React, TypeScript, and Tailwind CSS. It features a custom CMS for easy content management and is hosted on Vercel."
+                    link="https://geekc"
+                />
+            </ul>
+        </section>
+    );
+}
+
+const ProjectItem = (props) => {
+    const { title, description, link } = props;
+    return (
+        <li className="project">
+            <h4>{title}</h4>
+            <p>{description}</p>
+        </li>
     );
 }
 
@@ -104,7 +187,10 @@ const WorkExperienceSection = (props) => {
     return (
         <section className="">
             <SectionHeader header="Work Experience" icon={<IconWorkExperience />} />
-            <WorkExperience
+            <div 
+                style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+            >
+                <WorkExperience
                     company="ADP"
                     position="Software Engineer"
                     startDate="September 2021"
@@ -144,7 +230,7 @@ const WorkExperienceSection = (props) => {
                     ]}
                     logo={PNSLogo}
                 />
-
+            </div>
         </section>
     );
 }
@@ -219,8 +305,8 @@ const CertificationSection = (props) => {
             <ul>
                 {entries.map((entry, index) => (
                     <li key={index}>
-                        <p>{entry.title} - {entry.from} ({entry.date})</p>
-                        {entry.link && <a href={entry.link}>View Certificate</a>}
+                        <h4>{entry.title}</h4>
+                        <p>{entry.institution}, {entry.platform}, {entry.date}</p>
                     </li>
                 ))}
             </ul>
