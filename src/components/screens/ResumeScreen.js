@@ -14,6 +14,7 @@ import { ReactComponent as IconSkills } from '../../assets/icons/noun-magic-2704
 import { ReactComponent as IconEducation } from '../../assets/icons/noun-education-3961689.svg';
 import { ReactComponent as IconCertificate } from '../../assets/icons/noun-certificate-7830135.svg';
 import { ReactComponent as IconLink } from '../../assets/icons/noun-link-5747677.svg';
+import { ReactComponent as IconGitHub } from '../../assets/icons/GitHub.svg';
 
 const ResumeScreen = () => {
     return (
@@ -25,6 +26,7 @@ const ResumeScreen = () => {
                         { text: "ashmit.khadka@hotmail.com", icon: <IconEmail /> },
                         { text: "07476919615", icon: <IconPhone /> },
                         { text: "London, Peterborough, Cambridge", icon: <IconLocation /> },
+                        { text: "github.com/ashmit-khadka", icon: <IconGitHub /> },
                         { text: "akhadka.dev", icon: <IconLink /> },
                         { text: "geekcaffine.com", icon: <IconLink /> },
                     ]}
@@ -35,7 +37,7 @@ const ResumeScreen = () => {
                 <EducationSection
                     entries={[
                         { title: "MSc, Advanced Software Engineering", institution: "King's College London", grade: "Merit", date: "2024", logo: KCLLogo },
-                        { title: "BSc, Computing Science (With a year in industry)", institution: "University of East Anglia", grade: "First Class Honours", date: "2021", logo: UEALogo },
+                        { title: "BSc, Computing Science (with a year in industry)", institution: "University of East Anglia", grade: "First Class Honours", date: "2021", logo: UEALogo },
                     ]}
                 />
 
@@ -55,7 +57,7 @@ const ResumeScreen = () => {
             <div className="resume-right-column">
                 <MainSection
                     header="Profile"
-                    text="Product driven Software Engineer with half a decade experience at ADP (an S&P 500 company), building and scaling React + .NET Core web apps used by over 1M clients. I work on RUN, a high-traffic platform rated 4.9+ on the App Store and Google Play. King's College London MSc gradate in Software Engineering with a First Class Honours in BSc Computer Science from UEA. Passionate about clean, scalable code, emerging tech, and working with detail-obsessed teams (and AI). Recent company hackathon winner for a tool tracking code changes across environments."
+                    text="Product driven Software Engineer with half a decade experience at ADP (an S&P 500 company), building and scaling React + .NET Core web apps used by over 1M clients. I work on RUN, a payroll softwar rated 4.9+ on the App Store and Google Play. King's College London MSc gradate in Software Engineering with a First Class Honours in BSc Computer Science from UEA. Passionate about clean, scalable code, emerging tech, working with detail-obsessed teams and AI. Recent company 2024 hackathon winner."
                 />
                 <WorkExperienceSection />
                 <ProjectSection />
@@ -128,22 +130,22 @@ const ProjectSection = (props) => {
             <SectionHeader header="Projects" icon={<IconProfile />} />
             <ul>
                 <ProjectItem
-                    title="GeekCaffine"
+                    title="AI-Powered Sustainability Platform for Higher Education"
+                    description="MSc thesis arwarded distinction. This is a social media platform built using the MERN stack. AI generates personalised sustainability challenges and features chatbots and content moderation."
+                    link="https://geekc"
+                />
+                <ProjectItem
+                    title="DNA Visualisation Platform for Plant Pathogen Research"
                     description="A blog and portfolio website built with React, TypeScript, and Tailwind CSS. It features a custom CMS for easy content management and is hosted on Vercel."
                     link="https://geekc"
                 />
                 <ProjectItem
-                    title="GeekCaffine"
+                    title="GeekCaffeine.com: One Hub for All Things Tech"
                     description="A blog and portfolio website built with React, TypeScript, and Tailwind CSS. It features a custom CMS for easy content management and is hosted on Vercel."
                     link="https://geekc"
                 />
                 <ProjectItem
-                    title="GeekCaffine"
-                    description="A blog and portfolio website built with React, TypeScript, and Tailwind CSS. It features a custom CMS for easy content management and is hosted on Vercel."
-                    link="https://geekc"
-                />
-                <ProjectItem
-                    title="GeekCaffine"
+                    title="PNSUK.com: Empowering the Nepali Community"
                     description="A blog and portfolio website built with React, TypeScript, and Tailwind CSS. It features a custom CMS for easy content management and is hosted on Vercel."
                     link="https://geekc"
                 />
@@ -191,7 +193,7 @@ const WorkExperienceSection = (props) => {
                 style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
             >
                 <WorkExperience
-                    company="ADP"
+                    company="ADP (Automatic Data Processing)"
                     position="Software Engineer"
                     startDate="September 2021"
                     endDate="Present"
@@ -208,7 +210,7 @@ const WorkExperienceSection = (props) => {
                     logo={ADPLogo}
                 />
                 <WorkExperience
-                    company="ADP"
+                    company="ADP (Automatic Data Processing)"
                     position="Associate Software Engineer"
                     startDate="July 2019"
                     endDate="June 2020"
@@ -244,7 +246,7 @@ const WorkExperience = (props) => {
             <div className="resume-work-experience-company">
                 {logo && <img src={logo} alt={`${company} logo`} className="company-logo" />}
                 <div>
-                    <h3>{`${company}, ${position}`}</h3>
+                    <h3>{`${position} - ${company}`}</h3>
                     <p>{startDate} - {endDate}</p>
                 </div>
             </div>

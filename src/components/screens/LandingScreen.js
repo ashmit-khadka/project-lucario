@@ -278,6 +278,7 @@ const ContactTile = (props) => {
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.3, delay: 0.2 }}
+                viewport={{ once: true }}
             >
                 {icon}
             </motion.div>
@@ -285,6 +286,7 @@ const ContactTile = (props) => {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
+                viewport={{ once: true }}
             >
                 {text}
             </motion.p>
@@ -318,6 +320,7 @@ const ExperienceItem = (props) => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
             >
                 <div>
                     <img src={logo} alt="Experience Logo" className="experience-logo" />
@@ -333,6 +336,7 @@ const ExperienceItem = (props) => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
+                viewport={{ once: true }}
             >
                 {responsibilities.map((item, index) => (
                     <motion.li 
@@ -343,6 +347,7 @@ const ExperienceItem = (props) => {
                             delay: 0.6 + (index * 0.1),
                             duration: 0.5 
                         }}
+                        viewport={{ once: true }}
                     >
                         {item}
                     </motion.li>
@@ -361,6 +366,7 @@ const ExperienceItem = (props) => {
                             delay: 0.6 + (index * 0.1),
                             duration: 0.5 
                         }}
+                        viewport={{ once: true }}
                     >
                         {awardItem(award.image, award.text)}
                     </motion.div>
@@ -731,6 +737,7 @@ const EducationTile = (props) => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
+                viewport={{ once: true }}
             >
                 <img src={logo} alt="Education Logo" className="education-logo" />
             </motion.div>
@@ -738,6 +745,7 @@ const EducationTile = (props) => {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
             >
                 <h2>{title}</h2>
                 <p>{description}</p>
@@ -775,6 +783,7 @@ const CertificationTile = (props) => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
+                viewport={{ once: true }}
             >
                 <img src={logo} alt="Certification Logo" className="certification-logo" />
             </motion.div>
@@ -782,6 +791,7 @@ const CertificationTile = (props) => {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
             >
                 <h2>{title}</h2>
                 <p>{institution}, {platform}, {year}</p>
@@ -789,6 +799,7 @@ const CertificationTile = (props) => {
             <motion.div
                 whileHover={{ scale: 1.2, rotate: 45 }}
                 transition={{ stiffness: 400 }}
+                viewport={{ once: true }}
             >
                 <IconLink className="icon-button"/>
             </motion.div>
