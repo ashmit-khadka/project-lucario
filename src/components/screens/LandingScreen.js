@@ -45,9 +45,9 @@ import ImageProjectPg from '../../assets/image/projects/project_pg.png';
 import ImageProjectUg from '../../assets/image/projects/project_ug.png';
 
 
-import { ReactComponent as IconEmail } from '../../assets/icons/noun-mail-7838451.svg';
-import { ReactComponent as IconPhone } from '../../assets/icons/noun-phone-7814366.svg';
-import { ReactComponent as IconLocation } from '../../assets/icons/noun-location-7752735.svg';
+import { ReactComponent as IconEmail } from '../../assets/icons/noun-mail-1428698.svg';
+import { ReactComponent as IconPhone } from '../../assets/icons/noun-phone-7849386.svg';
+import { ReactComponent as IconLocation } from '../../assets/icons/noun-location-5480581.svg';
 import { ReactComponent as IconLink } from '../../assets/icons/noun-link-5747677.svg';
 
 
@@ -108,7 +108,7 @@ const LandingScreen = () => {
                         organization="ADP (Automatic Data Processing)"
                         date="September 2021 - Present"
                         responsibilities={[
-                            "2024 Hackathon winner: Created web app to tack code deployments for different environments.",
+                            "2024 Hackathon winner: Created web app to track code deployments for different environments.",
                             "Conduct code reviews to ensure quality and maintainability.",
                             "Mentor graduate software engineers through architectural overviews, shadowing, and pair programming sessions.",
                             "Collaborate with UX and develop responsive, high-performance web applications using React.js.",
@@ -149,13 +149,13 @@ const LandingScreen = () => {
                 <div className="section-items">
                     <PortfolioSection
                         header="AI-Powered Sustainability Platform for Higher Education"
-                        description="Built as part of my MSc thesis for which I was arwarded distinction, this MERN stack web app uses AI to generate personalised sustainability challenges and support user interaction through chatbots and comment moderation. Gamified features like leaderboards and rewards drive engagement, while the VIPER-based architecture ensures scalability and clean modular design."
+                        description="Built as part of my MSc thesis for which I was awarded distinction, this MERN stack web app uses AI to generate personalised sustainability challenges and support user interaction through chatbots and comment moderation. Gamified features like leaderboards and rewards drive engagement, while the VIPER-based architecture ensures scalability and clean modular design."
                         image={ImageProjectPg}
                         link={`${process.env.PUBLIC_URL}/assets/docs/pg_project.pdf`}
                     />
                     <PortfolioSection
                         header="DNA Visualisation Platform for Plant Pathogen Research"
-                        description="Built as part of my BSc thesis for which I was arwarded first class honours. Collaborated with The Sainsbury Laboratory to build a MERN stack web app for visualising complex DNA and protein interaction datasets. Integrated D3.js to render interactive visualisations from the ground up."
+                        description="Built as part of my BSc thesis for which I was awarded first class honours. Collaborated with The Sainsbury Laboratory to build a MERN stack web app for visualising complex DNA and protein interaction datasets. Integrated D3.js to render interactive visualisations from the ground up."
                         image={ImageProjectUg}
                         flipped
                         link={`${process.env.PUBLIC_URL}/assets/docs/ug_project.pdf`}
@@ -530,7 +530,7 @@ const AboutSectionBio = (
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
         >
-            {"I'm a trailblazing software engineer who loves building things that matter. With a Master’s in Software Engineering from King’s College London and nearly five years at ADP, a leading S&P 500 tech giant where I’ve  worked on RUN — an award-winning web app boasting a 4.9 rating on the App Store."}
+            {"I'm a trailblazing software engineer who loves building things that matter. With a Master’s in Software Engineering from King’s College London and nearly five years at ADP, a leading S&P 500 tech giant where I’ve worked on RUN — an award-winning web app boasting a 4.9 rating on the App Store."}
         </motion.p>
     </div>
 );

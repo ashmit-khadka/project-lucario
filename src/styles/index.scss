@@ -7,6 +7,7 @@
 
 @import './components/navigation_bar';
 @import './components/landingScreen.scss';
+@import './components/resumeScreen.scss';
 
 *,
 *::before,
@@ -86,291 +87,6 @@ a {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 2.5rem;
-}
-
-.resume-container {
-    display: grid;
-    grid-template-columns: 2fr 5fr;
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: auto;
-
-    // all text size
-    font-size: 1.2rem;
-
-
-    .resume-left-column {
-
-
-
-        .education-item,
-        .certification-item {
-            margin-bottom: 1rem;
-
-            h3 {
-                color: #444;
-                margin-bottom: 0.25rem;
-            }
-
-            p {
-                margin: 0.25rem 0;
-                color: #666;
-            }
-        }
-
-        .skills {
-            // ul {
-            //     list-style: none;
-            //     padding: 0;
-
-            //     li {
-            //         display: inline-block;
-            //         background: #f0f0f0;
-            //         padding: 0.5rem 1rem;
-            //         margin: 0.25rem;
-            //         border-radius: 20px;
-            //     }
-            // }
-        }
-    }
-
- 
-}
-
-
-
-
-.resume {
-
-    & p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    li {
-        font-size: 1rem;
-    }
-
-
-    & img {
-        height: 2.5rem;
-        width: 2.5rem;
-    }
-
-    & section {
-        margin-bottom: 2rem;
-    }
-
-    &-work-experience {
-        position: relative;
-        //border-left: 2px solid #000000;
-        //padding-left: 1.5rem;
-        //padding-bottom: 2rem;
-
-        & h3 {
-            font-weight: bold;
-            padding: 0;
-            margin: 0;
-        }
-
-        & ul {
-            margin-top: 1rem;
-            padding-left: 1.5rem;
-            border-left: 2px solid #000000;
-            padding-left: 3rem;
-            margin-left: 1.2rem;
-
-        }
-
-        & li {
-            list-style: disc;
-        }
-
-        &-timeline-dot {
-            width: 10px;
-            height: 10px;
-            background-color: #000000;
-            border-radius: 50%;
-            position: absolute;
-            left: -6px;
-            top: 10px;
-        }
-
-        &-company {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-
-        }
-    }
-
-
-    &-education {
-
-        & h3 {
-            font-weight: bold;
-            padding: 0;
-            margin: 0;
-        }
-
-        &-entry {
-            display: flex;
-            gap: 1rem;
-            align-items: start;
-        }
-
-        & ul {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        & img {
-            display: none;
-        }
-    }
-
-
-    &-profile {
-        & p {
-            position: relative;
-            //border-left: 2px solid #000000;
-            //padding-left: 1.5rem;
-        }
-    }
-
-    &-section {
-        margin-bottom: 2rem;
-
-        &-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-
-            & h2 {
-                font-size: 1.6rem;
-                margin: 0;
-            }
-
-            & svg {
-                width: 1.5rem;
-                height: 1.5rem;
-                //margin-right: 1rem;
-                display: none;
-            }
-        }
-    }
-
-    &-contact {
-        display: flex;
-        gap: .5rem;
-        align-items: center;
-
-        & li {
-            width: 20px;
-            color: #ec2626;
-        }
-
-        & svg {
-            width: 1rem;
-            height: 1rem;
-            fill: $color-font-primary;
-        }
-    }
-
-    &-items {
-        display: flex;
-        flex-direction: column;
-        gap: .5rem;
-    }
-
-    &-name {
-        & h1 {
-            font-size: 2.5rem !important;
-            font-weight: bold !important;
-        }
-
-        & p {
-            font-size: 1.5rem !important;
-            margin-top: -1rem;
-        }
-
-        margin-bottom: 1rem;
-    }
-
-    &-certifications {
-
-        & ul {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        & h4 {
-            font-weight: bold;
-        }
-
-        & li {
-            list-style: none;
-        }
-    }
-
-    &-projects {
-        & ul {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        & h4 {
-            font-weight: bold;
-        }
-
-        & li {
-            list-style: none;
-        }
-    }
-
-}
-
-.resume-skills-groups {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    .resume-skills-group {
-        h3 {
-            //font-size: 0.9rem;
-            color: $color-font-primary;
-            font-weight: bold;
-        }
-
-        ul {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            
-            li {
-                // font-size: 0.85rem;
-                // padding: 0.25rem 0.75rem;
-                // background: rgba($color-font-primary, 0.05);
-                // border-radius: 4px;
-                
-                // @media print {
-                //     background: none;
-                //     padding: 0;
-                //     &:not(:last-child):after {
-                //         content: ",";
-                //         margin-right: 0.5rem;
-                //     }
-                // }
-            }
-        }
-    }
 }
 
 
@@ -479,28 +195,28 @@ a {
         height: 100%;
     }
 
-    .resume {
-        &-container {
-            padding: 1cm;
-            width: 100vw;
-            height: 100vh;
-            margin: 0;
-            display: grid;
-            grid-template-columns: 30% 70%;
-            //gap: 2rem;
-            box-sizing: border-box;
-        }
+    // .resume {
+    //     &-container {
+    //         padding: 1cm;
+    //         width: 100vw;
+    //         height: 100vh;
+    //         margin: 0;
+    //         display: grid;
+    //         grid-template-columns: 30% 70%;
+    //         //gap: 2rem;
+    //         box-sizing: border-box;
+    //     }
 
-        &-left-column,
-        &-right-column {
-            height: 100%;
-        }
+    //     &-left-column,
+    //     &-right-column {
+    //         height: 100%;
+    //     }
 
-        &-section {
-            break-inside: avoid;
-            page-break-inside: avoid;
-        }
-    }
+    //     &-section {
+    //         break-inside: avoid;
+    //         page-break-inside: avoid;
+    //     }
+    // }
 
     // Hide non-essential elements
     .navigation,
@@ -509,8 +225,13 @@ a {
         display: none !important;
     }
 
-    // Ensure proper text contrast for printing
-    p, li, h1, h2, h3 {
-        color: black !important;
-    }
+    // // Ensure proper text contrast for printing
+    // p, li  {
+    //     font-size: .9rem !important;
+    //     font-weight: 200 !important;
+    // }
+
+    // h2 {
+    //     font-size: 1.5rem !important;
+    // }
 }

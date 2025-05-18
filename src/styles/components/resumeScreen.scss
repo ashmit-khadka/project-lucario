@@ -1,0 +1,329 @@
+.resume-container {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    //gap: 1.5rem;
+    max-width: 1200px;
+    margin: auto;
+    box-sizing: border-box;
+
+    padding: 1cm;
+    width: 100vw;
+    height: 100vh;
+    //margin: 0;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    //gap: 2rem;
+    box-sizing: border-box;
+
+
+    .resume-left-column {
+        
+        .education-item,
+        .certification-item {
+            margin-bottom: 1rem;
+
+            h3 {
+                color: #444;
+                margin-bottom: 0.25rem;
+            }
+
+            p {
+                margin: 0.25rem 0;
+                color: #666;
+            }
+        }
+    }
+    .resume-right-column {
+        padding-left: 2rem;
+    }
+ 
+}
+
+.resume {
+
+    & p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    li {
+        font-size: 1rem;
+        font-weight: 300;
+        @extend .libre-franklin-regular;
+    }
+
+
+    & img {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    & section {
+        //margin-bottom: 1.5rem;
+
+        & ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        & h2 {
+            font-weight: 600 !important;
+        }
+
+        & li {
+            list-style: none;
+        }
+
+        & h3, h4, span {
+            font-weight: 500;
+        }
+    }
+
+    p, li  {
+        font-size: .9rem !important;
+        font-weight: 200 !important;
+    }
+
+    h2 {
+        font-size: 1.5rem !important;
+    }  
+
+    
+
+    &-work-experience {
+        position: relative;
+        //border-left: 2px solid #000000;
+        //padding-left: 1.5rem;
+        //padding-bottom: 2rem;
+
+        & h3 {
+            font-weight: bold;
+            padding: 0;
+            margin: 0;
+        }
+
+        & ul {
+            margin-top: 1rem;
+            //border-left: 1px solid #c5c5c5;
+            //padding-left: 2.2rem;
+            margin-left: 1.2rem;
+            gap: 0rem !important;
+        }
+
+        & li {
+            list-style: disc !important;
+        }
+
+        &-timeline-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #000000;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 10px;
+        }
+
+        &-company {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+        }
+    }
+
+    &-education {
+        & img {
+            display: none;
+        }
+    }
+
+    &-profile {
+        & p {
+            position: relative;
+        }
+    }
+
+    &-section {
+        //margin-bottom: 2rem;
+
+        &-header {
+            @extend .lora-regular;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold !important;
+            //text-decoration: underline;
+
+            & h2 {
+                font-size: 1.6rem;
+                margin: 0;
+            }
+
+            & svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                //margin-right: 1rem;
+                display: none;
+            }
+        }
+
+        &-divider {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            
+            &-line {
+                flex: 1;
+                height: 1px;
+                background-color: rgba($color-font-primary, 0.2);
+            }
+            
+            &-circle {
+                width: 3px;
+                height: 3px;
+                border-radius: 50%;
+                background-color: $color-font-primary;
+                margin: 0 0.5rem;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            @media print {
+                &-line {
+                    background-color: rgba(0, 0, 0, 0.2);
+                }
+                
+                &-circle {
+                    background-color: black;
+                }
+            }
+        }
+
+    }
+
+    &-contact {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+        & svg {
+            width: 1rem;
+            height: 1rem;
+            fill: $color-font-primary;
+        }
+    }
+
+    &-info {
+        display: flex;
+        flex-direction: column;
+        gap: .2rem !important;
+    }
+
+    &-name {
+        & h1 {
+            font-size: 2.5rem !important;
+            font-weight: bold !important;
+        }
+
+        & p {
+            font-size: 1.5rem !important;
+            margin-top: -1rem;
+        }
+
+        margin-bottom: 1rem;
+    }
+}
+
+.resume-skills-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .resume-skills-group {
+        display: flex;
+        gap: 0.5rem;
+
+        h3 {
+            //font-size: 0.9rem;
+            color: $color-font-primary;
+            font-weight: bold;
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;            
+        }
+    }
+}
+
+.resume-project {
+    .resume-project-context {
+        & span {
+            font-style: italic !important;
+            font-weight: 300 !important;
+            background-color: aqua;
+            }
+    }
+}
+
+// @media print {
+//     @page {
+//         margin: 0;
+//         size: A4;
+//     }
+
+//     html, body {
+//         margin: 0;
+//         padding: 0;
+//         width: 100%;
+//         height: 100%;
+//     }
+
+//     .resume {
+//         &-container {
+//             padding: 1cm;
+//             width: 100vw;
+//             height: 100vh;
+//             margin: 0;
+//             display: grid;
+//             grid-template-columns: 30% 70%;
+//             //gap: 2rem;
+//             box-sizing: border-box;
+//         }
+
+//         &-left-column,
+//         &-right-column {
+//             height: 100%;
+//         }
+
+//         &-section {
+//             break-inside: avoid;
+//             page-break-inside: avoid;
+//         }
+//     }
+
+//     // Hide non-essential elements
+//     .navigation,
+//     .footer,
+//     .landing-intro-shortcuts {
+//         display: none !important;
+//     }
+
+//     // Ensure proper text contrast for printing
+//     p, li, h1, h2, h3 {
+//         color: black !important;
+//         font-size: .9rem !important;
+//     }
+
+//     h2 {
+//         //font-size: 1.5rem !important;
+
+//     }
+// }
