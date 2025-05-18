@@ -62,6 +62,9 @@ import ImageBIG from '../../assets/image/logos/business_intelligence_group_big_a
 import ImageAppStore from '../../assets/icons/App_Store.svg';
 import ImagePlayStore from '../../assets/icons/Google_Play_.png';
 
+import text from "../../data/resume";
+import parseText from "../../utils/parseText";
+
 const LandingScreen = () => {
 
     const [activeSection, setActiveSection] = useState('about');
@@ -107,17 +110,8 @@ const LandingScreen = () => {
                         title="Software Engineer"
                         organization="ADP (Automatic Data Processing)"
                         date="September 2021 - Present"
-                        responsibilities={[
-                            "2024 Hackathon winner: Created web app to track code deployments for different environments.",
-                            "Conduct code reviews to ensure quality and maintainability.",
-                            "Mentor graduate software engineers through architectural overviews, shadowing, and pair programming sessions.",
-                            "Collaborate with UX and develop responsive, high-performance web applications using React.js.",
-                            "Design modular, reusable UI components leveraging Tailwind CSS and a custom in-house design system, delivering a consistent brand experience across applications.",
-                            "Develop and optimise RESTful API integrations with robust error handling and performance improvements using Node.js, Express.js, and ASP.NET.",
-                            "Developed high-performance SQL stored procedures and queries.",
-                            "Develop comprehensive unit and integration tests using Jest and React Testing Library.",
-                        ]}
-                        logo={ImageADP}
+                        responsibilities={text.default.workExperience[0].responsibilities}
+                        logo={text.default.workExperience[0].logo}
                         awards={[
                             { image: ImageAppStore, text: "4.9/5 from 37k+ reviews, Apple App Store" },
                             { image: ImagePlayStore, text: "4.9/5 from 10k+ reviews, Google Play Store" },
@@ -132,12 +126,8 @@ const LandingScreen = () => {
                         title="Associate Software Engineer"
                         organization="ADP (Automatic Data Processing)"
                         date="July 2019 - July 2020"
-                        responsibilities={[
-                            "Developed migration scripts to transition version control from TFVC to GIT.",
-                            "Automated data mining of production data to create realistic test load profiles for performance testing.",
-                            "Integrated Google Tag Manager for user interaction tracking and established a Google Analytics reporting pipelines.",
-                        ]}
-                        logo={ImageADP}
+                        responsibilities={text.default.workExperience[1].responsibilities}
+                        logo={text.default.workExperience[1].logo}
                     />
                 </div>
             </div>
@@ -300,7 +290,7 @@ const ExperienceItem = (props) => {
     const awardItem = (image, text) => (
         <li className="landing-experience-tile-award">
             <img src={image} alt="Award" />
-            <p>{text}</p>
+            <p>{parseText(text)}</p>
         </li>
     );
 
@@ -349,7 +339,7 @@ const ExperienceItem = (props) => {
                         }}
                         viewport={{ once: true }}
                     >
-                        {item}
+                        {parseText(item)}
                     </motion.li>
                 ))}
             </motion.ul>
