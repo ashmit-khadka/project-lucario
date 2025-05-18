@@ -24,7 +24,7 @@ const ResumeText = {
             title: "Software Engineer",
         },
         profile: {
-            text: "Product driven Software Engineer with half a decade experience at ADP (an S&P 500 company), building and scaling React, .NET Core web apps used by over 1 million clients. I work on RUN, a payroll software rated 4.9 on the App Store and Google Play. King's College London master's graduate in Software Engineering with a First Class Honours in Computer Science. Passionate about clean, scalable code, emerging tech, AI. Team player who’s always ready to help and take on difficult challenges. Recent company hackathon winner for 2024.",
+            text: "Product driven Software Engineer with half a decade experience at ADP (an S&P 500 company), building and scaling React, .NET Core web apps used by over 1 million clients. I work on RUN, an award winning payroll software rated 4.9 on the App Store and Google Play. King's College London master's graduate in Software Engineering with a First Class Honours in Computer Science. Passionate about clean, scalable code, emerging tech, AI. Team player who’s always ready to help and take on difficult challenges. Recent company hackathon winner for 2024.",
         },
         contact: [
             { text: "ashmit.khadka@outlook.com", icon: <IconEmail /> },
@@ -42,14 +42,14 @@ const ResumeText = {
                 endDate: "Present",
                 responsibilities: [
                     "Hackathon 2024 winner for developing a web application that tracks code deployments across multiple environments, improving visibility and release traceability.",
-                    "Delivered over 500+ features and production bug fixes across the full stack using React, TypeScript, Node, C#.",
+                    "Delivered over 500+ features and production bug fixes across the full stack using _React_, _TypeScript_, _Node.js_, _C#_.",
                     "Performed 300+ code reviews, promoted architectural standards, and best practices.",
                     "Mentored 3 graduate engineers through deep dives, shadowing sessions, and pair programming.",
-                    "Collaborate cross functionally with UX designers to build responsive, accessible, and high performance web apps using React and Figma. Engineered modular, reusable UI components with React and Tailwind.",
-                    "Designed and optimised 30+ mission critical RESTful APIs using Node, Express, MongoDB and C#, implementing robust error handling, logging and performance tuning.",
-                    "Authored and optimised stored procedures and queries using SQL and MongoDB, supporting data heavy features at scale.",
-                    "Built 1,000+ unit and integration tests using React Testing Library and Jest.",
-                    "Developed 100+ end-to-end UI test suites with Cypress, Selenium, and Cucumber, automating complex user journeys and release validation.",
+                    "Collaborate cross-functionally with UX designers to build responsive, accessible web apps using _React_ and _Figma_. Engineered modular, reusable UI components with _React_ and _Tailwind_.",
+                    "Designed and optimized 30+ mission critical _RESTful_ APIs using _Node.js_, _Express_, _MongoDB_ and _C#_, implementing robust error handling, logging and performance tuning.",
+                    "Authored and optimized stored procedures and queries using _SQL_ and _MongoDB_, supporting data heavy features at scale.",
+                    "Built 1,000+ unit and integration tests using _React Testing Library_ and _Jest_.",
+                    "Developed 100+ end-to-end UI test suites with _Cypress_, _Selenium_, and _Cucumber_, automating complex user journeys and release validation.",
                 ],
                 logo: ADPLogo,
             },
@@ -59,9 +59,9 @@ const ResumeText = {
                 startDate: "July 2019",
                 endDate: "June 2020 (Internship)",
                 responsibilities: [
-                    "Developed responsive, high performance client-facing user experiences using React, Node, and Express.",
-                    "Automated data mining of production usage patterns using Python to generate realistic performance test profiles, significantly enhancing test coverage and load accuracy.",
-                    "Integrated Google Tag Manager to capture key user interactions and built end-to-end Google Analytics reporting pipelines helping enable better data-driven UX and product decisions.",
+                    "Developed responsive, high performance client-facing user experience using _React_, _Node.js_, and _TypeScript_.",
+                    "Automated data mining of production usage patterns using _Python_ to generate realistic _LoadRunner_ performance test profiles and error reporting with _Grafana_.",
+                    "Integrated _Google Tag Manager_ to capture key user interactions and built end-to-end _Google Analytics_ reporting pipelines helping enable better data-driven UX and product decisions.",
                 ],
                 logo: ADPLogo,
             },
@@ -71,7 +71,7 @@ const ResumeText = {
                 startDate: "April 2017",
                 endDate: "Present",
                 responsibilities: [
-                    "Collaborate with community stakeholders to build and enhance the charity website PNSUK.org, using React, Python, Django and SQL",
+                    "Collaborate with community stakeholders to build and enhance the charity website PNSUK.org, using _React_, _Python_, _Django_ and _SQL_",
                     "Lead IT education workshops for both adults and children, fostering digital literacy and empowering the community with essential tech skills.",
                 ],
                 logo: PNSLogo,
@@ -80,24 +80,24 @@ const ResumeText = {
         projects: [
             {
                 title: "AI Sustainability Platform",
-                description: "Social platform targeted at higher education with AI generated sustainability challenges, chatbots, and content moderation. Built using the MERN stack + GraphQL",
+                description: "Social platform targeting higher education with _AI_ generated sustainability challenges, chatbots, and content moderation. Built using the _MERN_ stack + _GraphQL_",
                 link: "https://geekc",
-                context: "MSc Thesis (awarded Distinction)",
+                context: "Master's thesis (awarded Distinction)",
             },
             {
                 title: "DNA Visualisation Tool",
-                description: "Partnered with The Sainsbury Laboratory to build an interactive web app for visualising protein interactions in plant pathogens. Powered by D3 and the MERN stack.",
+                description: "Partnered with The Sainsbury Laboratory to build an interactive web app for visualising protein interactions in plant pathogens. Powered by _D3_ and the _MERN_ stack.",
                 link: "https://geekc",
-                context: "BSc Thesis (awarded First Class Honours)",
+                context: "Bachelor's thesis (awarded First Class Honours)",
             },
             {
                 title: "GeekCaffeine.com: One Hub for All Things Tech",
-                description: "Built a curated tech content hub with custom web scrapers and a recommendation engine using TypeScript and the MERN stack.",                     
+                description: "Curated a tech content hub with custom web scrapers and AI powered trend analytics using _Python_, _TypeScript_ and the _MERN_ stack.",
                 link: "https://geekc",
             },
             {
                 title: "PNSUK.com: Empowering the Nepali Community",
-                description: "Designed and developed the official site for a UK-based Nepali charity that empowers the local Nepali community. Built using React and powered by Python and Django.",
+                description: "Designed and developed the official site for a UK-based Nepali charity that empowers the local Nepali community. Built using _React_ and powered by _Python_ and _Django_.",
                 link: "https://geekc",
             },
         ],
@@ -110,7 +110,7 @@ const ResumeText = {
                 logo: KCLLogo,
             },
             {
-                title: "BSc, Computing Science (with a year in industry)",
+                title: "BSc, Computing Science (with a Year in Industry)",
                 institution: "University of East Anglia",
                 grade: "First Class Honours",
                 date: "2021",
@@ -118,7 +118,7 @@ const ResumeText = {
             },
         ],
         skills: {
-            languages: "JavaScript, TypeScript, C#, Python, SQL, F#, HTML, CSS, Java, PowerShell",
+            languages: "JavaScript, TypeScript, C#, Python, SQL, HTML, CSS, Java, PowerShell, F#",
             frameworks: "React, React Native, Node, ASP.NET Core, Express, Django, SASS, Redux, Next, GraphQL, D3, Tailwind",
             cloud: "Azure, AWS, Git, Docker, Jenkins, Splunk, Nginx",
             databases: "SQL, MongoDB",
@@ -176,14 +176,35 @@ const ResumeText = {
                 date: "2023",
             },
             {
-                title: "Bebras Challenge - 1st of 200 students for computational challenges",
-                from: "Raspberry Pi foundation",
+                title: "Bebras Challenge - 1st of 200 students",
+                from: "computational challenges organised by the Raspberry Pi foundation",
                 date: "2016",
             },
         ],
 
     }
 }
+
+const parseText = (text) => {
+    if (!text) return null;
+    
+    // Match text between *asterisks* for bold and _underscores_ for italics
+    const parts = text.split(/(\*[^*]+\*|_[^_]+_)/g);
+    
+    return parts.map((part, index) => {
+        if (part.startsWith('*') && part.endsWith('*')) {
+            // Bold text
+            const content = part.slice(1, -1);
+            return <span key={index} className="bold">{content}</span>;
+        }
+        if (part.startsWith('_') && part.endsWith('_')) {
+            // Italic text
+            const content = part.slice(1, -1);
+            return <span key={index} className="italic">{content}</span>;
+        }
+        return part;
+    });
+};
 
 const ResumeScreen = () => {
 
@@ -198,7 +219,7 @@ const ResumeScreen = () => {
                     title={resumeText.header.title}
                     entries={resumeText.contact}
                 />
-                <SectionDevider />
+                <SectionDivider />
 
                 <SkillSection
                     languages={resumeText.skills.languages}
@@ -207,18 +228,18 @@ const ResumeScreen = () => {
                     database={resumeText.skills.databases}
                     tools={resumeText.skills.tools}
                 />
-                <SectionDevider />
+                <SectionDivider />
 
                 <EducationSection
                     entries={resumeText.education}
                 />
-                <SectionDevider />
+                <SectionDivider />
 
                 <CertificationSection
                     entries={resumeText.certifications}
                 />
 
-                <SectionDevider />
+                <SectionDivider />
                 <AwardSection
                     entries={resumeText.awards}
                 />
@@ -230,11 +251,11 @@ const ResumeScreen = () => {
                 <ProfileSection
                     text={resumeText.profile.text}
                 />
-                <SectionDevider />
+                <SectionDivider />
                 <WorkExperienceSection
                     workExperience={resumeText.workExperience}
                 />
-                <SectionDevider />
+                <SectionDivider />
                 <ProjectSection
                     projects={resumeText.projects}
                 />
@@ -243,7 +264,7 @@ const ResumeScreen = () => {
     );
 }
 
-const SectionDevider = () => {
+const SectionDivider = () => {
     return (
         <div className="resume-section-divider">
             <div className="resume-section-divider-line"></div>
@@ -261,21 +282,21 @@ const SkillSection = (props) => {
             <SectionHeader header="Skills" icon={<IconSkills />} />
             <div className="resume-skills-groups">
                 <div className="resume-skills-group">
-                    <p><span>Languages</span>: {languages}</p>
+                    <p><span className="bold">Languages</span>: {languages}</p>
                 </div>
 
                 <div className="resume-skills-group">
-                    <p><span>Frameworks</span>: {frameworks}</p>
+                    <p><span className="bold">Frameworks</span>: {frameworks}</p>
 
                 </div>
                 <div className="resume-skills-group">
-                    <p><span>Cloud / DevOps</span>: {cloud}</p>
+                    <p><span className="bold">Cloud / DevOps</span>: {cloud}</p>
                 </div>
                 <div className="resume-skills-group">
-                    <p><span>Databases</span>: {database}</p>
+                    <p><span className="bold">Databases</span>: {database}</p>
                 </div>
                 <div className="resume-skills-group">
-                    <p><span>Other</span>: {tools}</p>
+                    <p><span className="bold">Other</span>: {tools}</p>
                 </div>
             </div>
         </section>
@@ -305,7 +326,7 @@ const ProjectItem = (props) => {
     const { title, description, context } = props;
     return (
         <li className="project">
-            <p><span>{title}</span>, <span style={{ fontStyle: "italic", fontWeight:"00" }}>{context}</span> - {description}</p>
+            <p><span className="bold">{title}</span>, <span style={{ fontStyle: "italic", fontWeight:"200" }}>{context}</span> - {parseText(description)}</p>
         </li>
     );
 }
@@ -353,13 +374,13 @@ const WorkExperience = (props) => {
             <div className="resume-work-experience-company">
                 {logo && <img src={logo} alt={`${company} logo`} className="company-logo" />}
                 <div>
-                    <h3>{`${position} - ${company}`}</h3>
+                    <h3 className="bold">{`${position} - ${company}`}</h3>
                     <p>{startDate} - {endDate}</p>
                 </div>
             </div>
             <ul className="responsibilities">
                 {responsibilities.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index}>{parseText(item)}</li>
                 ))}
             </ul>
         </div>
@@ -396,7 +417,7 @@ const EducationSection = (props) => {
                     <li key={index} className="resume-education-entry">
                         <img src={entry.logo} alt={`${entry.from} logo`} className="education-logo" />
                         <div>
-                            <p><span>{entry.title}</span> - {entry.institution}, {entry.grade}, {entry.date}</p>
+                            <p><span className="bold">{entry.title}</span> - {entry.institution}, {entry.date}, {entry.grade} </p>
 
                         </div>
                     </li>
@@ -414,7 +435,7 @@ const CertificationSection = (props) => {
             <ul>
                 {entries.map((entry, index) => (
                     <li key={index}>
-                        <p><span>{entry.title}</span> - {entry.institution}, {entry.platform}, {entry.date}</p>
+                        <p><span className="bold">{entry.title}</span> - {entry.institution}, {entry.platform}, {entry.date}</p>
                     </li>
                 ))}
             </ul>
@@ -430,7 +451,7 @@ const AwardSection = (props) => {
             <ul>
                 {entries.map((entry, index) => (
                     <li key={index}>
-                        <p><span>{entry.title}</span> - {entry.from}, {entry.date}</p>
+                        <p><span className="bold">{entry.title}</span> - {entry.from}, {entry.date}</p>
                     </li>
                 ))}
             </ul>
