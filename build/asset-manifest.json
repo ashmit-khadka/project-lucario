@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b06ef2b3.css",
-    "main.js": "/static/js/main.c17f1e44.js",
+    "main.css": "/static/css/main.bf9d3827.css",
+    "main.js": "/static/js/main.a380dfc2.js",
     "static/js/453.823163c7.chunk.js": "/static/js/453.823163c7.chunk.js",
     "static/media/project_geekcaffeine.png": "/static/media/project_geekcaffeine.644cdeea6e6385324d20.png",
     "static/media/project_pnsuk.png": "/static/media/project_pnsuk.52ff2e874adfc028634b.png",
@@ -26,24 +26,26 @@
     "static/media/React.svg": "/static/media/React.4e0c97009b885bfa75c5412262a46f5f.svg",
     "static/media/noun-magic-2704149.svg": "/static/media/noun-magic-2704149.43f52e81de80e01e8263a9ad766091be.svg",
     "static/media/Python.svg": "/static/media/Python.849d0b2b5f1ec20f077dd267498bd536.svg",
+    "static/media/GitHub.svg": "/static/media/GitHub.3c903c66b2c5334c8c0b80567c4ea422.svg",
     "static/media/noun-education-3961689.svg": "/static/media/noun-education-3961689.87f2e0339a2e83a140769daaafb64815.svg",
     "static/media/noun-link-5747677.svg": "/static/media/noun-link-5747677.471378124cf2d36977131bafe6263dc1.svg",
     "static/media/Azure.svg": "/static/media/Azure.d8c693b62a434719420e95f8c65f3acd.svg",
+    "static/media/noun-phone-7849386.svg": "/static/media/noun-phone-7849386.ccac809bb183104360f27ee45e9892bc.svg",
     "static/media/Cypress.svg": "/static/media/Cypress.c8478567e18f3830294c6f6bcb0d67ac.svg",
     "static/media/Node.svg": "/static/media/Node.10c9e2aa0ca7edf36fceae25fec038a1.svg",
     "static/media/App_Store.svg": "/static/media/App_Store.a8ee14d34cb6f4534fb96d4597068f48.svg",
+    "static/media/noun-location-5480581.svg": "/static/media/noun-location-5480581.04c6405e4749048ae7be98a1afd6dbae.svg",
     "static/media/Redux.svg": "/static/media/Redux.2fa08b46b0c0e7372c20acbe86b2e39e.svg",
     "static/media/JavaScript.svg": "/static/media/JavaScript.4c1b5332c1b1057928f6f06cf972c91c.svg",
+    "index.html": "/index.html",
     "static/media/Selenium.svg": "/static/media/Selenium.cb5a0c8221c57c83693846680e71b209.svg",
     "static/media/Jira.svg": "/static/media/Jira.b894f17b42eb499ba8a4c4cecbb58a99.svg",
-    "index.html": "/index.html",
+    "static/media/noun-mail-1428698.svg": "/static/media/noun-mail-1428698.f955fb8a44ec91f536cb0d895b2cd0d2.svg",
     "static/media/TypeScript.svg": "/static/media/TypeScript.8d9549db1a0f5d73a35aa5dab48a09f9.svg",
     "static/media/google.svg": "/static/media/google.18c4fddcd4128f6f47a4e63df3e4afc0.svg",
     "static/media/noun-close-659815.svg": "/static/media/noun-close-659815.a1fa0b8e661725b1b5ee21f8413eb9a9.svg",
-    "static/media/noun-mail-7838451.svg": "/static/media/noun-mail-7838451.0466347d7477b4e4807e01ec47795313.svg",
     "static/media/CSharp.svg": "/static/media/CSharp.4b8080ff785d7bd4f1b95178568e9ba1.svg",
     "static/media/noun-person-7065915.svg": "/static/media/noun-person-7065915.9ab9714c014f372254cf442bf6bead69.svg",
-    "static/media/noun-phone-7814366.svg": "/static/media/noun-phone-7814366.64370af5bd283bb87893025e0ce6665d.svg",
     "static/media/Git.svg": "/static/media/Git.c08353563539c6459b353f29d8dd7bf2.svg",
     "static/media/Tailwind.svg": "/static/media/Tailwind.8b3f5baf8ad130d320c59560114d0684.svg",
     "static/media/noun-menu-1561735.svg": "/static/media/noun-menu-1561735.353ebfdf43fe8fd29e7058d112ab106a.svg",
@@ -51,14 +53,13 @@
     "static/media/Django.svg": "/static/media/Django.c1ea8b0c07747ebdd9c4da37f0f46d2a.svg",
     "static/media/Figma.svg": "/static/media/Figma.2c2c9d7ff067a3272fbcb7e4700d15a6.svg",
     "static/media/noun-briefcase-7779894.svg": "/static/media/noun-briefcase-7779894.c4bce83e99da614b4fb84db49885dd6c.svg",
-    "static/media/noun-location-7752735.svg": "/static/media/noun-location-7752735.28275d94b40a710722e3f6a472cef281.svg",
     "static/media/noun-dot-1420973.svg": "/static/media/noun-dot-1420973.0a1e5be57898b0d165edf8dda0375f59.svg",
-    "main.b06ef2b3.css.map": "/static/css/main.b06ef2b3.css.map",
-    "main.c17f1e44.js.map": "/static/js/main.c17f1e44.js.map",
+    "main.bf9d3827.css.map": "/static/css/main.bf9d3827.css.map",
+    "main.a380dfc2.js.map": "/static/js/main.a380dfc2.js.map",
     "453.823163c7.chunk.js.map": "/static/js/453.823163c7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b06ef2b3.css",
-    "static/js/main.c17f1e44.js"
+    "static/css/main.bf9d3827.css",
+    "static/js/main.a380dfc2.js"
   ]
 }
