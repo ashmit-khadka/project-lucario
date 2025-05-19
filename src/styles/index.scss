@@ -129,6 +129,10 @@ a {
     color: $color-font-primary-lighter;
     height: 80vh;
 
+    @include screen-sm {
+        padding: 2.5rem;
+    }
+
     & a {
         color: $color-font-primary-lighter;
         text-decoration: none;
@@ -153,6 +157,10 @@ a {
         flex-direction: column;
         justify-content: start;
         padding: 15rem 0;
+
+        @include screen-sm {
+            padding: 5rem 0;
+        }
     }
 }
 

@@ -2,6 +2,7 @@
     from {
         right: -250px;
     }
+
     to {
         right: 0;
     }
@@ -11,6 +12,7 @@
     from {
         right: 0;
     }
+
     to {
         right: -250px;
     }
@@ -20,6 +22,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -42,7 +45,7 @@
 
     &-menu {
         cursor: pointer;
-        
+
         & svg {
             @extend .image--md;
         }
@@ -113,7 +116,7 @@
 
         &:hover {
             color: $color-font-primary;
-            
+
             &::after {
                 width: 100%;
             }
@@ -151,6 +154,34 @@
     &-dummy {
         display: none;
         @extend .image--md;
+    }
+
+
+    @include screen-lg {
+
+        &.scrolled {
+            background-color: rgba($color-font-primary-darker, 0.95);
+            padding: 1.5rem 3rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+            .navigation-link {
+
+                color: $color-font-primary-lighter;
+
+                &::after {
+                    background-color: $color-font-primary-lighter;
+                }
+
+                &:hover,
+                &.active {
+                    color: white;
+                }
+            }
+
+            .hamburger-line {
+                background-color: $color-font-primary-lighter;
+            }
+        }
     }
 }
 
