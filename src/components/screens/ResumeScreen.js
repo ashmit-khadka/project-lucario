@@ -79,9 +79,16 @@ const ResumeScreen = () => {
 const SectionDivider = () => {
     return (
         <div className="resume-section-divider">
-            <div className="resume-section-divider-line"></div>
         </div>
     )
+
+    // return (
+    //     <div style={{
+    //         width: "100%",
+    //         borderBottom: "1px solid lightgray",
+    //         margin: "1rem 0"
+    //     }} ></div>
+    // )
 }
 
 

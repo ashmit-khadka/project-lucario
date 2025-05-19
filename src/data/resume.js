@@ -114,10 +114,10 @@ const text ={
         ],
         skills: {
             languages: "JavaScript, TypeScript, C#, Python, SQL, HTML, CSS, Java, PowerShell, F#",
-            frameworks: "React, React Native, Node, ASP.NET Core, Express, Django, SASS, Redux, Next, GraphQL, D3, Tailwind",
+            frameworks: "React, Node, ASP.NET Core, Express, Django, React Native, SASS, Redux, Next, GraphQL, D3, Tailwind",
             cloud: "Azure, AWS, Git, Docker, Jenkins, Splunk, Nginx",
             databases: "SQL, MongoDB",
-            tools: "Figma, Selenium, Jira, Playwright, Cypress, TDD",
+            tools: "Figma, Selenium, Jira, Playwright, Cypress, TDD, Postman",
         },
         certifications: [
             {
