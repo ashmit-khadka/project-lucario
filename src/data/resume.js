@@ -11,23 +11,48 @@ import { ReactComponent as IconEducation } from '../assets/icons/noun-education-
 import { ReactComponent as IconCertificate } from '../assets/icons/noun-certificate-7830135.svg';
 import { ReactComponent as IconLink } from '../assets/icons/noun-link-5747677.svg';
 import { ReactComponent as IconGitHub } from '../assets/icons/GitHub.svg';
+import { ReactComponent as IconLinkedIn } from '../assets/icons/LinkedIn.svg';
 
 const text ={
     default: {
         header: {
-            name: "Ash Khadka",
-            title: "Software Engineer",
+            name: "Ashmit Khadka",
+            title: "Software Engineer 👷🪄",
         },
         profile: {
             text: "Product driven Software Engineer with half a decade experience at ADP (an S&P 500 company), building and scaling React, .NET Core web apps used by over 1 million clients. I work on RUN, an award winning payroll software rated 4.9 on the App Store and Google Play. King's College London master's graduate in Software Engineering with a First Class Honours in Computer Science. Passionate about clean, scalable code, emerging tech, AI. Team player who’s always ready to help and take on difficult challenges. Recent company hackathon winner for 2024.",
         },
         contact: [
-            { text: "ashmit.khadka@outlook.com", icon: <IconEmail /> },
-            { text: "07476919615", icon: <IconPhone /> },
-            { text: "London, Peterborough, Cambridge", icon: <IconLocation /> },
-            { text: "github.com/ashmit-khadka", icon: <IconGitHub /> },
-            { text: "akhadka.dev", icon: <IconLink /> },
-            { text: "geekcaffine.com", icon: <IconLink /> },
+            { 
+                text: "ashmit.khadka@outlook.com", 
+                icon: <IconEmail />,
+                link: "mailto:ashmit.khadka@outlook.com"
+            },
+            { 
+                text: "07476919615", 
+                icon: <IconPhone />,
+                link: "tel:07476919615"
+            },
+            { 
+                text: "linkedin.com/in/ashmit-khadka", 
+                icon: <IconLinkedIn />,
+                link: "https://linkedin.com/in/ashmit-khadka"
+            },
+            { 
+                text: "github.com/ashmit-khadka", 
+                icon: <IconGitHub />,
+                link: "https://github.com/ashmit-khadka"
+            },
+            { 
+                text: "akhadka.dev", 
+                icon: <IconLink />,
+                link: "https://akhadka.dev"
+            },
+            {
+                text: "geekcaffeine.com",
+                icon: <IconLink />,
+                link: "https://geekcaffeine.com"
+            },
         ],
         workExperience: [
             {
@@ -113,11 +138,12 @@ const text ={
             },
         ],
         skills: {
-            languages: "JavaScript, TypeScript, C#, Python, SQL, HTML, CSS, Java, PowerShell, F#",
+            languages: "JavaScript, TypeScript, C#, Python, SQL, HTML, CSS, Java, PowerShell",
             frameworks: "React, Node, ASP.NET Core, Express, Django, React Native, SASS, Redux, Next, GraphQL, D3, Tailwind",
-            cloud: "Azure, AWS, Git, Docker, Jenkins, Splunk, Nginx",
+            cloud: "Azure, AWS, Docker, Jenkins, Splunk, Nginx",
             databases: "SQL, MongoDB",
-            tools: "Figma, Selenium, Jira, Playwright, Cypress, TDD, Postman",
+            testing: "Jest, React Testing Library, Playwright, Selenium, Cypress, Cucumber",
+            tools: "Git, Figma, WCAG, Lunix, Jira, Postman, Webpack, Google Analytics",
         },
         certifications: [
             {
@@ -125,28 +151,28 @@ const text ={
                 institution: "Google",
                 platform: "Coursera",
                 date: "2021",
-                link: "",
+                link: "https://www.coursera.org/account/accomplishments/specialization/certificate/BQYR2BE9BL4Z",
             },
             {
                 title: "JavaScript: The Advanced Concepts",
                 institution: "Mosh Hamedani",
                 platform: "Udemy",
                 date: "2022",
-                link: "",
+                link: "https://udemy-certificate.s3.amazonaws.com/pdf/UC-628b7748-f652-467f-af3f-00c588747cb0.pdf",
             },
             {
                 title: "Mastering TypeScript - 2023 Edition",
                 institution: "Zero to Mastery",
                 platform: "Udemy",
                 date: "2023",
-                link: "",
+                link: "https://udemy-certificate.s3.amazonaws.com/pdf/UC-0ea23300-3f11-443d-ae2c-08d9e22ee458.pdf",
             },
             {
                 title: "C# Advanced Topics",
                 institution: "Colt Steele",
                 platform: "Udemy",
                 date: "2022",
-                link: "",
+                link: "https://udemy-certificate.s3.amazonaws.com/pdf/UC-71e26554-f4cf-44d7-b83b-113fbbd63a31.pdf",
             },
         ],
         awards: [
@@ -172,7 +198,7 @@ const text ={
             },
             {
                 title: "Bebras Challenge - 1st of 200 students",
-                from: "computational challenges organised by the Raspberry Pi foundation",
+                from: "Raspberry Pi foundation",
                 date: "2016",
             },
         ],

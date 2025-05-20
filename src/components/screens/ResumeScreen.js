@@ -15,6 +15,7 @@ import { ReactComponent as IconEducation } from '../../assets/icons/noun-educati
 import { ReactComponent as IconCertificate } from '../../assets/icons/noun-certificate-7830135.svg';
 import { ReactComponent as IconLink } from '../../assets/icons/noun-link-5747677.svg';
 import { ReactComponent as IconGitHub } from '../../assets/icons/GitHub.svg';
+
 import text from '../../data/resume';
 import parseText from '../../utils/parseText';
 
@@ -38,6 +39,7 @@ const ResumeScreen = () => {
                     frameworks={resumeText.skills.frameworks}
                     cloud={resumeText.skills.cloud}
                     database={resumeText.skills.databases}
+                    testing={resumeText.skills.testing}
                     tools={resumeText.skills.tools}
                 />
                 <SectionDivider />
@@ -94,7 +96,7 @@ const SectionDivider = () => {
 
 const SkillSection = (props) => {
 
-    const { languages, frameworks, cloud, database, tools } = props;
+    const { languages, frameworks, cloud, database, testing, tools } = props;
 
     return (
         <section className="resume-section skills">
@@ -113,6 +115,9 @@ const SkillSection = (props) => {
                 </div>
                 <div className="resume-skills-group">
                     <p><span className="bold">Databases</span>: {database}</p>
+                </div>
+                <div className="resume-skills-group">
+                    <p><span className="bold">Testing</span>: {testing}</p>
                 </div>
                 <div className="resume-skills-group">
                     <p><span className="bold">Other</span>: {tools}</p>
@@ -145,7 +150,7 @@ const ProjectItem = (props) => {
     const { title, description, context } = props;
     return (
         <li className="project">
-            <p><span className="bold">{title}</span>, <span style={{ fontStyle: "italic", fontWeight:"200" }}>{context}</span> - {parseText(description)}</p>
+            <p><span className="bold">{title}</span>, <span style={{ fontStyle: "italic", fontWeight: "200" }}>{context}</span> - {parseText(description)}</p>
         </li>
     );
 }
@@ -211,14 +216,24 @@ const ContactSection = (props) => {
     return (
         <section className="resume-section contact-info">
             <div className="resume-name">
-                <h1 className="">{name}</h1>
-                <p className="">{title}</p>
+                <h1>{name}</h1>
+                <p>{title}</p>
             </div>
             <ul className="resume-info">
                 {entries.map((entry, index) => (
                     <li key={index} className="resume-contact">
                         {entry.icon}
-                        <p>{entry.text}</p>
+                        {entry.link ? (
+                            <a
+                                href={entry.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {entry.text}
+                            </a>
+                        ) : (
+                            <p>{entry.text}</p>
+                        )}
                     </li>
                 ))}
             </ul>
@@ -254,7 +269,13 @@ const CertificationSection = (props) => {
             <ul>
                 {entries.map((entry, index) => (
                     <li key={index}>
-                        <p><span className="bold">{entry.title}</span> - {entry.institution}, {entry.platform}, {entry.date}</p>
+                        <a
+                            href={entry.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <p><span className="bold">{entry.title}</span> - {entry.institution}, {entry.platform}, {entry.date}</p>
+                        </a>
                     </li>
                 ))}
             </ul>
