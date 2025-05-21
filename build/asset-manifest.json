@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.710f562e.css",
-    "main.js": "/static/js/main.078ef8b4.js",
-    "static/js/453.823163c7.chunk.js": "/static/js/453.823163c7.chunk.js",
+    "main.css": "/static/css/main.148d7c54.css",
+    "main.js": "/static/js/main.1e6bef59.js",
+    "static/js/453.0a828dc6.chunk.js": "/static/js/453.0a828dc6.chunk.js",
     "static/media/project_geekcaffeine.png": "/static/media/project_geekcaffeine.644cdeea6e6385324d20.png",
     "static/media/project_pnsuk.png": "/static/media/project_pnsuk.52ff2e874adfc028634b.png",
     "static/media/project_pg.png": "/static/media/project_pg.ab097edc61aedbb9a39c.png",
@@ -55,12 +55,12 @@
     "static/media/Figma.svg": "/static/media/Figma.2c2c9d7ff067a3272fbcb7e4700d15a6.svg",
     "static/media/noun-briefcase-7779894.svg": "/static/media/noun-briefcase-7779894.c4bce83e99da614b4fb84db49885dd6c.svg",
     "static/media/noun-dot-1420973.svg": "/static/media/noun-dot-1420973.0a1e5be57898b0d165edf8dda0375f59.svg",
-    "main.710f562e.css.map": "/static/css/main.710f562e.css.map",
-    "main.078ef8b4.js.map": "/static/js/main.078ef8b4.js.map",
-    "453.823163c7.chunk.js.map": "/static/js/453.823163c7.chunk.js.map"
+    "main.148d7c54.css.map": "/static/css/main.148d7c54.css.map",
+    "main.1e6bef59.js.map": "/static/js/main.1e6bef59.js.map",
+    "453.0a828dc6.chunk.js.map": "/static/js/453.0a828dc6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.710f562e.css",
-    "static/js/main.078ef8b4.js"
+    "static/css/main.148d7c54.css",
+    "static/js/main.1e6bef59.js"
   ]
 }
