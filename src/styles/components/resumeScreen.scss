@@ -260,61 +260,6 @@
     }
 }
 
-// @media print {
-//     @page {
-//         margin: 0;
-//         size: A4;
-//     }
-
-//     html, body {
-//         margin: 0;
-//         padding: 0;
-//         width: 100%;
-//         height: 100%;
-//     }
-
-//     .resume {
-//         &-container {
-//             padding: 1cm;
-//             width: 100vw;
-//             height: 100vh;
-//             margin: 0;
-//             display: grid;
-//             grid-template-columns: 30% 70%;
-//             //gap: 2rem;
-//             box-sizing: border-box;
-//         }
-
-//         &-left-column,
-//         &-right-column {
-//             height: 100%;
-//         }
-
-//         &-section {
-//             break-inside: avoid;
-//             page-break-inside: avoid;
-//         }
-//     }
-
-//     // Hide non-essential elements
-//     .navigation,
-//     .footer,
-//     .landing-intro-shortcuts {
-//         display: none !important;
-//     }
-
-//     // Ensure proper text contrast for printing
-//     p, li, h1, h2, h3 {
-//         color: black !important;
-//         font-size: .9rem !important;
-//     }
-
-//     h2 {
-//         //font-size: 1.5rem !important;
-
-//     }
-// }
-
 
 @media print {
     @page {
