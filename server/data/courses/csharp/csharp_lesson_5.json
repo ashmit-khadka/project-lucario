@@ -1,0 +1,204 @@
+{
+  "title": "\uD83C\uDF10 .NET Ecosystem & Runtime",
+  "description": "Understand the .NET runtime, its components, configuration, dependency injection, and the evolving platform landscape.",
+  "sections": [
+    {
+      "title": "1. \u2699\ufe0f CLR & GC (Common Language Runtime and Garbage Collection)",
+      "content": [
+        {
+          "type": "text",
+          "content": "The CLR is the execution engine for .NET. It provides services like memory management, type safety, and garbage collection."
+        },
+        {
+          "type": "list",
+          "items": [
+            "GC automatically reclaims unused memory.",
+            "GC generations (0, 1, 2) optimize performance.",
+            "Finalizers and `IDisposable` help manage unmanaged resources."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Dispose of unmanaged resources using `IDisposable` and `using` blocks.",
+            "Avoid unnecessary allocations in tight loops.",
+            "Understand finalization and suppression via `GC.SuppressFinalize`."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83e\udde0 JIT vs AOT Compilation",
+      "content": [
+        {
+          "type": "text",
+          "content": "JIT (Just-In-Time) compiles code at runtime, while AOT (Ahead-Of-Time) compiles code before execution."
+        },
+        {
+          "type": "list",
+          "items": [
+            "JIT enables runtime optimizations.",
+            "AOT improves startup time and can reduce memory usage.",
+            "AOT is used in native apps (e.g., iOS, Blazor WebAssembly)."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use AOT for startup-critical or size-constrained environments.",
+            "Rely on JIT for general-purpose desktop/server apps for optimized execution.",
+            "Profile and benchmark performance to decide between them."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83d\udce6 Assemblies & Metadata",
+      "content": [
+        {
+          "type": "text",
+          "content": "Assemblies are compiled code libraries (.dll or .exe) with metadata and IL (Intermediate Language) code."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Metadata includes type definitions, version info, and security permissions.",
+            "Reflection allows access to metadata at runtime.",
+            "Strong-named assemblies are signed and versioned."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Organize code into reusable assemblies.",
+            "Avoid breaking changes when updating shared assemblies.",
+            "Use strong-naming when required (e.g., GAC or security-sensitive apps)."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \ud83d\udce6 NuGet Package Management",
+      "content": [
+        {
+          "type": "text",
+          "content": "NuGet is the official package manager for .NET, enabling reuse and sharing of libraries."
+        },
+        {
+          "type": "code",
+          "content": "dotnet add package Newtonsoft.Json"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use semver ranges in `.csproj` or `packages.config` to manage dependencies.",
+            "Audit packages for vulnerabilities.",
+            "Avoid adding unused or overly large packages."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. \u2699\ufe0f Configuration: appsettings.json & IConfiguration",
+      "content": [
+        {
+          "type": "text",
+          "content": "Configuration in .NET is typically handled via `appsettings.json` and accessed through the `IConfiguration` interface."
+        },
+        {
+          "type": "code",
+          "content": "builder.Configuration.GetSection(\"AppSettings\").Get<AppSettings>();"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use hierarchical JSON and bind to typed classes.",
+            "Use environment-specific `appsettings.{Environment}.json`.",
+            "Do not store secrets in configuration files; use Secret Manager or environment variables."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "6. \ud83e\udde9 Dependency Injection with IServiceCollection",
+      "content": [
+        {
+          "type": "text",
+          "content": ".NET has built-in support for dependency injection via `IServiceCollection`."
+        },
+        {
+          "type": "code",
+          "content": "builder.Services.AddScoped<IMyService, MyService>();"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Register services with correct lifetimes: Singleton, Scoped, or Transient.",
+            "Inject dependencies via constructor injection.",
+            "Avoid service locator patterns."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "7. \ud83c\udd9a .NET Standard vs .NET Core vs .NET Framework",
+      "content": [
+        {
+          "type": "text",
+          "content": "Understand the differences between major .NET platforms:"
+        },
+        {
+          "type": "list",
+          "items": [
+            ".NET Framework: Windows-only, legacy systems.",
+            ".NET Core: Cross-platform, modern apps (now unified under .NET 5+).",
+            ".NET Standard: A specification for maximum compatibility between platforms."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Target .NET 6+ or later for new development.",
+            "Use .NET Standard for shared libraries that support both Framework and Core.",
+            "Migrate old .NET Framework apps where feasible."
+          ]
+        }
+      ]
+    }
+  ]
+}

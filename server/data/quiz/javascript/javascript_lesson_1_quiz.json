@@ -1,0 +1,26 @@
+[
+    {
+      "type": "multiple-choice",
+      "question": "What will the following code output?",
+      "code": "console.log(typeof null);",
+      "options": [
+        "'object'",
+        "'null'",
+        "'undefined'",
+        "'string'"
+      ],
+      "answer": "'object'"
+    },
+    {
+      "type": "true-false",
+      "question": "Does the following code throw an error?",
+      "code": "const obj = Object.freeze({ name: \"Alice\" });\nobj.name = \"Bob\";",
+      "answer": true
+    },
+    {
+      "type": "fill-in-the-blank",
+      "question": "What is the output of the following code?",
+      "code": "function greet(name) {\n  return `Hello, ${name}!`;\n}\nconsole.log(greet(\"Alice\"));",
+      "answer": "Hello, Alice!"
+    }
+  ]

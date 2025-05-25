@@ -1,0 +1,38 @@
+[
+    {
+        "type": "multiple-choice",
+        "question": "What is the capital of France?",
+        "options": [
+            "Berlin",
+            "Madrid",
+            "Paris",
+            "Rome"
+        ],
+        "answer": "Paris",
+        "explaination": "Paris is the capital city of France, known for its art, fashion, and culture."
+    },
+    {
+        "type": "true-false",
+        "question": "The Earth is flat.",
+        "answer": false,
+        "explaination": "The Earth is an oblate spheroid, meaning it is mostly spherical but slightly flattened at the poles."  
+    },
+    {
+        "type": "fill-in-the-blank",
+        "question": "The chemical symbol for water is _____.",
+        "answer": "H2O",
+        "explaination": "The chemical symbol for water is H2O, which indicates that each molecule of water is made up of two hydrogen atoms and one oxygen atom."
+    },
+    {
+        "type": "multiple-choice",
+        "question": "Which planet is known as the Red Planet?",
+        "options": [
+            "Earth",
+            "Mars",
+            "Jupiter",
+            "Saturn"
+        ],
+        "answer": "Mars",
+        "explaination": "Mars is often referred to as the Red Planet due to its reddish appearance, which is caused by iron oxide (rust) on its surface."
+    }
+]

@@ -1,0 +1,214 @@
+{
+  "title": "\uD83D\uDEE0\uFE0F Advanced Language Features",
+  "description": "Master powerful features in C# such as LINQ, delegates, pattern matching, records, and memory-optimized types.",
+  "sections": [
+    {
+      "title": "1. \ud83d\udd0d LINQ: Select, Where, GroupBy, Join, Aggregate",
+      "content": [
+        {
+          "type": "text",
+          "content": "LINQ (Language Integrated Query) allows querying data in a readable and declarative way."
+        },
+        {
+          "type": "code",
+          "content": "var adults = people.Where(p => p.Age >= 18).Select(p => p.Name);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Chain methods like `Select`, `Where`, and `OrderBy` for clarity.",
+            "Use `GroupBy` and `Aggregate` for summary operations.",
+            "Prefer LINQ for readability and expressiveness."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83c\udfaf Delegates & Events: delegate, Action, Func, custom events",
+      "content": [
+        {
+          "type": "text",
+          "content": "Delegates are type-safe references to methods. Events are a way to publish/subscribe to actions."
+        },
+        {
+          "type": "code",
+          "content": "public delegate void Notify();\npublic event Notify OnNotify;\n\nAction<string> log = msg => Console.WriteLine(msg);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `Action`, `Func`, and `Predicate` instead of custom delegate types where appropriate.",
+            "Use events to signal state changes or user actions.",
+            "Keep events private or protected and expose `+=`/`-=` handlers."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \u26a1 Lambda Expressions: Inline Delegates",
+      "content": [
+        {
+          "type": "text",
+          "content": "Lambdas provide concise syntax to create inline functions."
+        },
+        {
+          "type": "code",
+          "content": "var squares = numbers.Select(n => n * n);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use lambdas to simplify delegate usage.",
+            "Keep lambdas short and clear.",
+            "Avoid complex logic in lambdas; extract into named methods if needed."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \u2795 Extension Methods",
+      "content": [
+        {
+          "type": "text",
+          "content": "Extension methods let you 'add' methods to existing types without modifying their code."
+        },
+        {
+          "type": "code",
+          "content": "public static class StringExtensions\n{\n    public static bool IsNullOrEmpty(this string s) => string.IsNullOrEmpty(s);\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use extension methods to simplify common operations.",
+            "Avoid polluting global namespaces with too many extensions.",
+            "Use meaningful method names and keep logic minimal."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. \ud83c\udfad Tuples",
+      "content": [
+        {
+          "type": "text",
+          "content": "Tuples allow grouping multiple values in a single lightweight structure."
+        },
+        {
+          "type": "code",
+          "content": "var result = (Name: \"Alice\", Age: 30);\nConsole.WriteLine(result.Name);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use tuples for returning multiple values from methods.",
+            "Prefer named elements for readability.",
+            "Use tuples over custom types for simple, temporary data structures."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "6. \ud83e\udde0 Pattern Matching: switch, is, when",
+      "content": [
+        {
+          "type": "text",
+          "content": "Pattern matching adds expressive power to C#'s control flow and type checks."
+        },
+        {
+          "type": "code",
+          "content": "if (obj is string s && s.Length > 5)\n    Console.WriteLine($\"Long string: {s}\");"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `is` for type checks and guards.",
+            "Use `switch` with pattern matching to simplify complex conditionals.",
+            "Leverage `when` clauses for filtering within patterns."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "7. \ud83e\uddea Span<T> and Memory<T>",
+      "content": [
+        {
+          "type": "text",
+          "content": "Span<T> and Memory<T> allow fast, memory-safe access to slices of data without allocations."
+        },
+        {
+          "type": "code",
+          "content": "Span<int> span = stackalloc int[5];\nspan[0] = 42;"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `Span<T>` for high-performance memory operations.",
+            "Use only within methods to avoid unsafe captures.",
+            "Use `ReadOnlySpan<T>` for read-only scenarios."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "8. \ud83e\uddfe Records & Init-only Setters",
+      "content": [
+        {
+          "type": "text",
+          "content": "Records are immutable reference types ideal for data models. `init` allows setting properties only during object creation."
+        },
+        {
+          "type": "code",
+          "content": "public record User(string Name, int Age);\n\nvar user = new User(\"Alice\", 30);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `record` for immutable data.",
+            "Use `init` for safe initialization without full immutability.",
+            "Prefer records over classes for DTOs and small value objects."
+          ]
+        }
+      ]
+    }
+  ]
+}

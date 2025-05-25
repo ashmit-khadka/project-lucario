@@ -1,0 +1,181 @@
+{
+  "title": "\uD83E\uDDEC Object-Oriented Programming (OOP)",
+  "description": "Explore the core principles of object-oriented programming in C#, including encapsulation, inheritance, polymorphism, and SOLID principles.",
+  "sections": [
+    {
+      "title": "1. \ud83e\uddf1 Classes and Objects",
+      "content": [
+        {
+          "type": "text",
+          "content": "In C#, a class defines a blueprint for objects. An object is an instance of a class."
+        },
+        {
+          "type": "code",
+          "content": "public class Person\n{\n    public string Name;\n    public void Greet() => Console.WriteLine($\"Hello, I'm {Name}\");\n}\n\nvar person = new Person { Name = \"Alice\" };\nperson.Greet();"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use PascalCase for class names and properties.",
+            "Keep classes focused on a single responsibility.",
+            "Encapsulate data with properties instead of public fields."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83d\udd10 Encapsulation: Access Modifiers",
+      "content": [
+        {
+          "type": "text",
+          "content": "Encapsulation hides internal object details using access modifiers."
+        },
+        {
+          "type": "list",
+          "items": [
+            "`public`: Accessible everywhere.",
+            "`private`: Accessible only within the class.",
+            "`protected`: Accessible within the class and its derived classes.",
+            "`internal`: Accessible within the same assembly."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Example: Using Private Fields",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "public class Account\n{\n    private decimal balance;\n    public void Deposit(decimal amount)\n    {\n        if (amount > 0) balance += amount;\n    }\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Make fields `private` and expose data with public properties.",
+            "Use encapsulation to validate and control access to internal state."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83e\uddec Inheritance: base, virtual, override",
+      "content": [
+        {
+          "type": "text",
+          "content": "Inheritance allows one class to inherit members from another class."
+        },
+        {
+          "type": "code",
+          "content": "public class Animal\n{\n    public virtual void Speak() => Console.WriteLine(\"Animal sound\");\n}\n\npublic class Dog : Animal\n{\n    public override void Speak() => Console.WriteLine(\"Woof\");\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `virtual` and `override` to enable polymorphic behavior.",
+            "Avoid deep inheritance trees.",
+            "Call `base.Method()` when extending base functionality."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \ud83c\udf00 Polymorphism: Interfaces and Abstract Classes",
+      "content": [
+        {
+          "type": "text",
+          "content": "Polymorphism allows different classes to be treated through the same interface."
+        },
+        {
+          "type": "code",
+          "content": "public interface IShape { double Area(); }\n\npublic class Circle : IShape\n{\n    public double Radius;\n    public double Area() => Math.PI * Radius * Radius;\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use interfaces to define contracts for behavior.",
+            "Use abstract classes for shared implementation.",
+            "Prefer interface-based programming for flexibility."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. \u2696\ufe0f Composition vs Inheritance",
+      "content": [
+        {
+          "type": "text",
+          "content": "Composition means using other classes via fields/properties instead of inheriting from them."
+        },
+        {
+          "type": "code",
+          "content": "public class Engine { }\npublic class Car {\n    private Engine engine = new Engine();\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Favor composition over inheritance when possible.",
+            "Use inheritance only when there is a clear \u201cis-a\u201d relationship.",
+            "Use composition to promote flexibility and reduce coupling."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "6. \ud83e\uddf1 SOLID Principles",
+      "content": [
+        {
+          "type": "text",
+          "content": "SOLID is an acronym for five design principles for maintainable and scalable OOP systems."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**S** - Single Responsibility: One class = one job.",
+            "**O** - Open/Closed: Open for extension, closed for modification.",
+            "**L** - Liskov Substitution: Subtypes should be replaceable without breaking behavior.",
+            "**I** - Interface Segregation: Prefer small, specific interfaces.",
+            "**D** - Dependency Inversion: Depend on abstractions, not concretions."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Follow SRP by splitting classes with multiple responsibilities.",
+            "Use interfaces and base classes to extend without modifying existing code.",
+            "Break down large interfaces into smaller, focused ones."
+          ]
+        }
+      ]
+    }
+  ]
+}

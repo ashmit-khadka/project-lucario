@@ -1,0 +1,218 @@
+{
+    "title": "🛠 Intermediate TypeScript Concepts",
+    "description": "Dive deeper into TypeScript with powerful intermediate features like generics, enums, type assertions, modules, compatibility, and utility types.",
+    "sections": [
+      {
+        "title": "8. 🧰 Generics",
+        "content": [
+          {
+            "type": "text",
+            "content": "Generics allow you to write reusable code while keeping type safety. You can define generic functions, classes, and interfaces using `<T>`, and constrain them with `extends`. Default types improve flexibility."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Use `<T>` to define a generic placeholder.",
+              "Constrain generics with `<T extends Constraint>`.",
+              "Set default types with `<T = DefaultType>`."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Example: Generics (Do)",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "function identity<T>(value: T): T {\n    return value;\n}\n\ninterface ApiResponse<T> {\n    data: T;\n    success: boolean;\n}\n\nfunction wrapInArray<T = string>(value: T): T[] {\n    return [value];\n}\n\nfunction printLength<T extends { length: number }>(item: T): void {\n    console.log(item.length);\n}"
+          },
+          {
+            "type": "heading",
+            "content": "Example: Generics (Don't)",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "function identity(value: any): any {\n    return value; // Loses type safety\n}\n\nfunction printLength(item: any) {\n    console.log(item.length); // No guarantee item has a 'length' property\n}"
+          }
+        ]
+      },
+      {
+        "title": "9. 🧰 Enums and Literal Types",
+        "content": [
+          {
+            "type": "text",
+            "content": "Enums and literal types allow you to define clear sets of values. TypeScript supports string and numeric enums, but they behave differently. Prefer literal types for simpler and safer alternatives."
+          },
+          {
+            "type": "list",
+            "items": [
+              "`enum` defines a set of named constants.",
+              "`const enum` is inlined at compile time for performance.",
+              "Use union literals (`'small' | 'medium' | 'large'`) for lightweight alternatives."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Example: Enums & Literal Types (Do)",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "enum Status {\n    Success = \"success\",\n    Error = \"error\",\n}\n\nconst enum Direction {\n    Up,\n    Down,\n    Left,\n    Right\n}\n\ntype Size = \"small\" | \"medium\" | \"large\";\n\nfunction printSize(size: Size) {\n    console.log(\"Size:\", size);\n}"
+          },
+          {
+            "type": "heading",
+            "content": "Example: Enums & Literal Types (Don't)",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "enum LooseEnum {\n    A,\n    B,\n    C\n}\n\nfunction handle(status: LooseEnum) {\n    console.log(status); // Could be any number (0, 1, 2), not very readable\n}"
+          }
+        ]
+      },
+      {
+        "title": "10. 🧰 Type Assertion & Casting",
+        "content": [
+          {
+            "type": "text",
+            "content": "Type assertions let you tell TypeScript to treat a value as a different type. Use `as Type` or `<Type>value`. You can also use the non-null assertion operator (`!`) when you're sure a value isn’t null or undefined."
+          },
+          {
+            "type": "list",
+            "items": [
+              "`as Type` is the preferred syntax.",
+              "Use `<Type>` in .ts files (avoid in .tsx).",
+              "Non-null assertions (`!`) should be used sparingly and carefully."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Example: Type Assertion (Do)",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "const input = document.querySelector(\"input\") as HTMLInputElement;\ninput.value = \"Hello\";\n\nconst user = {} as { id: number; name: string };\nuser.id = 1;\nuser.name = \"Alice\";\n"
+          },
+          {
+            "type": "heading",
+            "content": "Example: Type Assertion (Don't)",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "const el = document.querySelector(\"input\")!;\nel.value = 123; // Risky: assumes el exists and has 'value'\n\nconst data = \"not a number\" as unknown as number; // Avoid double assertions\n"
+          }
+        ]
+      },
+      {
+        "title": "11. 🧰 Modules & Namespaces",
+        "content": [
+          {
+            "type": "text",
+            "content": "Modules are the modern standard for organizing code. Avoid using namespaces in module-based code. Use `import` and `export` to structure reusable logic."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Use `export` to expose functionality.",
+              "Use `import` to bring in external modules.",
+              "Avoid namespaces in module-based environments."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Example: Modules (Do)",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "// mathUtils.ts\nexport function add(a: number, b: number): number {\n    return a + b;\n}\n\n// main.ts\nimport { add } from \"./mathUtils\";\nconsole.log(add(2, 3));"
+          },
+          {
+            "type": "heading",
+            "content": "Example: Namespaces (Don't)",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "// Avoid in modern codebases\nnamespace MathUtils {\n    export function subtract(a: number, b: number): number {\n        return a - b;\n    }\n}\n"
+          }
+        ]
+      },
+      {
+        "title": "12. 🧰 Type Compatibility",
+        "content": [
+          {
+            "type": "text",
+            "content": "TypeScript uses structural typing, meaning types are compatible if their structure matches. It's important to understand excess property checks and how variance works."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Structural typing compares shape, not names.",
+              "Excess property checks apply when passing object literals.",
+              "Covariance and contravariance affect assignability in functions."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Example: Type Compatibility (Do)",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "type Point2D = { x: number; y: number; };\ntype Point3D = { x: number; y: number; z: number; };\n\nconst p3d: Point3D = { x: 1, y: 2, z: 3 };\nconst p2d: Point2D = p3d; // OK due to structural typing\n\nfunction logMessage(msg: string | number): void {\n    console.log(msg);\n}"
+          },
+          {
+            "type": "heading",
+            "content": "Example: Type Compatibility (Don't)",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "function logStrings(callback: (val: string) => void) {\n    callback(\"Hello\");\n}\n\nconst callbackWithAny = (val: any) => console.log(val);\nlogStrings(callbackWithAny); // Works, but unsafe\n\n// Excess property check issue\ntype Person = { name: string; age: number };\nconst person: Person = { name: \"Alice\", age: 30, email: \"alice@example.com\" }; // Error: extra property\n"
+          }
+        ]
+      },
+      {
+        "title": "13. 🧰 Type Utilities",
+        "content": [
+          {
+            "type": "text",
+            "content": "TypeScript provides built-in utility types to transform existing types: `Partial`, `Pick`, `Omit`, `Readonly`, and others. You can also create custom utility types using conditional and mapped types."
+          },
+          {
+            "type": "list",
+            "items": [
+              "`Partial<T>` makes all properties optional.",
+              "`Pick<T, K>` selects a subset of properties.",
+              "`Omit<T, K>` removes specific properties.",
+              "`Readonly<T>` makes properties immutable.",
+              "Custom utility types are powerful for abstraction."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Example: Utility Types (Do)",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "type User = {\n    id: number;\n    name: string;\n    email: string;\n};\n\ntype PartialUser = Partial<User>;\ntype UserNameOnly = Pick<User, \"name\">;\ntype UserWithoutEmail = Omit<User, \"email\">;\ntype ReadonlyUser = Readonly<User>;\n\n// Custom utility type\ntype Nullable<T> = {\n    [K in keyof T]: T[K] | null;\n};\n"
+          },
+          {
+            "type": "heading",
+            "content": "Example: Utility Types (Don't)",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "type User = {\n    id: number;\n    name: string;\n};\n\n// Avoid manually redefining utilities\ntype ManualPartialUser = {\n    id?: number;\n    name?: string;\n};\n\n// Avoid overly generic custom types\ntype Weird<T> = any; // Defeats type safety\n"
+          }
+        ]
+      }
+    ]
+  }

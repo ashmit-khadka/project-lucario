@@ -45,43 +45,6 @@
 
 
 
-.floating-nav {
-    position: fixed;
-    top: 100px;
-    left: 20px;
-    width: 180px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        li {
-            margin-bottom: 1rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-
-            &:hover {
-                background-color: #e0e0e0;
-            }
-
-            &.active {
-                background-color: #007bff;
-                color: white;
-                font-weight: bold;
-            }
-        }
-    }
-}
-
 
 
 .learn-skill-screen {
@@ -98,7 +61,7 @@
 
     .lesson-tiles {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         gap: 2rem;
     }
 
@@ -115,12 +78,17 @@
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
+        
 
         h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: $font-size-lg;
+            //margin-bottom: 1rem;
             color: $color-font-primary-lighter;
             font-weight: bold;
+        }
+        p {
+            color: $color-font-primary-lighter;
+            margin-bottom: 0.3rem;
         }
 
         ul {
@@ -128,9 +96,23 @@
             padding: 0;
 
             li {
-                color: $color-font-primary-light;
+                color: $color-font-primary-lighter;
                 margin-bottom: 0.3rem;
             }
+        }
+
+        img {
+            width: 2rem;
+            height: 2rem; 
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .lesson-tile-header {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 1rem;
         }
     }
 }

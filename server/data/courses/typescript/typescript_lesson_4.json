@@ -1,0 +1,112 @@
+{
+    "title": "🔁 Integration & Ecosystem",
+    "description": "Learn how TypeScript integrates with JavaScript projects, tooling, and major frameworks like React, Vue, and Node.js.",
+    "sections": [
+      {
+        "title": "19. 🌐 Working with JavaScript",
+        "content": [
+          {
+            "type": "text",
+            "content": "TypeScript can be gradually introduced into existing JavaScript projects. JSDoc comments allow you to use TypeScript's type system without fully converting files to `.ts`."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Rename `.js` files to `.ts` incrementally.",
+              "Use `//@ts-check` to enable type checking in JS files.",
+              "JSDoc comments can describe types and parameters in JS files."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Example: JSDoc in JavaScript (Do)",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "// @ts-check\n\n/**\n * Adds two numbers\n * @param {number} a\n * @param {number} b\n * @returns {number}\n */\nfunction add(a, b) {\n    return a + b;\n}\n"
+          },
+          {
+            "type": "heading",
+            "content": "Example: Gradual Typing (Don't)",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "// Avoid disabling type checking or skipping types entirely\n// @ts-nocheck\n\nfunction greet(user) {\n    return user.toUpperCase(); // Runtime error if user is not a string\n}\n"
+          }
+        ]
+      },
+      {
+        "title": "20. 🧪 Tooling & Linting",
+        "content": [
+          {
+            "type": "text",
+            "content": "Using proper tooling improves code quality, consistency, and developer experience. ESLint and Prettier help enforce rules and format code, while `tsc` and `ts-node` run and type-check TypeScript files."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Use `@typescript-eslint` for TypeScript-specific lint rules.",
+              "Prettier ensures consistent formatting across teams.",
+              "`tsc` performs static type checking.",
+              "`ts-node` allows running `.ts` files directly without compiling."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Example: ESLint + Prettier + tsc (Do)",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "// .eslintrc.js\nmodule.exports = {\n    parser: \"@typescript-eslint/parser\",\n    extends: [\n        \"eslint:recommended\",\n        \"plugin:@typescript-eslint/recommended\",\n        \"prettier\"\n    ]\n};\n\n// Command-line usage\nnpx tsc --noEmit\nnpx ts-node src/index.ts\n"
+          },
+          {
+            "type": "heading",
+            "content": "Example: Tooling (Don't)",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "// Don't ignore type errors with 'any' or skip linting\nconst user: any = getUser(); // Type safety lost\n\n// Not using a formatter leads to inconsistent style\nfunction sayHello( name:string ){ console.log( name ) }\n"
+          }
+        ]
+      },
+      {
+        "title": "21. 🚚 TypeScript with Frameworks",
+        "content": [
+          {
+            "type": "text",
+            "content": "TypeScript integrates seamlessly with modern frameworks. Use it to type props and state in React, define component interfaces in Vue, and build safe APIs in Node.js."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Use generics to type React components and hooks.",
+              "Use `defineProps` and `defineEmits` in Vue 3 for type safety.",
+              "Leverage type-safe APIs in Node.js using Express or tRPC."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Example: React + TypeScript (Do)",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "type ButtonProps = {\n    label: string;\n    onClick: () => void;\n};\n\nconst Button: React.FC<ButtonProps> = ({ label, onClick }) => (\n    <button onClick={onClick}>{label}</button>\n);\n\n// Vue 3 example (with script setup)\n/*\n<script setup lang=\"ts\">\ndefineProps<{ msg: string }>();\n</script>\n*/\n"
+          },
+          {
+            "type": "heading",
+            "content": "Example: Framework Integration (Don't)",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "// Don't skip typing props\nconst Card = (props) => {\n    return <div>{props.title}</div>; // No type safety\n}\n\n// Avoid using 'any' in API handlers\napp.get(\"/user\", (req: any, res: any) => {\n    res.send(\"User\");\n});\n"
+          }
+        ]
+      }
+    ]
+  }

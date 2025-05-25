@@ -1,0 +1,126 @@
+{
+  "title": "\uD83C\uDFD7\uFE0F Common Frameworks/Libraries",
+  "description": "Explore essential frameworks and libraries in the .NET ecosystem, including ASP.NET Core, Entity Framework Core, SignalR, and gRPC.",
+  "sections": [
+    {
+      "title": "1. \ud83c\udf10 ASP.NET Core (Web API, MVC, Razor Pages)",
+      "content": [
+        {
+          "type": "text",
+          "content": "ASP.NET Core is a cross-platform framework for building modern web applications and APIs."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Web API**: Build RESTful services.",
+            "**MVC**: Separate concerns using Model-View-Controller.",
+            "**Razor Pages**: Page-focused web UI development."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "[HttpGet(\"/users/{id}\")]\npublic IActionResult GetUser(int id) => Ok(_repo.Find(id));"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use routing attributes for clarity.",
+            "Apply `[ApiController]` for automatic model validation.",
+            "Use middleware for cross-cutting concerns (e.g., auth, error handling)."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83e\uddf1 Entity Framework Core",
+      "content": [
+        {
+          "type": "text",
+          "content": "EF Core is an ORM for working with databases using C# objects and LINQ."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `DbContext` to manage entities and database access.",
+            "Use LINQ to query data.",
+            "Use Migrations to evolve your schema."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "var users = _context.Users.Where(u => u.IsActive).ToList();"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `AsNoTracking` for read-only queries.",
+            "Abstract database logic behind a repository or service layer.",
+            "Apply migrations incrementally and verify them locally."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83d\udce1 SignalR (Real-time Communication)",
+      "content": [
+        {
+          "type": "text",
+          "content": "SignalR enables real-time communication between client and server using WebSockets or fallbacks."
+        },
+        {
+          "type": "code",
+          "content": "await Clients.All.SendAsync(\"ReceiveMessage\", user, message);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use strongly typed hubs where possible.",
+            "Handle connection events and cleanups properly.",
+            "Scale with backplanes (e.g., Redis) in distributed environments."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \u26a1 gRPC (High-Performance RPC)",
+      "content": [
+        {
+          "type": "text",
+          "content": "gRPC is a contract-first, binary protocol-based RPC framework suitable for high-performance microservices."
+        },
+        {
+          "type": "code",
+          "content": "rpc GetUser(GetUserRequest) returns (User);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `.proto` files to define service contracts.",
+            "Use gRPC for internal microservices communication when speed matters.",
+            "Avoid gRPC over browsers unless using gRPC-Web."
+          ]
+        }
+      ]
+    }
+  ]
+}

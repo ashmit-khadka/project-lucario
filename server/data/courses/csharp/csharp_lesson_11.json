@@ -1,0 +1,141 @@
+{
+  "title": "\uD83D\uDD10 Security",
+  "description": "Understand key security practices in .NET applications including authentication, authorization, data protection, and input validation.",
+  "sections": [
+    {
+      "title": "1. \ud83d\udd10 Authentication: JWT, OAuth2, Identity",
+      "content": [
+        {
+          "type": "text",
+          "content": "Authentication verifies user identity. ASP.NET Core supports JWT, OAuth2, and Identity for authentication."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**JWT**: Common for APIs, uses tokens signed with a secret or certificate.",
+            "**OAuth2**: Delegated access using access tokens (e.g., Google login).",
+            "**ASP.NET Identity**: Full-featured identity management system."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)\n    .AddJwtBearer(options => { /* config */ });"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Secure JWT tokens with strong keys and short expiry times.",
+            "Use HTTPS to transmit tokens securely.",
+            "Store sensitive config values in environment variables or secrets."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83d\udd10 Authorization: Roles and Policies",
+      "content": [
+        {
+          "type": "text",
+          "content": "Authorization ensures that authenticated users have permission to perform actions."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Role-based: `[Authorize(Roles = \"Admin\")]`.",
+            "Policy-based: Define policies and use `[Authorize(Policy = \"CanEdit\")]`."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "services.AddAuthorization(options =>\n{\n    options.AddPolicy(\"AdminOnly\", policy => policy.RequireRole(\"Admin\"));\n});"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use policy-based authorization for complex logic.",
+            "Minimize hardcoded roles throughout the codebase.",
+            "Log access control failures for auditing."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83d\udd10 Data Protection: Hashing and Encryption",
+      "content": [
+        {
+          "type": "text",
+          "content": "Data protection ensures that sensitive data (like passwords) is not exposed or tampered with."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `PasswordHasher<T>` to hash passwords.",
+            "Use `IDataProtector` for symmetric encryption.",
+            "Avoid rolling your own crypto algorithms."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "var protector = _provider.CreateProtector(\"MyApp\");\nvar protectedData = protector.Protect(\"secret\");"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Always salt and hash passwords before storage.",
+            "Use data protection APIs for local secrets.",
+            "Rotate keys periodically and audit access."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \ud83d\udee1\ufe0f Input Validation and Anti-XSS/SQL Injection Techniques",
+      "content": [
+        {
+          "type": "text",
+          "content": "Validate all user inputs and prevent code injection attacks such as SQL Injection and XSS."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use model validation and data annotations.",
+            "Use parameterized queries or ORMs to avoid SQL injection.",
+            "Use built-in encoders (`HtmlEncoder`, `JavaScriptEncoder`)."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "[Required, StringLength(100)] public string Name { get; set; }"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Never trust user input; always validate and sanitize.",
+            "Avoid string interpolation in SQL queries.",
+            "Use Anti-XSS libraries and content security policies (CSP)."
+          ]
+        }
+      ]
+    }
+  ]
+}

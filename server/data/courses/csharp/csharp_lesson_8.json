@@ -1,0 +1,144 @@
+{
+  "title": "\uD83D\uDCC9 Error Handling & Logging",
+  "description": "Master robust error handling and effective logging strategies using try/catch blocks, custom exceptions, structured logging, and centralized error handling.",
+  "sections": [
+    {
+      "title": "1. \u26a0\ufe0f try, catch, finally",
+      "content": [
+        {
+          "type": "text",
+          "content": "The `try`, `catch`, and `finally` blocks handle runtime exceptions and ensure cleanup code runs."
+        },
+        {
+          "type": "code",
+          "content": "try\n{\n    var result = DoSomething();\n}\ncatch (Exception ex)\n{\n    Console.WriteLine(ex.Message);\n}\nfinally\n{\n    Cleanup();\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Catch the most specific exceptions first.",
+            "Use `finally` for cleanup operations.",
+            "Avoid empty catch blocks or swallowing exceptions silently."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \u270b Custom Exceptions",
+      "content": [
+        {
+          "type": "text",
+          "content": "Create custom exceptions to represent domain-specific errors."
+        },
+        {
+          "type": "code",
+          "content": "public class NotFoundException : Exception\n{\n    public NotFoundException(string message) : base(message) {}\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Inherit from `Exception` or specific subclasses like `ApplicationException`.",
+            "Use meaningful names and messages.",
+            "Throw custom exceptions for expected error scenarios."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83d\udcdd Logging Frameworks: Serilog, NLog, Microsoft.Extensions.Logging",
+      "content": [
+        {
+          "type": "text",
+          "content": "Logging frameworks help capture application events and errors in a consistent, configurable way."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Serilog: Structured, sink-based logging system.",
+            "NLog: Flexible and powerful for file-based logs.",
+            "Microsoft.Extensions.Logging: Built-in .NET abstraction."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "Log.Information(\"User {UserId} logged in\", userId);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use dependency injection to inject `ILogger<T>`.",
+            "Log at appropriate levels: Info, Warning, Error, Critical.",
+            "Avoid logging sensitive data (e.g., passwords)."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \ud83e\uddfe Structured Logging",
+      "content": [
+        {
+          "type": "text",
+          "content": "Structured logging captures context and properties in logs to enable better filtering and analysis."
+        },
+        {
+          "type": "code",
+          "content": "logger.LogInformation(\"Order {OrderId} placed by {User}\", order.Id, user.Name);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use structured logging to log named placeholders.",
+            "Capture contextual data for better debugging.",
+            "Use JSON or similar formats for external log aggregators."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. \ud83c\udf10 Global Exception Handling (Middleware in ASP.NET Core)",
+      "content": [
+        {
+          "type": "text",
+          "content": "Centralized exception handling ensures unhandled errors are logged and converted into user-friendly responses."
+        },
+        {
+          "type": "code",
+          "content": "app.UseExceptionHandler(errorApp =>\n{\n    errorApp.Run(async context =>\n    {\n        var error = context.Features.Get<IExceptionHandlerFeature>();\n        logger.LogError(error.Error, \"Unhandled exception\");\n        context.Response.StatusCode = 500;\n    });\n});"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `UseExceptionHandler` in production environments.",
+            "Log unhandled exceptions with stack traces.",
+            "Return standardized error responses to clients."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+    "title": "🚀 Advanced React Topics",
+    "description": "Take your React skills to the next level with advanced tools like state management libraries, SSR, performance patterns, testing, TypeScript integration, and accessibility best practices.",
+    "sections": [
+      {
+        "title": "12. State Management Libraries",
+        "content": [
+          {
+            "type": "text",
+            "content": "For complex or global state, libraries like Redux Toolkit, Zustand, Recoil, or MobX provide alternatives to Context API. Each offers unique tradeoffs in scalability and simplicity."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Use Redux Toolkit for large apps that require middleware and dev tools.",
+              "Zustand and Jotai offer minimal APIs for smaller apps.",
+              "Context is best for low-frequency, simple global state."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Do: Use Redux Toolkit for Structured Global State",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "// Redux Toolkit setup\nconst counterSlice = createSlice({\n  name: \"counter\",\n  initialState: 0,\n  reducers: {\n    increment: (state) => state + 1\n  }\n});\n\nconst store = configureStore({ reducer: { counter: counterSlice.reducer } });\n"
+          },
+          {
+            "type": "heading",
+            "content": "Don't: Use Context as a Full State Manager",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "// ❌ Context for large, high-frequency updates\nconst CounterContext = createContext();\n\nfunction App() {\n  const [count, setCount] = useState(0); // Unscalable for deep components\n  return <CounterContext.Provider value={{ count, setCount }} />;\n}"
+          }
+        ]
+      },
+      {
+        "title": "13. Performance Optimization",
+        "content": [
+          {
+            "type": "text",
+            "content": "Optimize performance by memoizing components, functions, and values. Avoid unnecessary re-renders and use virtualization for large lists."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Use `React.memo` to memoize functional components.",
+              "`useMemo` caches expensive values.",
+              "`useCallback` prevents function recreation.",
+              "Use virtualization libraries for long lists."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Do: Use Memoization to Prevent Re-Renders",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "const ExpensiveComponent = React.memo(({ value }) => {\n  return <p>Rendered with {value}</p>;\n});\n\nconst MemoizedValue = useMemo(() => computeHeavyTask(data), [data]);\nconst stableFn = useCallback(() => console.log(\"Clicked\"), []);\n"
+          },
+          {
+            "type": "heading",
+            "content": "Don't: Recompute or Rerender Unnecessarily",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "const onClick = () => console.log(\"Clicked\");\n// ❌ New function every render\n\nconst slow = computeHeavyTask(data); // ❌ Recalculates every render\n"
+          }
+        ]
+      },
+      {
+        "title": "14. Server-Side Rendering (SSR) & Static Generation",
+        "content": [
+          {
+            "type": "text",
+            "content": "Next.js enables SSR and SSG out of the box. Use `getStaticProps` for static builds and `getServerSideProps` for dynamic server-side rendering."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Use `getStaticProps` for content that doesn’t change often.",
+              "Use `getServerSideProps` for user-specific or time-sensitive data.",
+              "With App Directory (Next.js 13+), use `generateStaticParams`, `fetch` inside components, or route-based layouts."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Do: Use Next.js Data Fetching Correctly",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "// pages/index.tsx\nexport async function getStaticProps() {\n  const data = await fetchData();\n  return { props: { data } };\n}\n\n// app/page.tsx (Next 13+)\nexport default async function Page() {\n  const data = await fetch(\"/api\");\n  return <pre>{JSON.stringify(data)}</pre>;\n}"
+          },
+          {
+            "type": "heading",
+            "content": "Don't: Use SSR for Static or Non-Dynamic Content",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "export async function getServerSideProps() {\n  // ❌ Avoid if data doesn't change per request\n  return { props: { time: Date.now() } };\n}"
+          }
+        ]
+      },
+      {
+        "title": "15. Testing",
+        "content": [
+          {
+            "type": "text",
+            "content": "Use React Testing Library for testing behavior over implementation. Use Jest for mocking and handling async logic."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Test user interactions and expectations, not internals.",
+              "Use `jest.fn()` to mock callbacks.",
+              "`waitFor` and `findBy` handle async expectations."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Do: Test User Behavior",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "test(\"shows user name\", async () => {\n  render(<UserProfile />);\n  expect(await screen.findByText(\"Alice\")).toBeInTheDocument();\n});\n\ntest(\"calls callback on click\", () => {\n  const onClick = jest.fn();\n  render(<Button onClick={onClick} />);\n  fireEvent.click(screen.getByText(\"Click me\"));\n  expect(onClick).toHaveBeenCalled();\n});"
+          },
+          {
+            "type": "heading",
+            "content": "Don't: Test Internal State or Use Timeouts",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "// ❌ Anti-pattern: testing internal implementation\nexpect(component.state).toBe(\"loading\");\n\nsetTimeout(() => {\n  expect(screen.getByText(\"Loaded\")); // ❌ Use waitFor instead\n}, 1000);"
+          }
+        ]
+      },
+      {
+        "title": "16. TypeScript with React",
+        "content": [
+          {
+            "type": "text",
+            "content": "Use TypeScript to strongly type props, state, and refs in React. Discriminated unions and generics make components more flexible and safer."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Use `interface` or `type` for props.",
+              "Type refs with `useRef<HTMLInputElement>(null)`.",
+              "Use discriminated unions for prop-based rendering logic."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Do: Type Props and Generics",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "type ButtonProps = {\n  label: string;\n  onClick: () => void;\n};\n\nfunction Button({ label, onClick }: ButtonProps) {\n  return <button onClick={onClick}>{label}</button>;\n}\n\ntype InputProps<T> = {\n  value: T;\n  onChange: (val: T) => void;\n};"
+          },
+          {
+            "type": "heading",
+            "content": "Don't: Use `any` or Ignore Type Safety",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "function Form(props: any) {\n  return <input value={props.val} />; // ❌ You lose autocompletion & safety\n}\n\nconst ref = useRef(); // ❌ Not typed — use useRef<HTMLInputElement>()\n"
+          }
+        ]
+      },
+      {
+        "title": "17. Accessibility (a11y)",
+        "content": [
+          {
+            "type": "text",
+            "content": "Accessibility ensures your app works for all users. Use ARIA attributes, semantic HTML, and support for keyboard navigation."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Use semantic tags like `button`, `nav`, and `form`.",
+              "Use `aria-label`, `aria-hidden` where necessary.",
+              "Ensure keyboard accessibility with `tabIndex`, event handlers."
+            ]
+          },
+          {
+            "type": "heading",
+            "content": "Do: Use ARIA and Semantic HTML",
+            "variant": "do"
+          },
+          {
+            "type": "code",
+            "content": "<button aria-label=\"Close\" onClick={closeModal}>×</button>\n\n<nav>\n  <ul>\n    <li><a href=\"/home\">Home</a></li>\n  </ul>\n</nav>"
+          },
+          {
+            "type": "heading",
+            "content": "Don't: Rely Solely on divs or Inaccessible Markup",
+            "variant": "dont"
+          },
+          {
+            "type": "code",
+            "content": "<div onClick={submit}>Submit</div> // ❌ No keyboard support\n<div role=\"button\" tabIndex={0} onKeyDown={handleKeyDown} /> // ✅ Needs keyboard handling if not using <button>"
+          }
+        ]
+      }
+    ]
+  }

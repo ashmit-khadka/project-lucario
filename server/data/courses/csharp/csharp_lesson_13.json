@@ -1,0 +1,159 @@
+{
+  "title": "\uD83E\uDDF9 Design Patterns",
+  "description": "Master key design patterns in C# for building scalable, maintainable, and testable applications.",
+  "sections": [
+    {
+      "title": "1. \ud83d\udd01 Singleton",
+      "content": [
+        {
+          "type": "text",
+          "content": "Ensures a class has only one instance and provides a global point of access to it."
+        },
+        {
+          "type": "code",
+          "content": "public sealed class Singleton\n{\n    private static readonly Singleton _instance = new();\n    public static Singleton Instance => _instance;\n    private Singleton() { }\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use thread-safe implementation (`static` initialization is thread-safe by default).",
+            "Use Singleton for shared state/configuration, not for holding logic or user data."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83c\udfed Factory",
+      "content": [
+        {
+          "type": "text",
+          "content": "Encapsulates object creation logic to simplify code and decouple clients from specific implementations."
+        },
+        {
+          "type": "code",
+          "content": "public interface IAnimal { void Speak(); }\npublic class Dog : IAnimal { public void Speak() => Console.WriteLine(\"Woof\"); }\n\npublic class AnimalFactory\n{\n    public IAnimal CreateAnimal(string type) => type switch\n    {\n        \"Dog\" => new Dog(),\n        _ => throw new ArgumentException(\"Unknown type\")\n    };\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use factory methods to isolate creation logic.",
+            "Switch to the factory pattern when object creation involves logic or multiple types."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83e\udde0 Strategy",
+      "content": [
+        {
+          "type": "text",
+          "content": "Encapsulates interchangeable behaviors and delegates execution to the selected behavior."
+        },
+        {
+          "type": "code",
+          "content": "public interface IPaymentStrategy { void Pay(); }\npublic class Paypal : IPaymentStrategy { public void Pay() => Console.WriteLine(\"Paid with PayPal\"); }"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use when multiple algorithms can be selected at runtime.",
+            "Encapsulate behavior to simplify code and promote reuse."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \ud83d\udce6 Repository & Unit of Work",
+      "content": [
+        {
+          "type": "text",
+          "content": "Repositories abstract data access logic. Unit of Work manages multiple transactions as a single unit."
+        },
+        {
+          "type": "code",
+          "content": "public interface IUserRepository { User GetById(int id); }\npublic interface IUnitOfWork { void Commit(); }"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use repository to abstract persistence logic.",
+            "Use Unit of Work to coordinate multiple repository actions.",
+            "Avoid over-abstraction\u2014use EF Core DbContext when sufficient."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. \ud83e\udded CQRS and Mediator (MediatR)",
+      "content": [
+        {
+          "type": "text",
+          "content": "CQRS separates read/write concerns. MediatR implements the Mediator pattern for decoupled command and query handling."
+        },
+        {
+          "type": "code",
+          "content": "public record CreateUserCommand(string Name) : IRequest<int>;\npublic class Handler : IRequestHandler<CreateUserCommand, int> { /* handle logic */ }"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use CQRS for complex domains with distinct read/write models.",
+            "Use MediatR to reduce tight coupling between services.",
+            "Organize handlers by command/query for clarity."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "6. \ud83e\udde9 Dependency Injection",
+      "content": [
+        {
+          "type": "text",
+          "content": "A technique where dependencies are provided to a class rather than hard-coded, improving testability and flexibility."
+        },
+        {
+          "type": "code",
+          "content": "services.AddScoped<IEmailService, EmailService>();\npublic class Controller { public Controller(IEmailService email) { } }"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Inject dependencies via constructors.",
+            "Use `IServiceCollection` to register services with correct lifetimes.",
+            "Avoid service locator anti-patterns (e.g., `IServiceProvider.GetService<T>()`)."
+          ]
+        }
+      ]
+    }
+  ]
+}

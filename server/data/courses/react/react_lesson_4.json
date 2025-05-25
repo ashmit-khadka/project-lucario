@@ -1,0 +1,148 @@
+{
+  "title": "🧱 UI Patterns & Architecture",
+  "description": "Learn scalable component design patterns, organize your project like a pro, and build consistent UI systems with reusable design components and theming.",
+  "sections": [
+    {
+      "title": "18. Component Design Patterns",
+      "content": [
+        {
+          "type": "text",
+          "content": "Designing components well is crucial for scalability and reusability. Understand patterns like presentational vs container components, compound components, and the difference between controlled and uncontrolled behavior."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Presentational components focus on UI, container components handle logic.",
+            "Compound components share implicit state through context.",
+            "Controlled components are fully driven by props/state; uncontrolled use refs.",
+            "Render props and HOCs are older but useful for understanding abstraction."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Do: Separate Logic and Presentation",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "// Presentational\n  function ProfileCard({ name, age }) {\n    return <div>{name} - {age}</div>;\n  }\n  \n  // Container\n  function ProfileContainer() {\n    const user = useUser(); // custom hook\n    return <ProfileCard name={user.name} age={user.age} />;\n  }"
+        },
+        {
+          "type": "heading",
+          "content": "Don't: Mix Logic and UI Everywhere",
+          "variant": "dont"
+        },
+        {
+          "type": "code",
+          "content": "function ProfileCard() {\n    const user = useUser(); // ❌ tightly coupled\n    return <div>{user.name}</div>;\n  }"
+        },
+        {
+          "type": "heading",
+          "content": "Do: Use Compound Components with Context",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "const TabsContext = createContext();\n  \n  function Tabs({ children }) {\n    const [active, setActive] = useState(0);\n    return (\n      <TabsContext.Provider value={{ active, setActive }}>\n        <div>{children}</div>\n      </TabsContext.Provider>\n    );\n  }\n  \n  function TabList({ children }) {\n    return <div>{children}</div>;\n  }\n  \n  function Tab({ index, children }) {\n    const { active, setActive } = useContext(TabsContext);\n    return (\n      <button onClick={() => setActive(index)} aria-selected={active === index}>\n        {children}\n      </button>\n    );\n  }"
+        },
+        {
+          "type": "heading",
+          "content": "Don't: Hardcode Internal Logic",
+          "variant": "dont"
+        },
+        {
+          "type": "code",
+          "content": "function Tabs() {\n    const [active, setActive] = useState(0);\n    return (\n      <>\n        <button onClick={() => setActive(0)}>Tab 1</button>\n        <button onClick={() => setActive(1)}>Tab 2</button>\n        <div>{active === 0 ? \"Content 1\" : \"Content 2\"}</div>\n      </>\n    ); // ❌ not reusable or scalable\n  }"
+        }
+      ]
+    },
+    {
+      "title": "19. Folder Structure & Project Organization",
+      "content": [
+        {
+          "type": "text",
+          "content": "Organize your codebase using feature-based structures. Avoid dumping all components or logic into global folders. Keep concerns together—components, tests, hooks, styles, and state."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use domain-based folders for large apps.",
+            "Group files by feature, not type (e.g., keep `hooks`, `components`, `slices`, and `styles` together).",
+            "Separate truly shared UI into `ui/` or `common/` folders."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Do: Use Feature or Domain-Based Structure",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "src/\n    features/\n      auth/\n        AuthForm.tsx\n        useAuth.ts\n        authSlice.ts\n        auth.css\n    ui/\n      Button.tsx\n      Modal.tsx\n    app/\n      store.ts\n      App.tsx"
+        },
+        {
+          "type": "heading",
+          "content": "Don't: Group by Type Globally",
+          "variant": "dont"
+        },
+        {
+          "type": "code",
+          "content": "src/\n    components/\n      Button.tsx\n      AuthForm.tsx\n    hooks/\n      useAuth.ts\n    styles/\n      auth.css\n    redux/\n      authSlice.ts // ❌ unrelated files scattered"
+        }
+      ]
+    },
+    {
+      "title": "20. Reusable Component Systems / Design Systems",
+      "content": [
+        {
+          "type": "text",
+          "content": "Design systems help enforce consistency across your app. Use component libraries with tools like Storybook. Use CSS-in-JS, utility-first CSS, or scoped styling (like CSS Modules) to control styles reliably."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use Storybook to preview components in isolation.",
+            "Use Tailwind, styled-components, Emotion, or CSS Modules for scalable styles.",
+            "Theme switching can be done via context or CSS variables."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Do: Build Reusable Styled Components",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "// Button.tsx using styled-components\n  import styled from \"styled-components\";\n  \n  const Button = styled.button`\n    background: (p) => (p.primary ? \"#333\" : \"#eee\");\n    color: (p) => (p.primary ? \"#fff\" : \"#333\");\n  `;\n  \n  export default Button;"
+        },
+        {
+          "type": "heading",
+          "content": "Do: Use Tailwind for Utility-First Styling",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "function Button({ children }) {\n    return (\n      <button className=\"px-4 py-2 bg-blue-600 text-white rounded\">\n        {children}\n      </button>\n    );\n  }"
+        },
+        {
+          "type": "heading",
+          "content": "Don't: Hardcode Styles Inline Everywhere",
+          "variant": "dont"
+        },
+        {
+          "type": "code",
+          "content": "<button style={{ backgroundColor: \"#333\", color: \"#fff\" }}>\n    Submit\n  </button> // ❌ Hard to maintain and override"
+        },
+        {
+          "type": "heading",
+          "content": "Do: Use Storybook to Develop and Document UI",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "// Button.stories.tsx\n  import Button from \"./Button\";\n  \n  export default {\n    title: \"Components/Button\",\n    component: Button\n  };\n  \n  export const Primary = () => <Button primary>Click me</Button>;"
+        }
+      ]
+    }
+  ]
+}

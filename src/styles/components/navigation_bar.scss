@@ -237,3 +237,50 @@
         display: none !important;
     }
 }
+
+
+.floating-nav {
+    position: fixed;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 1000;
+    max-width: 300px;
+
+    @include screen-sm {
+        display: none;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        .floating-nav-item {
+            margin-bottom: 1rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            &.active {
+                background-color: $color-font-primary;
+                color: white;
+                //font-weight: bold;
+            }
+        }
+
+        & li {
+            @extend .dm-mono-regular;
+            //font-size: 1rem;
+        }
+    }
+}

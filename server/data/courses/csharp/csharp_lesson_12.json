@@ -1,0 +1,92 @@
+{
+  "title": "\uD83D\uDCC3 Data Access",
+  "description": "Explore various data access strategies in .NET including ADO.NET, Dapper, and Entity Framework Core with best practices.",
+  "sections": [
+    {
+      "title": "1. \ud83e\uddf1 ADO.NET",
+      "content": [
+        {
+          "type": "text",
+          "content": "ADO.NET provides low-level, efficient access to relational databases using `SqlConnection`, `SqlCommand`, and `SqlDataReader`."
+        },
+        {
+          "type": "code",
+          "content": "using var conn = new SqlConnection(connectionString);\nconn.Open();\nvar cmd = new SqlCommand(\"SELECT * FROM Users\", conn);\nusing var reader = cmd.ExecuteReader();\nwhile (reader.Read())\n{\n    Console.WriteLine(reader[\"Name\"]);\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Always close connections with `using` blocks.",
+            "Use parameterized queries to prevent SQL injection.",
+            "Avoid excessive connection opening/closing\u2014use connection pooling."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \u26a1 Dapper (Micro ORM)",
+      "content": [
+        {
+          "type": "text",
+          "content": "Dapper is a lightweight ORM that maps query results to C# objects with minimal configuration."
+        },
+        {
+          "type": "code",
+          "content": "using var conn = new SqlConnection(connectionString);\nvar users = conn.Query<User>(\"SELECT * FROM Users\").ToList();"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use Dapper for high-performance read-heavy scenarios.",
+            "Avoid complex joins in raw SQL\u2014prefer stored procedures or view encapsulation.",
+            "Use strongly typed parameters to avoid runtime SQL issues."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83e\udde0 Entity Framework Core: Migrations, Tracking, Raw SQL",
+      "content": [
+        {
+          "type": "text",
+          "content": "EF Core allows database access through LINQ and object tracking. It supports schema migrations and raw SQL when needed."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use migrations to manage schema changes (`Add-Migration`, `Update-Database`).",
+            "Change tracking detects updates to entities automatically.",
+            "Use `FromSqlRaw` for raw SQL queries when necessary."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "var users = _context.Users.FromSqlRaw(\"SELECT * FROM Users\").ToList();"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Disable tracking with `.AsNoTracking()` when querying read-only data.",
+            "Keep migrations small and incremental.",
+            "Validate and sanitize inputs for raw SQL queries."
+          ]
+        }
+      ]
+    }
+  ]
+}

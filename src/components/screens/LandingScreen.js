@@ -65,6 +65,8 @@ import ImagePlayStore from '../../assets/icons/Google_Play_.png';
 import text from "../../data/resume";
 import parseText from "../../utils/parseText";
 
+import NavigationHover from "../NavigationHover";
+
 const LandingScreen = () => {
 
     const [activeSection, setActiveSection] = useState('about');
@@ -79,6 +81,18 @@ const LandingScreen = () => {
 
     return (
         <div className="landing">
+            <NavigationHover
+                sections={[
+                    { id: 'about', label: 'About me' },
+                    { id: 'skills', label: 'Skills' },
+                    { id: 'experience', label: 'Experience' },
+                    { id: 'projects', label: 'Projects' },
+                    { id: 'education', label: 'Education' },
+                    { id: 'certifications', label: 'Certifications' },
+                    { id: 'contact', label: 'Contact' }
+                ]}
+                showAfterSection={'about'}
+            />
             <div id="about" className="landing-about section screen">
                 <div className="landing-about--large">
                     {AboutSectionIntro}
@@ -104,7 +118,7 @@ const LandingScreen = () => {
             <SkillsSection />
 
             <div id="experience" className="landing-experience section screen">
-                <SectionTitle title="Experience"/>
+                <SectionTitle title="Experience" />
                 <div className="section-items">
                     <ExperienceItem
                         title="Software Engineer"
@@ -128,6 +142,13 @@ const LandingScreen = () => {
                         date="July 2019 - July 2020"
                         responsibilities={text.default.workExperience[1].responsibilities}
                         logo={text.default.workExperience[1].logo}
+                    />
+                    <ExperienceItem
+                        title={text.default.workExperience[2].position}
+                        organization={text.default.workExperience[2].company}
+                        date={text.default.workExperience[2].startDate + " - " + text.default.workExperience[2].endDate}
+                        responsibilities={text.default.workExperience[2].responsibilities}
+                        logo={text.default.workExperience[2].logo}
                     />
                 </div>
             </div>
@@ -184,7 +205,7 @@ const LandingScreen = () => {
 
             </div>
 
-            <div className="landing-education section screen">
+            <div id="certifications" className="landing-education section screen">
                 <SectionTitle title="Certifications" />
                 <div className="section-items section-items--grid">
                     <CertificationTile
@@ -250,16 +271,16 @@ const LandingScreen = () => {
 const ContactTile = (props) => {
     const { text, icon } = props;
     return (
-        <motion.div 
+        <motion.div
             className="landing-contact-tile"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ 
+            transition={{
                 duration: 0.5,
                 ease: [0.4, 0, 0.2, 1]
             }}
-            whileHover={{ 
+            whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.2 }
             }}
@@ -295,17 +316,17 @@ const ExperienceItem = (props) => {
     );
 
     return (
-        <motion.div 
+        <motion.div
             className="landing-experience-tile"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ 
+            transition={{
                 duration: 0.6,
                 ease: [0.4, 0, 0.2, 1]
             }}
         >
-            <motion.div 
+            <motion.div
                 className="landing-experience-tile--header"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -321,7 +342,7 @@ const ExperienceItem = (props) => {
                     <p>{date}</p>
                 </div>
             </motion.div>
-            <motion.ul 
+            <motion.ul
                 className="landing-experience-tile--responsibilities"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -329,40 +350,47 @@ const ExperienceItem = (props) => {
                 viewport={{ once: true }}
             >
                 {responsibilities.map((item, index) => (
-                    <motion.li 
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ 
-                            delay: 0.6 + (index * 0.1),
-                            duration: 0.5 
-                        }}
-                        viewport={{ once: true }}
-                    >
-                        {parseText(item)}
-                    </motion.li>
+                    <>
+
+                        <motion.li
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{
+                                delay: 0.6 + (index * 0.1),
+                                duration: 0.5
+                            }}
+                            viewport={{ once: true }}
+                        >
+                            <IconStar />
+                            <div>
+                                {parseText(item)}
+
+                            </div>
+                        </motion.li>
+                    </>
                 ))}
             </motion.ul>
-            <ul
-                  className="landing-experience-tile-awards"
 
-            >
-                {awards && awards.map((award, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{
-                            delay: 0.6 + (index * 0.1),
-                            duration: 0.5 
-                        }}
-                        viewport={{ once: true }}
-                    >
-                        {awardItem(award.image, award.text)}
-                    </motion.div>
-                ))}
+            {awards && (
+                <ul className="landing-experience-tile-awards">
+                    {awards.map((award, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{
+                                delay: 0.6 + (index * 0.1),
+                                duration: 0.5
+                            }}
+                            viewport={{ once: true }}
+                        >
+                            {awardItem(award.image, award.text)}
+                        </motion.div>
+                    ))}
 
-            </ul>
+                </ul>
+            )}
         </motion.div>
     );
 }
@@ -374,19 +402,19 @@ const AboutSectionIntro = (
         transition={{ duration: 0.8 }}
     >
         <div className="landing-intro-header">
-            <motion.div 
+            <motion.div
                 className="landing-intro-header-underline"
                 initial={{ width: 0 }}
                 animate={{ width: "22%" }}
                 transition={{ duration: 0.8, delay: 0.4 }}
             />
-            <h1>Hi, I'm Ash </h1>
+            <h1>Hi, I'm Ash</h1>
             <motion.div
-                animate={{ 
+                animate={{
                     scale: [1, 1.2, 1],
                     rotate: [0, 5, 0]
                 }}
-                transition={{ 
+                transition={{
                     duration: 2,
                     repeat: Infinity,
                     repeatDelay: 3
@@ -396,7 +424,7 @@ const AboutSectionIntro = (
             </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
             className="landing-intro-meta"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -409,7 +437,7 @@ const AboutSectionIntro = (
             </ul>
         </motion.div>
 
-        <motion.div 
+        <motion.div
             className="landing-intro-quick-info"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -427,15 +455,16 @@ const AboutSectionIntro = (
 const AboutSectionShortcuts = ({ activeSection, onSectionClick }) => {
     const shortcuts = [
         { id: 'about', label: 'About me' },
-        { id: 'expertise', label: 'Expertise' },
+        { id: 'skills', label: 'Skills' },
         { id: 'projects', label: 'Projects' },
         { id: 'experience', label: 'Experience' },
         { id: 'education', label: 'Education' },
+        { id: 'certifications', label: 'Certifications' },
         { id: 'contact', label: 'Contact' }
     ];
 
     return (
-        <motion.div 
+        <motion.div
             className="landing-intro-shortcuts"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -466,7 +495,7 @@ const AboutSectionShortcuts = ({ activeSection, onSectionClick }) => {
 const AboutSectionBio = (
     <div className="landing-intro-bio">
         <div className="landing-intro-bio-icon">
-            <motion.div 
+            <motion.div
                 className="landing-intro-bio-icon--javascript"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -474,7 +503,7 @@ const AboutSectionBio = (
             >
                 <IconJavaScript />
             </motion.div>
-            <motion.div 
+            <motion.div
                 className="landing-intro-bio-icon--typescript"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -482,7 +511,7 @@ const AboutSectionBio = (
             >
                 <IconTypeScript />
             </motion.div>
-            <motion.div 
+            <motion.div
                 className="landing-intro-bio-icon--node"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -490,7 +519,7 @@ const AboutSectionBio = (
             >
                 <IconNode />
             </motion.div>
-            <motion.div 
+            <motion.div
                 className="landing-intro-bio-icon--figma"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -498,18 +527,18 @@ const AboutSectionBio = (
             >
                 <IconFigma />
             </motion.div>
-            <motion.img 
-                src={SelfImage2} 
-                alt="Profile" 
+            <motion.img
+                src={SelfImage2}
+                alt="Profile"
                 className="landing-intro-profile"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ 
+                transition={{
                     duration: 0.6,
                     ease: [0.4, 0, 0.2, 1],
                     delay: 0.1
                 }}
-                whileHover={{ 
+                whileHover={{
                     scale: 1.05,
                     transition: { duration: 0.3 }
                 }}
@@ -527,14 +556,14 @@ const AboutSectionBio = (
 
 const Skill = (props) => {
     const { name, icon, index, isExpanded } = props;
-    
+
     // Calculate stagger delay based on position
-    const delay = isExpanded ? 
-        (index >= 8 ? (index - 8) * 0.1 : index * 0.1) : 
+    const delay = isExpanded ?
+        (index >= 8 ? (index - 8) * 0.1 : index * 0.1) :
         (index * 0.1);
 
     return (
-        <motion.div 
+        <motion.div
             className="landing-skill-tile"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -544,11 +573,11 @@ const Skill = (props) => {
                 ease: [0.4, 0, 0.2, 1]
             }}
         >
-            <motion.img 
-                src={icon} 
-                alt={`${name} Icon`} 
+            <motion.img
+                src={icon}
+                alt={`${name} Icon`}
                 className="skill-icon"
-                whileHover={{ 
+                whileHover={{
                     scale: 1.1,
                     filter: "brightness(1.2)",
                     transition: { duration: 0.2 }
@@ -615,9 +644,9 @@ const SkillsSection = () => {
     };
 
     return (
-        <div id="expertise" className="landing-skill section">
-            <SectionTitle title="My expertise" isLight isWide/>
-            <motion.div 
+        <div id="skills" className="landing-skill section">
+            <SectionTitle title="Skills" isLight isWide />
+            <motion.div
                 className="landing-skill-container screen"
                 variants={containerVariants}
                 initial="collapsed"
@@ -636,9 +665,9 @@ const SkillsSection = () => {
             <motion.button
                 className="landing-skill-expand"
                 onClick={() => setIsSkillsExpanded(!isSkillsExpanded)}
-                whileHover={{ 
+                whileHover={{
                     backgroundColor: "rgba(255,255,255,0.1)",
-                    scale: 1.05 
+                    scale: 1.05
                 }}
                 whileTap={{ scale: 0.95 }}
             >
@@ -650,7 +679,7 @@ const SkillsSection = () => {
 
 const PortfolioSection = (props) => {
     const { header, description, image, link, flipped } = props;
-    
+
     const imageClass = `landing-portfolio-tile-image ${flipped ? 'landing-portfolio-tile-image--flipped' : ''}`;
     const textClass = `landing-portfolio-tile-text ${flipped ? 'landing-portfolio-tile-text--flipped' : ''}`;
 
@@ -661,38 +690,38 @@ const PortfolioSection = (props) => {
     }
 
     return (
-        <motion.div 
+        <motion.div
             className="landing-portfolio-tile"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ 
+            transition={{
                 duration: 0.8,
                 ease: [0.4, 0, 0.2, 1]
             }}
         >
-            <motion.div 
+            <motion.div
                 className={imageClass}
                 //initial={{ opacity: 0, x: flipped ? 50 : -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                whileHover={{ 
+                whileHover={{
                     scale: 1.05,
                     transition: { duration: 0.3 }
                 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
             >
-                <motion.img 
-                    src={image} 
-                    alt="Portfolio Icon" 
+                <motion.img
+                    src={image}
+                    alt="Portfolio Icon"
                     className="portfolio-icon"
-                    whileHover={{ 
+                    whileHover={{
                         filter: "brightness(1.1)",
                         transition: { duration: 0.3 }
                     }}
                 />
             </motion.div>
-            <motion.div 
+            <motion.div
                 className={textClass}
                 //initial={{ opacity: 0, x: flipped ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -701,8 +730,8 @@ const PortfolioSection = (props) => {
             >
                 <h2>{header}</h2>
                 <p>{description}</p>
-                <Button 
-                    onClick={handleOpenProject} 
+                <Button
+                    onClick={handleOpenProject}
                     className="landing-portfolio-tile--button"
                 >
                     View Project
@@ -716,7 +745,7 @@ const EducationTile = (props) => {
     const { title, description, logo } = props;
 
     return (
-        <motion.div 
+        <motion.div
             className="landing-education-tile"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -754,17 +783,17 @@ const CertificationTile = (props) => {
     }
 
     return (
-        <motion.div 
+        <motion.div
             className="landing-certification-tile"
             onClick={handleOpenCertification}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            whileHover={{ 
+            whileHover={{
                 scale: 1.05,
                 backgroundColor: "rgba(255,255,255,0.05)"
             }}
-            transition={{ 
+            transition={{
                 duration: 0.3,
                 stiffness: 300
             }}
@@ -777,7 +806,7 @@ const CertificationTile = (props) => {
             >
                 <img src={logo} alt="Certification Logo" className="certification-logo" />
             </motion.div>
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
@@ -791,7 +820,7 @@ const CertificationTile = (props) => {
                 transition={{ stiffness: 400 }}
                 viewport={{ once: true }}
             >
-                <IconLink className="icon-button"/>
+                <IconLink className="icon-button" />
             </motion.div>
         </motion.div>
     );
@@ -801,7 +830,7 @@ const SectionTitle = (props) => {
     const { title, isLight, isWide } = props;
     return (
         <div className={`section-title ${isLight ? 'section-title--light' : ''} ${isWide ? 'screen section-title--wide' : ''}`}>
-            <h2>{title}</h2>
+            <h2>{title}.</h2>
         </div>
     );
 }

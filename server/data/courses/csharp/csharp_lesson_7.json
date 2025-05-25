@@ -1,0 +1,155 @@
+{
+  "title": "\uD83E\uDDEA Testing",
+  "description": "Explore the key components of testing in C#, including unit testing frameworks, mocking tools, TDD methodology, and best practices.",
+  "sections": [
+    {
+      "title": "1. \ud83e\uddea Unit Testing: xUnit, NUnit, MSTest",
+      "content": [
+        {
+          "type": "text",
+          "content": "Unit testing involves testing individual units of code in isolation using frameworks like xUnit, NUnit, or MSTest."
+        },
+        {
+          "type": "list",
+          "items": [
+            "xUnit: Modern, widely-used, supports constructor injection.",
+            "NUnit: Popular with rich features and attributes.",
+            "MSTest: Microsoft's built-in framework, well-integrated in Visual Studio."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "[Fact]\npublic void AddsTwoNumbers() => Assert.Equal(4, Calculator.Add(2, 2));"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Name tests clearly: `MethodName_StateUnderTest_ExpectedResult`.",
+            "Test only one behavior per unit test.",
+            "Run tests automatically on each build (CI)."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83e\uddf1 Mocking: Moq, NSubstitute",
+      "content": [
+        {
+          "type": "text",
+          "content": "Mocking allows isolating dependencies during unit testing by simulating the behavior of complex objects."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Moq: Popular and fluent mocking library.",
+            "NSubstitute: Intuitive and expressive syntax."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "var mock = new Mock<IService>();\nmock.Setup(s => s.GetValue()).Returns(42);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Mock only external dependencies, not the system under test.",
+            "Use strict mocks for critical contracts.",
+            "Verify interactions to test side effects."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83d\udd01 Test-Driven Development (TDD)",
+      "content": [
+        {
+          "type": "text",
+          "content": "TDD is a development approach where tests are written before the implementation."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Red: Write a failing test.",
+            "Green: Write the minimum code to pass the test.",
+            "Refactor: Improve the code while keeping tests green."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Focus on small, incremental changes.",
+            "Use TDD to drive better design and coverage.",
+            "Avoid writing unnecessary tests that don\u2019t express business logic."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \ud83d\udd17 Integration Testing",
+      "content": [
+        {
+          "type": "text",
+          "content": "Integration tests validate the interactions between components (e.g., database, API, services)."
+        },
+        {
+          "type": "code",
+          "content": "[Fact]\npublic async Task GetUsers_Returns200OK()\n{\n    var response = await _client.GetAsync(\"/api/users\");\n    response.EnsureSuccessStatusCode();\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use a test server/environment for integration tests.",
+            "Ensure isolation using test databases or containers.",
+            "Clean up side effects after test execution."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. \ud83d\udde3\ufe0f FluentAssertions",
+      "content": [
+        {
+          "type": "text",
+          "content": "FluentAssertions provides a more readable and expressive way to assert expected outcomes."
+        },
+        {
+          "type": "code",
+          "content": "result.Should().Be(42);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use FluentAssertions to make tests more readable.",
+            "Avoid overly complex assertions in one line.",
+            "Chain assertions for compound checks."
+          ]
+        }
+      ]
+    }
+  ]
+}

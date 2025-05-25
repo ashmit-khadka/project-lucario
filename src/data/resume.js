@@ -17,10 +17,10 @@ const text ={
     default: {
         header: {
             name: "Ashmit Khadka",
-            title: "Software Engineer 👷🪄",
+            title: "Full-Stack Engineer 👷🪄",
         },
         profile: {
-            text: "Product driven Software Engineer with half a decade experience at ADP (an S&P 500 company), building and scaling React, .NET Core web apps used by over 1 million clients. I work on RUN, an award winning payroll software rated 4.9 on the App Store and Google Play. King's College London master's graduate in Software Engineering with a First Class Honours in Computer Science. Passionate about clean, scalable code, emerging tech, AI. Team player who’s always ready to help and take on difficult challenges. Recent company hackathon winner for 2024.",
+            text: "Product driven full-stack software engineer with half a decade experience at ADP, a leading S&P 500 tech company, building and scaling React, .NET Core web apps used by over 1 million clients. I work on RUN, an award winning payroll platform with a 4.9 rating on the App Store and Google Play. King's College London master's graduate in Software Engineering with a First Class Honours in Computer Science. Driven by clean, scalable code and a deep interest in emerging tech and AI. Thrives in collaborative teams and embraces complex challenges with a hands-on, solutions-first mindset. Recent company hackathon winner for 2024.",
         },
         contact: [
             { 

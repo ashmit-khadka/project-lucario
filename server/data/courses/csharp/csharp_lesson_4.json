@@ -1,0 +1,136 @@
+{
+  "title": "\u23F3 Asynchronous Programming",
+  "description": "Learn how to write responsive, non-blocking applications in C# using async/await, tasks, parallel programming, and threading tools.",
+  "sections": [
+    {
+      "title": "1. \u2699\ufe0f async and await",
+      "content": [
+        {
+          "type": "text",
+          "content": "The `async` and `await` keywords make asynchronous programming easier and more readable."
+        },
+        {
+          "type": "code",
+          "content": "public async Task<int> GetDataAsync()\n{\n    await Task.Delay(1000);\n    return 42;\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `async` and `await` to avoid blocking the UI or thread.",
+            "Name async methods with the `Async` suffix.",
+            "Avoid `async void` except for event handlers."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83c\udfaf Task and ValueTask",
+      "content": [
+        {
+          "type": "text",
+          "content": "`Task` and `ValueTask` represent asynchronous operations. Use `ValueTask` for performance in specific scenarios."
+        },
+        {
+          "type": "code",
+          "content": "public ValueTask<string> GetNameAsync() => new ValueTask<string>(\"Alice\");"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `Task` for general-purpose async methods.",
+            "Use `ValueTask` when a result is often available synchronously.",
+            "Avoid returning `ValueTask` from public APIs unless performance-critical."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83e\uddf5 Parallel Programming: Parallel.For, Task.WhenAll",
+      "content": [
+        {
+          "type": "text",
+          "content": "Use parallel constructs for CPU-bound tasks or when running many independent operations."
+        },
+        {
+          "type": "code",
+          "content": "Parallel.For(0, 10, i => Console.WriteLine(i));\nawait Task.WhenAll(tasks);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `Parallel.For` for CPU-bound parallel loops.",
+            "Use `Task.WhenAll` for running multiple async operations concurrently.",
+            "Avoid mixing parallelism with UI updates without proper synchronization."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \ud83d\udd01 IAsyncEnumerable<T>",
+      "content": [
+        {
+          "type": "text",
+          "content": "`IAsyncEnumerable<T>` allows asynchronous iteration over a stream of data."
+        },
+        {
+          "type": "code",
+          "content": "await foreach (var item in GetItemsAsync())\n{\n    Console.WriteLine(item);\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `IAsyncEnumerable<T>` to stream results instead of loading all at once.",
+            "Avoid materializing the entire sequence unless necessary.",
+            "Always `await foreach` when consuming async streams."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. \ud83e\uddf5 Threading Basics: Thread, ThreadPool, BackgroundWorker",
+      "content": [
+        {
+          "type": "text",
+          "content": "Use lower-level threading APIs for scenarios where `Task`-based or async APIs are insufficient."
+        },
+        {
+          "type": "code",
+          "content": "new Thread(() => Console.WriteLine(\"Running in thread\")).Start();"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `ThreadPool.QueueUserWorkItem` for short-lived background tasks.",
+            "Prefer `Task` or `async/await` over manual thread creation.",
+            "Avoid using `BackgroundWorker` in new applications; it's outdated."
+          ]
+        }
+      ]
+    }
+  ]
+}

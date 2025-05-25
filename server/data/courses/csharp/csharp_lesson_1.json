@@ -1,0 +1,222 @@
+{
+  "title": "\uD83E\uDDF1 C# Language Fundamentals",
+  "description": "Learn the foundational elements of the C# language including types, control flow, operators, and common data structures.",
+  "sections": [
+    {
+      "title": "1. \ud83e\uddf1 Data Types: Value vs Reference Types, Nullable Types",
+      "content": [
+        {
+          "type": "text",
+          "content": "Understanding data types is essential for memory management and program behavior in C#."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Value Types**: Stored directly on the stack (e.g., `int`, `double`, `bool`).",
+            "**Reference Types**: Stored on the heap, with a reference on the stack (e.g., `string`, `class`).",
+            "**Nullable Types**: Allow value types to hold `null` (e.g., `int?`, `bool?`)."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Example: Nullable Types",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "int? age = null;\nif (age.HasValue)\n    Console.WriteLine(age.Value);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use nullable types (`T?`) when a value type may be missing.",
+            "Check `.HasValue` before accessing `.Value`.",
+            "Use `??` operator to provide defaults (e.g., `age ?? 0`)."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83d\udd01 Control Flow: if/else, switch, loops",
+      "content": [
+        {
+          "type": "text",
+          "content": "C# supports several control structures to alter the flow of execution."
+        },
+        {
+          "type": "list",
+          "items": [
+            "`if/else` \u2013 for conditional logic.",
+            "`switch` \u2013 cleaner alternative to multiple `if/else if`.",
+            "`for`, `foreach`, `while`, `do-while` \u2013 for iteration."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Example: foreach Loop",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "foreach (var item in items)\n{\n    Console.WriteLine(item);\n}"
+        },
+        {
+          "type": "heading",
+          "content": "\u274c Avoid Overcomplicated Loops",
+          "variant": "dont"
+        },
+        {
+          "type": "code",
+          "content": "for (int i = 0; i < list.Count; i++)\n{\n    if (list[i] != null)\n        Console.WriteLine(list[i]);\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `foreach` for cleaner iteration over collections.",
+            "Use `switch` with pattern matching in C# 8+ for readability.",
+            "Break long conditional logic into methods for clarity."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \u2795 Operators: Arithmetic, Logical, Comparison, Bitwise",
+      "content": [
+        {
+          "type": "text",
+          "content": "Operators perform operations on variables and values in C#."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Arithmetic: `+`, `-`, `*`, `/`, `%`",
+            "Logical: `&&`, `||`, `!`",
+            "Comparison: `==`, `!=`, `<`, `>`, `<=`, `>=`",
+            "Bitwise: `&`, `|`, `^`, `~`, `<<`, `>>`"
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Example: Logical Operator",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "if (isLoggedIn && hasPermission)\n{\n    AccessResource();\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use parentheses to clarify complex expressions.",
+            "Avoid mixing bitwise and logical operators unless intentional.",
+            "Use `==` instead of `Equals()` for primitives."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \ud83d\udd24 String Manipulation: Interpolation, StringBuilder, Formatting",
+      "content": [
+        {
+          "type": "text",
+          "content": "C# offers powerful tools for working with strings efficiently."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Interpolation**: Embed variables directly: `$\"Hello {name}\"`.",
+            "**StringBuilder**: Efficient for many modifications.",
+            "**Formatting**: Use `string.Format`, `.ToString()` or composite formatting."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Example: StringBuilder",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "var sb = new StringBuilder();\nsb.Append(\"Hello\");\nsb.Append(\" World\");\nConsole.WriteLine(sb.ToString());"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use interpolation (`$`) for readability.",
+            "Prefer `StringBuilder` for repeated string modifications.",
+            "Avoid `+` in loops for string concatenation."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. \ud83d\udce6 Arrays and Collections: Array, List<T>, Dictionary<K,V>, HashSet<T>",
+      "content": [
+        {
+          "type": "text",
+          "content": "C# provides various collection types for storing and managing data."
+        },
+        {
+          "type": "list",
+          "items": [
+            "`Array`: Fixed size, fast access.",
+            "`List<T>`: Dynamic array.",
+            "`Dictionary<K,V>`: Key-value pairs.",
+            "`HashSet<T>`: Unordered collection of unique elements."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Example: Dictionary",
+          "variant": "do"
+        },
+        {
+          "type": "code",
+          "content": "var dict = new Dictionary<string, int>();\ndict[\"apples\"] = 3;\nConsole.WriteLine(dict[\"apples\"]);"
+        },
+        {
+          "type": "heading",
+          "content": "\u274c Avoid Index Out of Bounds",
+          "variant": "dont"
+        },
+        {
+          "type": "code",
+          "content": "int[] arr = new int[2];\nConsole.WriteLine(arr[2]); // throws exception"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `List<T>` when size is dynamic.",
+            "Use `Dictionary<K,V>` for fast lookup by key.",
+            "Use `ContainsKey()` before accessing dictionary values.",
+            "Use `HashSet<T>` for fast membership tests."
+          ]
+        }
+      ]
+    }
+  ]
+}

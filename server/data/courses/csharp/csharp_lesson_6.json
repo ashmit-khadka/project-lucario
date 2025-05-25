@@ -1,0 +1,147 @@
+{
+  "title": "\uD83D\uDE80 Memory & Performance",
+  "description": "Learn how to write efficient and optimized C# code by understanding memory behavior, minimizing overhead, and leveraging benchmarking tools.",
+  "sections": [
+    {
+      "title": "1. \ud83d\udce6 Value vs Reference Types",
+      "content": [
+        {
+          "type": "text",
+          "content": "Understanding how value and reference types are stored and copied is critical for memory efficiency."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Value Types**: Stored on the stack. Copied by value (e.g., `int`, `struct`).",
+            "**Reference Types**: Stored on the heap. Copied by reference (e.g., `class`, `string`)."
+          ]
+        },
+        {
+          "type": "code",
+          "content": "struct Point { public int X, Y; }\nPoint a = new Point();\nPoint b = a; // Copy"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use value types for small, immutable data.",
+            "Avoid excessive copying of large structs.",
+            "Understand the performance trade-offs of each type."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83c\udf81 Boxing and Unboxing",
+      "content": [
+        {
+          "type": "text",
+          "content": "Boxing converts a value type to a reference type, while unboxing does the reverse."
+        },
+        {
+          "type": "code",
+          "content": "object boxed = 42; // boxing\nint unboxed = (int)boxed; // unboxing"
+        },
+        {
+          "type": "heading",
+          "content": "\u274c Avoid Unnecessary Boxing",
+          "variant": "dont"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Boxing causes heap allocation and performance hits.",
+            "Occurs implicitly when using non-generic collections (e.g., `ArrayList`).",
+            "Prefer generics to avoid boxing/unboxing."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83e\udde0 Memory Leaks",
+      "content": [
+        {
+          "type": "text",
+          "content": "Memory leaks in managed code often come from holding references too long or failing to unsubscribe from events."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Unreleased event handlers.",
+            "Static collections holding object references.",
+            "Poor disposal of IDisposable resources."
+          ]
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Always unsubscribe from events when done.",
+            "Use weak references for caches.",
+            "Dispose objects properly using `using` or `Dispose()`."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. \ud83e\uddea Using Span<T>, ref, readonly struct",
+      "content": [
+        {
+          "type": "text",
+          "content": "`Span<T>` and `ref` structs enable safe, high-performance memory access without allocations."
+        },
+        {
+          "type": "code",
+          "content": "Span<byte> buffer = stackalloc byte[256];"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `Span<T>` for memory slices in hot paths.",
+            "Use `readonly struct` for immutable, non-boxing value types.",
+            "Avoid capturing `ref struct` variables in lambdas or async code."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. \u23f1\ufe0f Benchmarking Tools: BenchmarkDotNet",
+      "content": [
+        {
+          "type": "text",
+          "content": "BenchmarkDotNet is a popular library for accurate performance measurements in C#."
+        },
+        {
+          "type": "code",
+          "content": "[MemoryDiagnoser]\npublic class Benchmarks\n{\n    [Benchmark]\n    public int Sum() => Enumerable.Range(0, 1000).Sum();\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `[MemoryDiagnoser]` to measure memory usage.",
+            "Use `[Benchmark]` methods to isolate performance tests.",
+            "Always benchmark in Release mode and on a consistent environment."
+          ]
+        }
+      ]
+    }
+  ]
+}

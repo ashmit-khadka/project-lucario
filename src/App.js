@@ -1,43 +1,65 @@
-import logo from './logo.svg';
-import './styles/index.scss';
-import { createBrowserRouter, RouterProvider } from 'react-router';
-import LandingScreen from './components/screens/LandingScreen'
-import ResumeScreen from './components/screens/ResumeScreen';
+import React from 'react';
+import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration } from 'react-router';
 import NavigationBar from './components/NavigationBar';
-import Footer from './components/Footer';
-
+import LandingScreen from './components/screens/LandingScreen';
+import ResumeScreen from './components/screens/ResumeScreen';
+import CourseCatalogueScreen from './components/screens/CourseCatalogueScreen';
 import LessonScreen from './components/screens/LessonScreen';
-import LearnSkillScreen from './components/screens/LearnSkillScreen';
+import CourseScreen from './components/screens/CourseScreen';
+import QuizScreen from './components/screens/QuizScreen';
+import Footer from './components/Footer';
+import NotFoundScreen from './components/screens/NotFoundScreen';
+import './styles/index.scss';
 
+// Layout component that includes the navbar and footer
+const Layout = () => {
+  return (
+    <>
+      <NavigationBar />
+      <Outlet /> {/* This is where the route content will be rendered */}
+      <Footer />
+      <ScrollRestoration /> {/* This component helps with scroll restoration when navigating between routes */}
+    </>
+  );
+};
+
+// Create router with a root Layout route that contains all other routes
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <LandingScreen />,
-  },
-  {
-    path: "/resume",
-    element: <ResumeScreen />,
-  },
-  {
-    path: "/learn/:skill/lesson/:lessonId", // Dynamic route with a URL parameter
-    element: <LessonScreen />,
-  },
-  {
-    path: "/learn/:skill",
-    element: <LearnSkillScreen />,
+    element: <Layout />,
+    errorElement: <NotFoundScreen />, // This will render if no route matches
+    children: [
+      {
+        path: '/',
+        element: <LandingScreen />,
+      },
+      {
+        path: '/resume',
+        element: <ResumeScreen />,
+      },
+      {
+        path: '/learn',
+        element: <CourseCatalogueScreen />,
+      },
+      {
+        path: '/learn/:skill/lesson/:lessonId',
+        element: <LessonScreen />,
+      },
+      {
+        path: '/learn/:skill',
+        element: <CourseScreen />,
+      },
+      {
+        path: '/quiz/:skill',
+        element: <QuizScreen />,
+      },
+    ],
   },
 ]);
 
 function App() {
-  return (
-    <div>
-      <NavigationBar />
-      <div>
-        <RouterProvider router={router} />
-      </div>
-      <Footer />
-    </div>
-  );
+  // Just return the RouterProvider with no wrapping div
+  return <RouterProvider router={router} />;
 }
 
 export default App;

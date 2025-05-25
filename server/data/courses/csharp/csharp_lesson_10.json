@@ -1,0 +1,86 @@
+{
+  "title": "\uD83D\uDD0C APIs & Integration",
+  "description": "Learn how to consume and build robust APIs in C# using HttpClient, RESTful controllers, versioning, and serialization techniques.",
+  "sections": [
+    {
+      "title": "1. \ud83c\udf10 Consuming APIs: HttpClient, HttpRequestMessage, Polly",
+      "content": [
+        {
+          "type": "text",
+          "content": "Use `HttpClient` to make web requests and Polly for resilient API calls with retry policies."
+        },
+        {
+          "type": "code",
+          "content": "var client = new HttpClient();\nvar response = await client.GetAsync(\"https://api.example.com/data\");"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Reuse a single instance of `HttpClient` or use `IHttpClientFactory`.",
+            "Use `HttpRequestMessage` for complex scenarios (headers, method, content).",
+            "Use Polly for retries, circuit breakers, and fallbacks."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. \ud83d\ude80 Creating RESTful APIs: Controllers, Routing, Versioning, Swagger",
+      "content": [
+        {
+          "type": "text",
+          "content": "ASP.NET Core makes it easy to expose RESTful APIs using controllers, routing, and OpenAPI for documentation."
+        },
+        {
+          "type": "code",
+          "content": "[ApiController]\n[Route(\"api/v1/[controller]\")]\npublic class UsersController : ControllerBase\n{\n    [HttpGet]\n    public IActionResult GetAll() => Ok(_repo.GetUsers());\n}"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `[ApiController]` for automatic validation and binding.",
+            "Version APIs via URL segments or headers.",
+            "Use Swagger (Swashbuckle) to generate interactive API docs.",
+            "Return standardized status codes and error messages."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. \ud83d\udd04 Serialization: JSON & XML",
+      "content": [
+        {
+          "type": "text",
+          "content": "Serialize and deserialize data using `System.Text.Json`, `Newtonsoft.Json`, or `XmlSerializer` for integration."
+        },
+        {
+          "type": "code",
+          "content": "var json = JsonSerializer.Serialize(obj);\nvar obj = JsonSerializer.Deserialize<MyType>(json);"
+        },
+        {
+          "type": "heading",
+          "content": "Best Practices",
+          "variant": "do"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Use `System.Text.Json` for performance and built-in support.",
+            "Use `Newtonsoft.Json` for advanced scenarios (e.g., dynamic, converters).",
+            "Avoid mixing serialization libraries unless required.",
+            "Use attributes (`[JsonPropertyName]`, `[XmlElement]`) for custom mappings."
+          ]
+        }
+      ]
+    }
+  ]
+}
