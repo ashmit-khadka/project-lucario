@@ -1,11 +1,16 @@
 // server.js
 const express = require('express');
 const cors = require('cors'); // Import the cors middleware
-const react = require('react');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const HOST = process.env.REACT_APP_SERVER || 'http://localhost';
+
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+
 
 // Enable CORS
 app.use(cors());
@@ -230,7 +235,55 @@ app.get('/api/course/getQuiz/:skill/:quizId', (req, res) => {
 
 
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on ${HOST}:${PORT}`);
+let server;
+if (process.env.NODE_ENV === 'production') {
+    try {
+        // Check if certificate files exist
+        const privateKeyPath = '/etc/letsencrypt/live/akhadka.dev/privkey.pem';
+        const certificatePath = '/etc/letsencrypt/live/akhadka.dev/fullchain.pem';
+        
+        if (fs.existsSync(privateKeyPath) && fs.existsSync(certificatePath)) {
+            const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
+            const certificate = fs.readFileSync(certificatePath, 'utf8');
+            const credentials = { key: privateKey, cert: certificate };
+            
+            server = https.createServer(credentials, app);
+            server.listen(443, () => {
+                console.log('HTTPS Server running on port 443');
+            });
+            
+            // Redirect HTTP to HTTPS
+            http.createServer((req, res) => {
+                res.writeHead(301, { 
+                    'Location': `https://${req.headers.host}${req.url}` 
+                });
+                res.end();
+            }).listen(80, () => {
+                console.log('HTTP redirect server running on port 80');
+            });
+        } else {
+            throw new Error('SSL certificates not found');
+        }
+    } catch (error) {
+        console.error('Error setting up HTTPS:', error.message);
+        console.log('Falling back to HTTP server...');
+        server = http.createServer(app);
+        server.listen(PORT, () => {
+            console.log(`HTTP Server running on ${HOST}:${PORT}`);
+        });
+    }
+} else {
+    // Development mode
+    server = http.createServer(app);
+    server.listen(PORT, () => {
+        console.log(`HTTP Server running on ${HOST}:${PORT} (Development mode)`);
+    });
+}
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+    console.log('SIGTERM signal received: closing HTTP server');
+    server.close(() => {
+        console.log('HTTP server closed');
+    });
 });
