@@ -130,7 +130,7 @@ const quizPaths = {
 app.get('/api/course/getLesson/:skill/:lessonId', (req, res) => {
     const { skill, lessonId } = req.params;
 
-    
+
     const course = courses.find(course => course.id === skill);
     if (!course) {
         return res.status(404).json({ error: 'Course not found' });
@@ -200,22 +200,22 @@ app.get('/api/course/getCourse/:skill', (req, res) => {
     courseResponse.lessons = originalCourse.lessons.map(lessonPath => {
         try {
             const lessonData = require(lessonPath);
-            return { 
-                title: lessonData.title, 
+            return {
+                title: lessonData.title,
                 description: lessonData.description,
                 chapters: lessonData.sections.length || 0, // Use length of sections or 0 if not defined
                 id: lessonPath.match(/(\d+)\.json$/)[1] // Extract lesson number from filename
             };
         } catch (error) {
             console.error(`Error loading lesson from ${lessonPath}:`, error);
-            return { 
-                title: "Error loading lesson", 
+            return {
+                title: "Error loading lesson",
                 description: "This lesson could not be loaded",
                 id: "error"
             };
         }
     });
-    
+
     // Send the modified copy, not the original
     res.json(courseResponse);
 });
@@ -223,7 +223,7 @@ app.get('/api/course/getCourse/:skill', (req, res) => {
 app.get('/api/course/getQuiz/:skill/:quizId', (req, res) => {
     const { skill, quizId } = req.params;
 
-    const path = quizPaths[skill][parseInt(quizId)-1];
+    const path = quizPaths[skill][parseInt(quizId) - 1];
     const quiz = require(path);
     if (quiz) {
         // send the quiz data as a response
@@ -234,56 +234,19 @@ app.get('/api/course/getQuiz/:skill/:quizId', (req, res) => {
 })
 
 
-
 let server;
 if (process.env.NODE_ENV === 'production') {
-    try {
-        // Check if certificate files exist
-        const privateKeyPath = '/etc/letsencrypt/live/akhadka.dev/privkey.pem';
-        const certificatePath = '/etc/letsencrypt/live/akhadka.dev/fullchain.pem';
-        
-        if (fs.existsSync(privateKeyPath) && fs.existsSync(certificatePath)) {
-            const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
-            const certificate = fs.readFileSync(certificatePath, 'utf8');
-            const credentials = { key: privateKey, cert: certificate };
-            
-            server = https.createServer(credentials, app);
-            server.listen(443, () => {
-                console.log('HTTPS Server running on port 443');
-            });
-            
-            // Redirect HTTP to HTTPS
-            http.createServer((req, res) => {
-                res.writeHead(301, { 
-                    'Location': `https://${req.headers.host}${req.url}` 
-                });
-                res.end();
-            }).listen(80, () => {
-                console.log('HTTP redirect server running on port 80');
-            });
-        } else {
-            throw new Error('SSL certificates not found');
-        }
-    } catch (error) {
-        console.error('Error setting up HTTPS:', error.message);
-        console.log('Falling back to HTTP server...');
-        server = http.createServer(app);
-        server.listen(PORT, () => {
-            console.log(`HTTP Server running on ${HOST}:${PORT}`);
-        });
-    }
+    const privateKey = fs.readFileSync('/etc/letsencrypt/live/akhadka.dev/privkey.pem', 'utf8');
+    const certificate = fs.readFileSync('/etc/letsencrypt/live/akhadka.dev/fullchain.pem', 'utf8');
+    const credentials = { key: privateKey, cert: certificate };
+
+    server = https.createServer(credentials, app);
+    console.log('Starting HTTPS server in production mode');
 } else {
-    // Development mode
     server = http.createServer(app);
-    server.listen(PORT, () => {
-        console.log(`HTTP Server running on ${HOST}:${PORT} (Development mode)`);
-    });
+    console.log('Starting HTTP server in development mode');
 }
 
-// Graceful shutdown
-process.on('SIGTERM', () => {
-    console.log('SIGTERM signal received: closing HTTP server');
-    server.close(() => {
-        console.log('HTTP server closed');
-    });
+server.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT} in ${process.env.NODE_ENV} mode`);
 });
