@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { getCourse } from "../../services/courseServices";
-
+import Breadcrumb from "../Breadcrumb";
 
 const CourseScreen = () => {
     const navigate = useNavigate();
@@ -22,21 +22,35 @@ const CourseScreen = () => {
     }, [skill]); // Re-run when skill changes
 
     if (!course) {
-        return  null
+        return null
     }
 
     return (
-        <div className="learn-skill-screen">
-            <h1>Learn JavaScript</h1>
+        <div className="learn-skill-screen screen">
+            <Breadcrumb
+                items={[
+                    { label: "Home", link: "/" },
+                    { label: "Learn", link: "/learn" },
+                    { label: course.name, link: `/learn/${skill}` },
+                ]}
+            />
+            <div className="screen-intro">
+                <h1 className="screen-header">{course.name}</h1>
+                <p>{course.description}</p>
+            </div>
             <div className="lesson-tiles">
-                {course.map((lesson, index) => (
+                {course.lessons.map((lesson, index) => (
                     <div
                         key={index}
                         className="lesson-tile"
                         onClick={() => navigate(`/learn/${skill}/lesson/${index + 1}`)}
                     >
-                        <h2>{lesson.title}</h2>
-                        <p>{lesson.description}</p>
+                        <div className="lesson-tile-header">        
+                            <h2 className="course-name">{lesson.title}</h2>
+                        </div>
+
+                        <p className="course-description">{lesson.description}</p>
+                        <p className="course-description italic">📄 Chapters: {lesson.chapters}</p>
                         {/* <ul>
                             {lesson.sections.map((section, sectionIndex) => (
                                 <li key={sectionIndex}>{section.title}</li>

@@ -38,9 +38,37 @@
     z-index: 1000;
     background-color: $colour-background;
     transition: all 0.3s ease;
+    justify-content: center;
 
     @include screen-sm {
-        padding: 1rem 2.5rem;
+        padding: $screen-padding-mobile;
+    }
+
+    .navigation-logo {
+        display: flex;
+        align-items: center;
+        @extend .dm-mono-regular;
+        color: $color-font-primary;
+        font-size: $font-size-lg;
+        background-color: $color-underline;
+        padding-left: 1rem;
+
+        .navigation-logo-cursor {
+            height: 1.6rem;
+            width: 2px;
+            background-color: $color-font-primary;
+            margin-left: 0.5rem;
+            margin-right: 1rem;
+            animation: cursor-blink 1.5s infinite;
+
+        }
+    }
+
+    &-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: $size-screen;
     }
 
     &-menu {
@@ -58,9 +86,9 @@
     &-links {
         display: flex;
         gap: 1rem;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
+        //align-items: center;
+        //justify-content: center;
+        //width: 100%;
 
         @include screen-sm {
             display: none;
@@ -163,6 +191,15 @@
             background-color: rgba($color-font-primary-darker, 0.95);
             padding: 1.5rem 3rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+            .navigation-logo {
+                color: $color-font-primary-lighter;
+                background-color: #913a6e;
+            }
+
+            .navigation-logo-cursor {
+                background-color: $color-font-primary-lighter;
+            }
 
             .navigation-link {
 
@@ -282,5 +319,47 @@
             @extend .dm-mono-regular;
             //font-size: 1rem;
         }
+    }
+}
+
+.breadcrumb {
+    padding-bottom: 2rem;
+
+    .breadcrumb-list {
+        gap: 1rem;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        & li {
+            @extend .dm-mono-regular;
+            display: flex;
+            gap: 1rem;
+
+            & a {
+                text-decoration: none;
+                color: inherit;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: $color-font-primary-darker;
+                }
+            }
+
+        }
+    }
+}
+
+
+// Add this keyframe animation
+@keyframes cursor-blink {
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
     }
 }

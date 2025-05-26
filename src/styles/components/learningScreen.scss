@@ -48,21 +48,15 @@
 
 
 .learn-skill-screen {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    h1 {
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 2.5rem;
-        color: $color-font-primary;
-    }
 
     .lesson-tiles {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
         gap: 2rem;
+
+        @include screen-sm {
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        }
     }
 
     .lesson-tile {

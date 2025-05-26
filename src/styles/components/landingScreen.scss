@@ -13,6 +13,10 @@
 .landing {
     padding-top: 4rem;
 
+    @include screen-sm {
+        padding-top: 0rem;
+    }
+
     & h1 {
         font-size: 4rem;
         font-weight: 700;
@@ -136,6 +140,10 @@
                 border-left: 3px solid $color-font-primary;
                 padding-left: 4rem;
                 margin-left: 2rem;
+
+                @include screen-sm {
+                    padding-left: 2rem;
+                }
 
                 & li {
                     //list-style: disc;

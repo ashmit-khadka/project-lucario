@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from 'react-router';
-import { ReactComponent as IconMenu } from '../assets/icons/noun-menu-1561735.svg';
-import { ReactComponent as IconClose } from '../assets/icons/noun-close-659815.svg';
-import useScrollSpy from '../hooks/useScrollSpy';
 
 const NavigationBar = () => {
     const navigate = useNavigate();
@@ -31,10 +28,10 @@ const NavigationBar = () => {
 
         // Add the scroll event listener
         window.addEventListener('scroll', handleScroll);
-        
+
         // Initial check when component mounts or route changes
         handleScroll();
-        
+
         // Clean up the event listener when component unmounts
         return () => window.removeEventListener('scroll', handleScroll);
     }, [isHomePage]); // Re-run when isHomePage changes
@@ -47,24 +44,32 @@ const NavigationBar = () => {
 
     return (
         <>
-            <nav className={`navigation ${hasScrolled ? 'scrolled' : ''}`}>
-                <div className="navigation-dummy" />
+            <nav className={`navigation ${hasScrolled || !isHomePage ? 'scrolled' : ''}`}>
+                <div className="navigation-dummy"></div>
+                <div className="navigation-bar">
+                    <div
+                        className="navigation-logo"
+                        onClick={() => onNavigate("/")}
+                    >
+                        {"<akhadka.dev />"} <div className="navigation-logo-cursor"></div>
+                    </div>
+                    <ul className={`navigation-links ${isOpen ? 'open' : ''}`}>
+                        {[
+                            { id: 'portfolio', label: 'Portfolio', link: '/' },
+                            { id: 'resume', label: 'Resume', link: '/resume' },
+                            { id: 'learn', label: 'Learn', link: '/learn' },
+                        ].map(link => (
+                            <li
+                                key={link.id}
+                                className={`navigation-link ${location.pathname.includes(link.link) && link.link !== '/' ? 'active' : link.link === '/' && location.pathname === '/' ? 'active' : ''}`}
+                                onClick={() => onNavigate(link.link)}
+                            >
+                                {link.label}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
 
-                <ul className={`navigation-links ${isOpen ? 'open' : ''}`}>
-                    {[
-                        { id: 'portfolio', label: 'Portfolio', link: '/' },
-                        { id: 'resume', label: 'Resume', link: '/resume' },
-                        { id: 'learn', label: 'Learn', link: '/learn' },
-                    ].map(link => (
-                        <li
-                            key={link.id}
-                            className={`navigation-link ${location.pathname === link.link ? 'active' : ''}`}
-                            onClick={() => onNavigate(link.link)}
-                        >
-                            {link.label}
-                        </li>
-                    ))}
-                </ul>
                 <div className="navigation-menu">
                     <button
                         className={`hamburger-menu ${isOpen ? 'active' : ''}`}

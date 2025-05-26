@@ -549,7 +549,7 @@ const AboutSectionBio = (
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
         >
-            {"I'm a trailblazing software engineer who loves building things that matter. With a Master’s in Software Engineering from King’s College London and nearly five years at ADP, a leading S&P 500 tech giant where I’ve worked on RUN — an award-winning web app boasting a 4.9 rating on the App Store."}
+            {`"I'm a trailblazing software engineer who loves building things that matter. With a Master’s in Software Engineering from King’s College London and nearly five years at ADP, a leading S&P 500 tech giant where I’ve worked on RUN — an award-winning web app boasting a 4.9 rating on the App Store."`}
         </motion.p>
     </div>
 );
@@ -747,8 +747,8 @@ const EducationTile = (props) => {
     return (
         <motion.div
             className="landing-education-tile"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
         >
@@ -761,8 +761,8 @@ const EducationTile = (props) => {
                 <img src={logo} alt="Education Logo" className="education-logo" />
             </motion.div>
             <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
                 viewport={{ once: true }}
             >
@@ -807,8 +807,8 @@ const CertificationTile = (props) => {
                 <img src={logo} alt="Certification Logo" className="certification-logo" />
             </motion.div>
             <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
                 viewport={{ once: true }}
             >

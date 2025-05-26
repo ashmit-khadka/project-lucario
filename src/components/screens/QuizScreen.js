@@ -4,25 +4,26 @@ import { getQuiz } from "../../services/quizServices";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { synthwave84 } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const QuizScreen = () => {
+const QuizScreen = (props) => {
+    const { quizData } = props;
     const { skill, quizId } = useParams();
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
     const [showResults, setShowResults] = useState(false);
     const [feedback, setFeedback] = useState(null);
-    const [quizData, setQuizData] = useState([]);
+    // const [quizData, setQuizData] = useState([]);
 
-    useEffect(() => {
-        const fetchQuizData = async () => {
-            try {
-                const data = await getQuiz("javascript", "1");
-                setQuizData(data);
-            } catch (error) {
-                console.error("Error fetching quiz data:", error);
-            }
-        };
-        fetchQuizData();
-    }, []);
+    // useEffect(() => {
+    //     const fetchQuizData = async () => {
+    //         try {
+    //             const data = await getQuiz("javascript", "1");
+    //             setQuizData(data);
+    //         } catch (error) {
+    //             console.error("Error fetching quiz data:", error);
+    //         }
+    //     };
+    //     fetchQuizData();
+    // }, []);
 
     const resetQuiz = () => {
         setCurrentQuestionIndex(0);
@@ -32,7 +33,7 @@ const QuizScreen = () => {
     };
 
     if (!quizData || quizData.length === 0) {
-        return <div>Loading quiz data...</div>;
+        return <div></div>;
     }
 
     const currentQuestion = quizData[currentQuestionIndex];

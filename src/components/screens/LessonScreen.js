@@ -7,7 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { synthwave84 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import QuizScreen from './QuizScreen';
 import NavigationHover from '../NavigationHover';
-
+import Breadcrumb from '../Breadcrumb';
 
 const Section = ({ title, id, children }) => (
     <section id={id} className="learning-section section">
@@ -52,13 +52,18 @@ const SectionHeading = ({ title, variant }) => {
 const LessonScreen = () => {
     const { skill, lessonId } = useParams(); // Extract the lesson ID from the URL
 
+    const [course, setCourse] = useState(null); // State to hold the course data if needed
     const [lesson, setLesson] = useState(null); // State to hold the dynamically loaded lesson
+    const [quiz, setQuiz] = useState(null); // State to hold the quiz data if needed
+
 
     useEffect(() => {
         const loadLesson = async () => {
             try {
                 const lessonData = await getLesson(skill, lessonId);
-                setLesson(lessonData);
+                setCourse(lessonData.course); // If you need to use course data later
+                setLesson(lessonData.lesson);
+                setQuiz(lessonData.quiz); // If you need to use quiz data later
             } catch (error) {
                 console.error("Error fetching lesson:", error);
             }
@@ -91,8 +96,20 @@ const LessonScreen = () => {
 
             {/* Main Content */}
             <div>
-                <h1>{formatText(lesson.title)}</h1>
-                <p>{lesson.description}</p>
+
+                <Breadcrumb
+                    items={[
+                        { label: "Home", link: "/" },
+                        { label: "Learn", link: "/learn" },
+                        { label: course.name, link: `/learn/${skill}` },
+                        { label: lesson.title, link: `/learn/${skill}/lesson/${lessonId}` },
+                    ]}
+                />
+
+                <div className="screen-intro">
+                    <h1 className="screen-header">{formatText(lesson.title)}</h1>
+                    <p>{lesson.description}</p>
+                </div>
 
                 {lesson.sections.map((section, sectionIndex) => (
                     <Section key={sectionIndex} id={`section-${sectionIndex}`} title={section.title}>
@@ -122,7 +139,7 @@ const LessonScreen = () => {
                             Take a quiz
                         </button>
                 </div> */}
-                    <QuizScreen skill={skill} lessonId={lessonId} />
+                    <QuizScreen quizData={quiz} />
                 </div>
             </div>
         </div>

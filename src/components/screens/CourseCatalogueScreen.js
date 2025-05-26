@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { getCourses } from "../../services/courseServices";
+import Breadcrumb from "../Breadcrumb";
 
 const CourseCatalogueScreen = () => {
     const navigate = useNavigate();
@@ -23,6 +24,17 @@ const CourseCatalogueScreen = () => {
     return (
         <div className="learn-skill-screen screen">
             {/* <h1 className="screen-header">Select a Course</h1> */}
+            <Breadcrumb
+                items={[
+                    { label: "Home", link: "/" },
+                    { label: "Learn", link: "/learn" },
+                ]}
+            />
+            <div className="screen-intro">
+                <h1 className="screen-header">Course Catalogue</h1>
+                <p>{`🚀 Explore a curated library of in-depth software engineering courses covering essential and advanced topics in JavaScript, TypeScript, React, C#, and more.`}</p>
+                <p>{`Each course is packed with expert-level insights, best practices, and real-world examples to help you become a top-tier developer. Whether you're learning something new or recapping key concepts, the structured lessons and integrated quizzes make your journey interactive, practical, and career-focused.`}</p>
+            </div>
             <div className="lesson-tiles">
                 {courses.map((course) => (
                     <div
@@ -31,7 +43,7 @@ const CourseCatalogueScreen = () => {
                         onClick={() => navigate(course.link)} // Navigate to the course page
                     >
                         <div className="lesson-tile-header">
-                        <img
+                            <img
                                 src={`${process.env.REACT_APP_HOST}/${course.icon}`}
                                 alt={course.name}
                                 className="course-image"
@@ -40,6 +52,7 @@ const CourseCatalogueScreen = () => {
                             <h2 className="course-name">{course.name}</h2>
                         </div>
                         <p className="course-description">{course.description}</p>
+                        <p className="course-description italic">{`📖 Modules: ${course.totalLessons}`}</p>
 
                     </div>
                 ))}

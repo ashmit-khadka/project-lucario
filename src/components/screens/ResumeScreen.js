@@ -18,61 +18,86 @@ import { ReactComponent as IconGitHub } from '../../assets/icons/GitHub.svg';
 
 import text from '../../data/resume';
 import parseText from '../../utils/parseText';
+import Breadcrumb from '../Breadcrumb';
+import Button from '../core/Button';
 
 const ResumeScreen = () => {
 
     const resumeText = text.default;
 
     return (
-        <div className="resume resume-container">
-            {/* Left Column */}
-            <div className="resume-left-column">
-                <ContactSection
-                    name={resumeText.header.name}
-                    title={resumeText.header.title}
-                    entries={resumeText.contact}
+        <div className="screen">
+            <div className="resume-screen-info" >
+                <Breadcrumb
+                    items={[
+                        { label: "Home", link: "/" },
+                        { label: "Resume", link: "/resume" },
+                    ]}
                 />
-                <SectionDivider />
-
-                <SkillSection
-                    languages={resumeText.skills.languages}
-                    frameworks={resumeText.skills.frameworks}
-                    cloud={resumeText.skills.cloud}
-                    database={resumeText.skills.databases}
-                    testing={resumeText.skills.testing}
-                    tools={resumeText.skills.tools}
-                />
-                <SectionDivider />
-
-                <EducationSection
-                    entries={resumeText.education}
-                />
-                <SectionDivider />
-
-                <CertificationSection
-                    entries={resumeText.certifications}
-                />
-
-                <SectionDivider />
-                <AwardSection
-                    entries={resumeText.awards}
-                />
-
+                <div className="screen-intro">
+                    <h1 className="screen-header">Resume</h1>
+                    <p>🚀 Here's a detailed overview of my professional journey, skills, and accomplishments.</p>
+                    <Button
+                        onClick={() => {
+                            const link = `${process.env.REACT_APP_HOST}/assets/docs/CV_Ashmit_Khadka.pdf`;
+                            window.open(link, "_blank");
+                        }}
+                    >
+                        Download PDF
+                    </Button>
+                </div>
             </div>
 
-            {/* Right Column */}
-            <div className="resume-right-column">
-                <ProfileSection
-                    text={resumeText.profile.text}
-                />
-                <SectionDivider />
-                <WorkExperienceSection
-                    workExperience={resumeText.workExperience}
-                />
-                <SectionDivider />
-                <ProjectSection
-                    projects={resumeText.projects}
-                />
+            <div className="resume resume-container">
+                {/* Left Column */}
+                <div className="resume-left-column">
+                    <ContactSection
+                        name={resumeText.header.name}
+                        title={resumeText.header.title}
+                        entries={resumeText.contact}
+                    />
+                    <SectionDivider />
+
+                    <SkillSection
+                        languages={resumeText.skills.languages}
+                        frameworks={resumeText.skills.frameworks}
+                        cloud={resumeText.skills.cloud}
+                        database={resumeText.skills.databases}
+                        testing={resumeText.skills.testing}
+                        tools={resumeText.skills.tools}
+                    />
+                    <SectionDivider />
+
+                    <EducationSection
+                        entries={resumeText.education}
+                    />
+                    <SectionDivider />
+
+                    <CertificationSection
+                        entries={resumeText.certifications}
+                    />
+
+                    <SectionDivider />
+                    <AwardSection
+                        entries={resumeText.awards}
+                    />
+
+                </div>
+
+                {/* Right Column */}
+                <div className="resume-right-column">
+                    <ProfileSection
+                        text={resumeText.profile.text}
+                    />
+                    <SectionDivider />
+                    <WorkExperienceSection
+                        workExperience={resumeText.workExperience}
+                    />
+                    <SectionDivider />
+                    <ProjectSection
+                        projects={resumeText.projects}
+                    />
+                </div>
             </div>
         </div>
     );
