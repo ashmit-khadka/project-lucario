@@ -21,6 +21,10 @@ const CourseCatalogueScreen = () => {
         fetchCourses();
     }, []);
 
+    if (!courses) {
+        return <div className="screen-empty"></div>
+    }
+
     return (
         <div className="learn-skill-screen screen">
             {/* <h1 className="screen-header">Select a Course</h1> */}

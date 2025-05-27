@@ -87,6 +87,9 @@ const LessonScreen = () => {
         label: '📝 Quiz',
     });
 
+    if (!lesson) {
+        return <div className="screen-empty"></div>
+    }
 
     return (
         <div className="screen">

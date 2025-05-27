@@ -221,7 +221,6 @@ a {
 .screen {
     max-width: $size-screen;
     margin: 0 auto;
-    //padding: 0 2.5rem;
 
     @include screen-sm {
         padding: 0 1.5rem;
@@ -243,9 +242,11 @@ a {
             //@extend .dm-sans-regular;
         }   
         
-    }
+    }  
+}
 
-
+.screen-empty {
+    min-height: 100vh;
 }
 
 .error-screen {

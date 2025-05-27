@@ -22,7 +22,7 @@ const CourseScreen = () => {
     }, [skill]); // Re-run when skill changes
 
     if (!course) {
-        return null
+        return <div className="screen-empty"></div>
     }
 
     return (

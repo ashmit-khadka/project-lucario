@@ -287,6 +287,9 @@
     padding: 1rem;
     z-index: 1000;
     max-width: 300px;
+    max-height: 80%;
+    overflow-y: auto; // Changed from 'scroll' to 'auto'
+    scrollbar-width: thin; // Optional: Thinner scrollbar in Firefox
 
     @include screen-sm {
         display: none;
