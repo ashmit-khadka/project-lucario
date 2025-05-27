@@ -48,7 +48,7 @@ const CourseCatalogueScreen = () => {
                     >
                         <div className="lesson-tile-header">
                             <img
-                                src={`${process.env.REACT_APP_HOST}/${course.icon}`}
+                                src={`${process.env.PUBLIC_URL}/${course.icon}`}
                                 alt={course.name}
                                 className="course-image"
                             />

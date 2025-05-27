@@ -8,7 +8,7 @@ const NotFoundScreen = () => {
                 Oops! The page you are looking for does not exist.
             </p>
             <img
-                src={`${process.env.REACT_APP_HOST}/assets/images/404.gif`}
+                src={`${process.env.PUBLIC_URL}/assets/images/404.gif`}
                 alt="Page Not Found"
                 className="not-found-image"
             />
